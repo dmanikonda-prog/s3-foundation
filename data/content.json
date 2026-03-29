@@ -1,0 +1,281 @@
+{
+  "_version": 1,
+  "_updatedAt": "",
+
+  "site": {
+    "name": "S3 Foundation",
+    "tagline": "Shraddha · Saburi · Samidha",
+    "address": "7945 Deadfall Road, Arlington, TN 38002",
+    "email": "info@s3foundationusa.org",
+    "phone": "",
+    "ein": "",
+    "mapEmbedUrl": "",
+    "hours": {
+      "weekdays": "By Appointment Only",
+      "saturday": "8:00 AM – 5:00 PM",
+      "sunday": "8:00 AM – 4:00 PM"
+    },
+    "social": {
+      "facebook": "https://facebook.com/s3foundationusa",
+      "youtube": "https://www.youtube.com/@gaushalausa",
+      "instagram": "https://instagram.com/s3foundationusa",
+      "twitter": "https://twitter.com/gaushalausa"
+    }
+  },
+
+  "home": {
+    "heroTitle": "Where Ancient Vedic Wisdom Meets Sacred Service",
+    "heroSubtitle": "A 501(c)(3) sanctuary of Shraddha, Saburi & Samidha — offering Agnihotra, Maha Yagnas, Sadhana Retreats, and Gaushala Seva on 400+ sacred acres in Arlington, Tennessee.",
+    "heroCta1Text": "Explore Our Mission",
+    "heroCta1Link": "about.html",
+    "heroCta2Text": "Attend Laksha Chandi 2025",
+    "heroCta2Link": "events.html",
+    "heroImage": "",
+    "aboutImage": "",
+    "gaushaalaImage": "",
+    "announcements": [
+      "🕉 Laksha Chandi Maha Yagnam 2025 — Navaratri, Oct 16–26 · Registration Open Now",
+      "🐄 Gaushala Seva weekend visits · Saturday 8AM–5PM, Sunday 8AM–4PM",
+      "📿 Daily Agnihotra at sunrise & sunset — open to all sincere seekers",
+      "🌿 Panchagavya products now available · Contact us to order",
+      "🎓 Sadhana Retreat 2025 — Limited seats · Register early",
+      "🌸 Satsang every Sunday — All are welcome · Free entry",
+      "🔥 Maha Mrutyunjaya Homa scheduled — Check events page for dates"
+    ],
+    "stats": [
+      { "value": 20, "suffix": "+", "label": "Years of Service" },
+      { "value": 200, "suffix": "+", "label": "Gir Cows Protected" },
+      { "value": 15, "suffix": "+", "label": "Yagnas Conducted" },
+      { "value": 400, "suffix": "+", "label": "Acres of Sacred Land" }
+    ]
+  },
+
+  "about": {
+    "missionStatement": "To preserve, practice, and propagate ancient Vedic knowledge through Agnihotra, Yagna, Gaushala Seva, and Sadhana — creating a living bridge between timeless spiritual wisdom and contemporary life.",
+    "foundingStory": "S3 Foundation was established in 2005 by Sri Purushottamji, a revered Vedic scholar and practitioner who envisioned a space where authentic Vedic traditions could flourish in the Americas. Starting with just a small group of seekers in Arlington, Tennessee, the foundation has grown into a 400-acre sanctuary serving thousands of devotees each year.",
+    "founderName": "Sri Purushottamji",
+    "founderTitle": "Founder & Spiritual Director",
+    "founderBio": "A revered Vedic scholar and practitioner with over three decades of experience in Agnihotra, Yagna Vidhi, Vedic Sciences, and Gaushala management. Under his guidance, S3 Foundation has become the foremost Vedic center in the Americas.",
+    "founderImage": "",
+    "chiefAcharyaName": "",
+    "chiefAcharyaTitle": "Chief Acharya",
+    "chiefAcharyaImage": "",
+    "timeline": [
+      { "year": "2005", "event": "S3 Foundation established by Sri Purushottamji with a small group of seekers in Arlington, TN" },
+      { "year": "2008", "event": "First Maha Yagnam conducted — over 500 devotees attend from across North America" },
+      { "year": "2012", "event": "400+ acres of sacred farmland acquired — foundation for the ashram campus" },
+      { "year": "2015", "event": "Gaushala established — first Gir cows from Gujarat arrive at the ashram" },
+      { "year": "2018", "event": "Grand 30,000 sq.ft Yagna Shala inaugurated — largest Vedic ritual space in the Americas" },
+      { "year": "2020", "event": "First Laksha Chandi Maha Yagnam — unprecedented 100,000 Chandi recitations" },
+      { "year": "2023", "event": "Shiva Shakti Maha Yagnam and Gandabherunda Lakshmi Narasimha Homa conducted" },
+      { "year": "2025+", "event": "Ongoing: Vedic Temple, Gurukul, and Vedic University Campus development" }
+    ]
+  },
+
+  "programs": [
+    {
+      "id": "agnihotra",
+      "title": "Agnihotra",
+      "subtitle": "Daily Fire Ritual",
+      "description": "The ancient Vedic fire ritual performed precisely at sunrise and sunset using cow dung cakes, ghee, and raw rice. Open to all visitors, this daily practice purifies the atmosphere, promotes healing, and connects practitioners with cosmic rhythms. No prior experience needed.",
+      "image": "",
+      "schedule": "Daily at Sunrise & Sunset",
+      "open": true,
+      "order": 1
+    },
+    {
+      "id": "yagna",
+      "title": "Laksha Chandi Maha Yagnam",
+      "subtitle": "Annual Grand Yagna",
+      "description": "The jewel of S3 Foundation's annual calendar — a 10-day Maha Yagnam during Navaratri featuring 100,000 recitations of the Chandi Stotra by hundreds of Vedic priests. This unprecedented event in the Americas draws thousands of devotees each year. Free for all sincere seekers.",
+      "image": "",
+      "schedule": "Annually during Navaratri (October)",
+      "open": true,
+      "order": 2
+    },
+    {
+      "id": "sadhana",
+      "title": "Sadhana Retreats",
+      "subtitle": "Spiritual Immersion",
+      "description": "Multi-day residential retreats combining Agnihotra, meditation, yoga, Vedic chanting, and Satsang with experienced guides. Participants live the ashram schedule, eat sattvic meals, and undergo genuine spiritual transformation in a serene natural setting.",
+      "image": "",
+      "schedule": "Multiple retreats per year",
+      "open": true,
+      "order": 3
+    },
+    {
+      "id": "satsang",
+      "title": "Satsang & Discourses",
+      "subtitle": "Sacred Gathering",
+      "description": "Weekly and festival Satsangs featuring Vedic chanting, spiritual discourse, and communal prasad. Topics span Vedantic philosophy, Bhagavad Gita, Upanishads, and practical spiritual wisdom for modern life. Open to all every Sunday.",
+      "image": "",
+      "schedule": "Every Sunday + Festivals",
+      "open": true,
+      "order": 4
+    },
+    {
+      "id": "youth",
+      "title": "Youth & Horse Riding",
+      "subtitle": "Next Generation",
+      "description": "Programs for children and teens to experience Vedic values through nature, horses, organic farming, yoga, and cultural arts. Instilling dharmic values through experiential learning and ashram life.",
+      "image": "",
+      "schedule": "Weekends & School Holidays",
+      "open": true,
+      "order": 5
+    },
+    {
+      "id": "farming",
+      "title": "Panchagavya Farming",
+      "subtitle": "Sacred Agriculture",
+      "description": "Organic farming using traditional Panchagavya formulations derived from the sacred Gir cow. Learn biodynamic and Vedic farming techniques while contributing to the ashram's self-sufficiency and the global movement for natural agriculture.",
+      "image": "",
+      "schedule": "Year-round",
+      "open": true,
+      "order": 6
+    }
+  ],
+
+  "gaushala": {
+    "totalCows": "200+",
+    "acres": "400+",
+    "breeds": "3+",
+    "dailyVisitors": "50+",
+    "intro": "Our Gaushala is home to over 200 sacred Gir cows on 400+ acres of lush Tennessee farmland. Each cow is treated with the reverence she deserves — named, cared for individually, and never separated from her calf.",
+    "heroImage": "",
+    "products": [
+      { "name": "A2 Milk", "description": "Pure A2 Gir cow milk, rich in beta-casein protein and naturally nutritious", "icon": "🥛", "image": "" },
+      { "name": "Vedic Ghee", "description": "Traditionally prepared Bilona method ghee — nutrient-dense and sattvic", "icon": "✨", "image": "" },
+      { "name": "Curd & Buttermilk", "description": "Probiotic-rich cultured dairy products from grass-fed Gir cows", "icon": "🫙", "image": "" },
+      { "name": "Gomutra Ark", "description": "Distilled cow urine for traditional Ayurvedic use and purification", "icon": "💧", "image": "" },
+      { "name": "Panchagavya Mix", "description": "Traditional 5-product formulation for health, farming, and ritual use", "icon": "🌿", "image": "" },
+      { "name": "Cow Dung Products", "description": "Dung cakes for Agnihotra, organic fertilizer, and natural building", "icon": "🌱", "image": "" }
+    ]
+  },
+
+  "events": [
+    {
+      "id": "evt1",
+      "title": "Laksha Chandi Maha Yagnam 2025",
+      "date": "October 16–26, 2025",
+      "category": "yagna",
+      "description": "10-day Navaratri Maha Yagnam with 100,000 Chandi recitations. FREE for all sincere seekers. Registration open.",
+      "image": "",
+      "upcoming": true,
+      "featured": true,
+      "registrationLink": "contact.html"
+    },
+    {
+      "id": "evt2",
+      "title": "Guru Purnima Celebration",
+      "date": "July 10, 2025",
+      "category": "festival",
+      "description": "Sacred celebration honoring the Guru lineage with Pada Puja, Satsang, and Maha Prasad. Open to all.",
+      "image": "",
+      "upcoming": true,
+      "featured": false,
+      "registrationLink": ""
+    },
+    {
+      "id": "evt3",
+      "title": "Janmashtami Mahotsav",
+      "date": "August 16, 2025",
+      "category": "festival",
+      "description": "All-night celebration of Lord Krishna's birth with Abhishekam, bhajans, and midnight aarti.",
+      "image": "",
+      "upcoming": true,
+      "featured": false,
+      "registrationLink": ""
+    },
+    {
+      "id": "evt4",
+      "title": "Diwali Maha Aarti",
+      "date": "October 20, 2025",
+      "category": "festival",
+      "description": "Festival of lights with 1,000-lamp Maha Aarti, fireworks, cultural performances, and grand prasad.",
+      "image": "",
+      "upcoming": true,
+      "featured": false,
+      "registrationLink": ""
+    },
+    {
+      "id": "evt5",
+      "title": "Laksha Chandi Maha Yagnam 2023",
+      "date": "October 2023",
+      "category": "yagna",
+      "description": "Second annual Laksha Chandi — 50,000+ devotees, 500+ Vedic priests, 10 sacred days.",
+      "image": "",
+      "upcoming": false,
+      "featured": false,
+      "registrationLink": ""
+    },
+    {
+      "id": "evt6",
+      "title": "Shiva Shakti Maha Yagnam 2023",
+      "date": "March 2023",
+      "category": "yagna",
+      "description": "Rare combined Shiva-Shakti Maha Yagnam invoking divine feminine and masculine energies.",
+      "image": "",
+      "upcoming": false,
+      "featured": false,
+      "registrationLink": ""
+    }
+  ],
+
+  "gallery": {
+    "photos": [
+      { "url": "", "category": "yagna", "caption": "Laksha Chandi Maha Yagnam — Sacred fire at dawn" },
+      { "url": "", "category": "gaushala", "caption": "Gir cows at the S3 Foundation Gaushala" },
+      { "url": "", "category": "festival", "caption": "Diwali Maha Aarti — 1,000 lamps lit" },
+      { "url": "", "category": "sadhana", "caption": "Morning meditation and yoga session" },
+      { "url": "", "category": "yagna", "caption": "Agnihotra at sunrise — open to all" },
+      { "url": "", "category": "gaushala", "caption": "Gaushala seva — caring for sacred cows" },
+      { "url": "", "category": "yagna", "caption": "Vedic priests performing Homa rituals" },
+      { "url": "", "category": "festival", "caption": "Guru Purnima — Pada Puja ceremony" },
+      { "url": "", "category": "sadhana", "caption": "Sadhana retreat participants" }
+    ],
+    "videos": [
+      { "url": "https://www.youtube.com/watch?v=", "title": "Laksha Chandi Maha Yagnam Highlights", "thumbnail": "", "category": "yagna" },
+      { "url": "https://www.youtube.com/watch?v=", "title": "Daily Agnihotra at S3 Foundation", "thumbnail": "", "category": "sadhana" },
+      { "url": "https://www.youtube.com/watch?v=", "title": "Gaushala & Farm Tour", "thumbnail": "", "category": "gaushala" },
+      { "url": "https://www.youtube.com/watch?v=", "title": "Satsang & Spiritual Discourse", "thumbnail": "", "category": "sadhana" }
+    ]
+  },
+
+  "donate": {
+    "ein": "",
+    "heroTitle": "Support Our Sacred Mission",
+    "heroSubtitle": "Your dana sustains ancient Vedic traditions, nurtures sacred cows, and makes these practices freely accessible to all seekers.",
+    "amounts": [11, 51, 101, 251, 501],
+    "amountLabels": {
+      "11": "1 Day Cow Feed",
+      "51": "1 Week Cow Care",
+      "101": "Daily Agnihotra",
+      "251": "Yagna Sponsorship",
+      "501": "Homa Sponsorship"
+    },
+    "tiers": [
+      {
+        "name": "Sahayogi",
+        "sanskrit": "सहयोगी",
+        "amount": 251,
+        "description": "Supports daily Agnihotra for one month · Name added to monthly prayer list · Prasad mailed to you",
+        "featured": false
+      },
+      {
+        "name": "Yajamana",
+        "sanskrit": "यजमान",
+        "amount": 1008,
+        "description": "Full sponsorship of one Yagna · Special Ahuti performed in your name · Certificate of spiritual merit · Prasad package",
+        "featured": true
+      },
+      {
+        "name": "Maha Yajamana",
+        "sanskrit": "महायजमान",
+        "amount": 5100,
+        "description": "Lead patron of a Maha Yagnam · Lifetime prayer enrollment · Personal darshan session · Panchagavya gift kit",
+        "featured": false
+      }
+    ],
+    "checkPayableTo": "S3 Foundation"
+  }
+}
