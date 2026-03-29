@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Events & Programs — S3 Foundation | Memphis, TN</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .filter-bar { display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:40px; }
+    .filter-btn { padding:8px 20px;border:1.5px solid var(--border);border-radius:30px;font-size:0.83rem;font-weight:700;cursor:pointer;background:var(--white);color:var(--text);font-family:'Lato',sans-serif;transition:all var(--transition); }
+    .filter-btn:hover,.filter-btn.active{background:var(--saffron);border-color:var(--saffron);color:white;}
+
+    .event-big-card {
+      background:var(--white);border-radius:var(--radius-lg);overflow:hidden;
+      border:1px solid var(--border);box-shadow:0 4px 20px var(--shadow);
+      display:grid;grid-template-columns:300px 1fr;transition:all var(--transition);margin-bottom:24px;
+    }
+    .event-big-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px var(--shadow-deep);}
+    .ebc-image{min-height:220px;}
+    .ebc-body{padding:36px;}
+    .ebc-body .badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+    .ebc-body h3{font-size:1.4rem;margin-bottom:10px;}
+    .ebc-body .meta{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:14px;}
+    .ebc-body .meta span{font-size:0.85rem;color:var(--text-light);display:flex;align-items:center;gap:5px;}
+    .ebc-body p{color:var(--text-light);font-size:0.93rem;line-height:1.7;margin-bottom:16px;}
+
+    .event-small-card {
+      background:var(--white);border-radius:var(--radius-lg);padding:24px;
+      border:1px solid var(--border);box-shadow:0 2px 12px var(--shadow);
+      transition:all var(--transition);
+    }
+    .event-small-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px var(--shadow-deep);}
+    .esc-header{display:flex;gap:16px;align-items:flex-start;margin-bottom:14px;}
+    .esc-date-box{background:linear-gradient(135deg,var(--saffron),var(--saffron-dark));color:white;border-radius:10px;padding:10px 14px;text-align:center;min-width:58px;flex-shrink:0;}
+    .esc-date-box .day{font-family:'Cinzel',serif;font-size:1.6rem;font-weight:900;line-height:1;}
+    .esc-date-box .month{font-size:0.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;opacity:0.85;}
+    .esc-info h4{font-size:1rem;margin-bottom:6px;}
+    .esc-info .emeta{font-size:0.82rem;color:var(--text-light);}
+
+    .past-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+    .past-event-card{background:var(--white);border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);box-shadow:0 2px 10px var(--shadow);opacity:0.9;}
+    .past-event-card .pec-img{height:160px;}
+    .past-event-card .pec-body{padding:20px;}
+    .past-event-card .pec-body h4{font-size:0.95rem;margin-bottom:6px;}
+    .past-event-card .pec-body .year{font-size:0.8rem;color:var(--text-light);font-weight:700;}
+
+    .upcoming-events-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+
+    @media(max-width:768px){
+      .event-big-card{grid-template-columns:1fr;}
+      .ebc-body{padding:24px;}
+      .past-grid{grid-template-columns:1fr 1fr;}
+      .upcoming-events-grid{grid-template-columns:1fr;}
+    }
+    @media(max-width:480px){.past-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<nav class="navbar solid"><div class="container nav-inner">
+  <a href="index.html" class="nav-logo"><div class="nav-logo-icon">S3</div><div class="nav-logo-text"><span class="org-name">S3 Foundation</span><span class="org-tagline">Shraddha · Saburi · Samidha</span></div></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html">Programs</a>
+    <a href="gaushala.html">Gaushala</a><a href="events.html" class="active">Events</a><a href="gallery.html">Gallery</a>
+    <a href="contact.html">Contact</a><a href="donate.html" class="nav-donate">Donate 🙏</a>
+  </div>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+</div></nav>
+<div class="mobile-nav"><span class="mobile-nav-close">✕</span>
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html">Programs</a>
+  <a href="gaushala.html">Gaushala</a><a href="events.html">Events</a><a href="gallery.html">Gallery</a>
+  <a href="contact.html">Contact</a><a href="donate.html" style="color:var(--saffron-light);">🙏 Donate</a>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">S3 Foundation</span>
+    <h1>Events &amp; Programs</h1>
+    <div class="divider"><span>✦</span></div>
+    <p>Sacred Yagnas, festive celebrations, satsangs, and seva opportunities throughout the year — all free for sincere sadhakas.</p>
+    <nav class="breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><span>Events</span></nav>
+  </div>
+</section>
+
+<!-- FEATURED EVENT -->
+<section class="section" style="background:linear-gradient(135deg,#1C1008,#3D2314);">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow" style="color:var(--gold-light);">Signature Annual Event</span>
+      <h2 style="color:white;">Laksha Chandi Maha Yagnam 2025</h2>
+      <div class="divider"><span>✦</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;">
+      <div class="img-placeholder reveal" style="height:380px;border-radius:var(--radius-lg);">
+        <span class="ph-icon">🕉</span>
+        <span class="ph-label">Laksha Chandi Maha Yagnam<br/>30,000 sq.ft Yagna Shala</span>
+      </div>
+      <div class="reveal" style="color:white;">
+        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(232,99,10,0.2);border:1px solid rgba(232,99,10,0.4);border-radius:30px;padding:6px 16px;margin-bottom:20px;">
+          <span style="color:var(--saffron-light);font-size:0.8rem;font-weight:700;letter-spacing:1px;">UPCOMING · NAVARATRI 2025</span>
+        </div>
+        <h2 style="color:white;font-size:1.8rem;margin-bottom:14px;">100,000 Chandi Recitations</h2>
+        <p style="color:rgba(255,255,255,0.75);margin-bottom:20px;">S3 Foundation's most magnificent annual event — a 10-day Navaratri Maha Yagnam that is unprecedented in the Americas. Hundreds of Vedic priests, thousands of devotees, and the divine grace of Maha Chandi Devi unite in this rare spiritual undertaking.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px;">
+          <div style="background:rgba(255,255,255,0.08);border-radius:var(--radius);padding:16px;">
+            <div style="color:var(--gold-light);font-family:'Cinzel',serif;font-size:1.3rem;font-weight:700;">Oct 16–26</div>
+            <div style="color:rgba(255,255,255,0.6);font-size:0.8rem;margin-top:2px;">10 Days of Ritual</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.08);border-radius:var(--radius);padding:16px;">
+            <div style="color:var(--gold-light);font-family:'Cinzel',serif;font-size:1.3rem;font-weight:700;">FREE</div>
+            <div style="color:rgba(255,255,255,0.6);font-size:0.8rem;margin-top:2px;">All Are Welcome</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.08);border-radius:var(--radius);padding:16px;">
+            <div style="color:var(--gold-light);font-family:'Cinzel',serif;font-size:1.3rem;font-weight:700;">30,000 sq.ft</div>
+            <div style="color:rgba(255,255,255,0.6);font-size:0.8rem;margin-top:2px;">Grand Yagna Shala</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.08);border-radius:var(--radius);padding:16px;">
+            <div style="color:var(--gold-light);font-family:'Cinzel',serif;font-size:1.3rem;font-weight:700;">100K+</div>
+            <div style="color:rgba(255,255,255,0.6);font-size:0.8rem;margin-top:2px;">Chandi Recitations</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;">
+          <a href="contact.html" class="btn btn-primary">Register Attendance</a>
+          <a href="donate.html" class="btn btn-outline">Sponsor the Yagnam</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UPCOMING EVENTS -->
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">What's Coming</span>
+      <h2>Upcoming Events — 2025</h2>
+      <div class="divider"><span>✦</span></div>
+    </div>
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All Events</button>
+      <button class="filter-btn" data-filter="yagna">Yagnas &amp; Homas</button>
+      <button class="filter-btn" data-filter="festival">Festivals</button>
+      <button class="filter-btn" data-filter="satsang">Satsang</button>
+      <button class="filter-btn" data-filter="seva">Seva &amp; Camps</button>
+    </div>
+
+    <!-- Big Featured Event -->
+    <div class="event-big-card reveal" data-category="yagna">
+      <div class="img-placeholder ebc-image"><span class="ph-icon">🔥</span><span class="ph-label">Guru Purnima Yagnam</span></div>
+      <div class="ebc-body">
+        <div class="badges"><span class="badge badge-gold">July 12, 2025</span><span class="badge badge-saffron">Yagna</span><span class="badge badge-green">Free</span></div>
+        <h3>Guru Purnima Celebration &amp; Pada Puja</h3>
+        <div class="meta">
+          <span>📅 Saturday, July 12, 2025</span>
+          <span>🕐 6:00 AM – 8:00 PM</span>
+          <span>📍 S3 Gaushala, Arlington TN</span>
+        </div>
+        <p>The most sacred day in the Vedic calendar — Guru Purnima. We honor the unbroken lineage of Gurus with Pada Puja (worship of the Guru's feet), a special Guru Homam, satsang, and communal feast. All devotees are warmly invited to this deeply moving celebration of the Guru-Shishya tradition.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="contact.html" class="btn btn-primary btn-sm">Register</a>
+          <a href="programs.html" class="btn btn-outline-saffron btn-sm">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- GRID of Upcoming -->
+    <div class="upcoming-events-grid" style="margin-top:24px;">
+      <div class="event-small-card reveal" data-category="festival">
+        <div class="esc-header">
+          <div class="esc-date-box"><div class="day">15</div><div class="month">Aug</div></div>
+          <div class="esc-info">
+            <h4>Krishna Janmashtami</h4>
+            <div class="emeta">🕐 All Day &nbsp;·&nbsp; 📍 S3 Gaushala</div>
+          </div>
+        </div>
+        <span class="badge badge-saffron">Festival</span>
+        <p style="font-size:0.87rem;color:var(--text-light);margin-top:10px;">Joyous all-day celebration of Lord Krishna's birth with midnight puja, bhajans, Dadhikala (curd-rice offering), and prasad for all. A beloved family event!</p>
+        <a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:12px;">Register</a>
+      </div>
+      <div class="event-small-card reveal" data-category="satsang">
+        <div class="esc-header">
+          <div class="esc-date-box"><div class="day">07</div><div class="month">Sep</div></div>
+          <div class="esc-info">
+            <h4>Monthly Satsang — Bhagavad Gita</h4>
+            <div class="emeta">🕐 4:00 PM – 7:00 PM &nbsp;·&nbsp; 📍 S3 Gaushala</div>
+          </div>
+        </div>
+        <span class="badge badge-blue" style="background:#E8EAF6;color:#1A237E;border:1px solid #9FA8DA;">Satsang</span>
+        <p style="font-size:0.87rem;color:var(--text-light);margin-top:10px;">Monthly satsang with an in-depth discourse on the Bhagavad Gita by our Acharya. Followed by bhajans, Q&amp;A, and prasad distribution. All welcome.</p>
+        <a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:12px;">Register</a>
+      </div>
+      <div class="event-small-card reveal" data-category="yagna">
+        <div class="esc-header">
+          <div class="esc-date-box"><div class="day">16</div><div class="month">Oct</div></div>
+          <div class="esc-info">
+            <h4>Laksha Chandi Maha Yagnam</h4>
+            <div class="emeta">🕐 Oct 16–26 (10 Days) &nbsp;·&nbsp; 📍 S3 Gaushala</div>
+          </div>
+        </div>
+        <span class="badge badge-red">Grand Event</span>
+        <p style="font-size:0.87rem;color:var(--text-light);margin-top:10px;">The annual centerpiece of S3 Foundation — 10 days of Navaratri Maha Yagnam with 100,000 Chandi recitations. Accommodation available for registered participants.</p>
+        <a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:12px;">Register Now</a>
+      </div>
+      <div class="event-small-card reveal" data-category="festival">
+        <div class="esc-header">
+          <div class="esc-date-box"><div class="day">01</div><div class="month">Nov</div></div>
+          <div class="esc-info">
+            <h4>Diwali — Festival of Lights</h4>
+            <div class="emeta">🕐 4:00 PM – 10:00 PM &nbsp;·&nbsp; 📍 S3 Gaushala</div>
+          </div>
+        </div>
+        <span class="badge badge-saffron">Festival</span>
+        <p style="font-size:0.87rem;color:var(--text-light);margin-top:10px;">Diwali celebration with Lakshmi Puja, Deepotsava (lighting of 1000+ diyas), traditional fireworks, cultural programs, and community dinner. Family-friendly event!</p>
+        <a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:12px;">Register</a>
+      </div>
+      <div class="event-small-card reveal" data-category="seva">
+        <div class="esc-header">
+          <div class="esc-date-box"><div class="day">22</div><div class="month">Nov</div></div>
+          <div class="esc-info">
+            <h4>Gaushala Volunteer Day</h4>
+            <div class="emeta">🕐 8:00 AM – 2:00 PM &nbsp;·&nbsp; 📍 S3 Gaushala</div>
+          </div>
+        </div>
+        <span class="badge badge-green">Seva</span>
+        <p style="font-size:0.87rem;color:var(--text-light);margin-top:10px;">Monthly volunteer day at the Gaushala — help with cow care, organic farming, facility maintenance, and other seva opportunities. Lunch provided for all volunteers.</p>
+        <a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:12px;">Volunteer</a>
+      </div>
+      <div class="event-small-card reveal" data-category="yagna">
+        <div class="esc-header">
+          <div class="esc-date-box"><div class="day">25</div><div class="month">Dec</div></div>
+          <div class="esc-info">
+            <h4>Year-End Maha Homa</h4>
+            <div class="emeta">🕐 6:00 AM – 6:00 PM &nbsp;·&nbsp; 📍 S3 Gaushala</div>
+          </div>
+        </div>
+        <span class="badge badge-gold">Homa</span>
+        <p style="font-size:0.87cm;color:var(--text-light);margin-top:10px;">Annual year-end Maha Homa — offering gratitude to the Divine for the year's blessings and seeking divine grace for the new year. All are warmly welcomed.</p>
+        <a href="contact.html" class="btn btn-primary btn-sm" style="margin-top:12px;">Register</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAST EVENTS -->
+<section class="section" style="background:var(--cream-dark);">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Our Legacy</span>
+      <h2>Past Events &amp; Yagnas</h2>
+      <div class="divider"><span>✦</span></div>
+      <p>Over 20 years, S3 Foundation has conducted some of the grandest Vedic rituals ever performed in the Americas.</p>
+    </div>
+    <div class="past-grid">
+      <div class="past-event-card reveal">
+        <div class="img-placeholder pec-img"><span class="ph-icon">🕉</span><span class="ph-label">Laksha Chandi 2023</span></div>
+        <div class="pec-body"><span class="year">📅 October 2023</span><h4>Laksha Chandi Maha Yagnam 2023</h4><p style="font-size:0.83rem;color:var(--text-light);">5,000+ attendees, 200+ priests, 10 days of continuous sacred fire.</p></div>
+      </div>
+      <div class="past-event-card reveal">
+        <div class="img-placeholder pec-img"><span class="ph-icon">⚡</span><span class="ph-label">Shiva Shakti Yagnam 2023</span></div>
+        <div class="pec-body"><span class="year">📅 May 2023</span><h4>Shiva Shakti Maha Yagnam</h4><p style="font-size:0.83rem;color:var(--text-light);">A powerful invocation of Shiva and Shakti — the primordial divine forces.</p></div>
+      </div>
+      <div class="past-event-card reveal">
+        <div class="img-placeholder pec-img"><span class="ph-icon">🌟</span><span class="ph-label">Gayatri Yagna</span></div>
+        <div class="pec-body"><span class="year">📅 2022</span><h4>Gayatri Maha Yagna</h4><p style="font-size:0.83rem;color:var(--text-light);">1,000,000 Gayatri Mantra recitations and grand Gayatri Homam.</p></div>
+      </div>
+      <div class="past-event-card reveal">
+        <div class="img-placeholder pec-img"><span class="ph-icon">🦅</span><span class="ph-label">Gandabherunda Yagna</span></div>
+        <div class="pec-body"><span class="year">📅 2021</span><h4>Gandabherunda Lakshmi Narasimha Yagna</h4><p style="font-size:0.83rem;color:var(--text-light);">Rare and powerful ritual honoring Lord Narasimha's most fierce form.</p></div>
+      </div>
+      <div class="past-event-card reveal">
+        <div class="img-placeholder pec-img"><span class="ph-icon">💛</span><span class="ph-label">Mahalakshmi Homa</span></div>
+        <div class="pec-body"><span class="year">📅 2019</span><h4>Mahalakshmi Homa &amp; Vaibhav Lakshmi</h4><p style="font-size:0.83rem;color:var(--text-light);">Grand invocation of Goddess Lakshmi for community prosperity and blessings.</p></div>
+      </div>
+      <div class="past-event-card reveal">
+        <div class="img-placeholder pec-img"><span class="ph-icon">🔱</span><span class="ph-label">Maha Mrutyunjaya Yagna</span></div>
+        <div class="pec-body"><span class="year">📅 2018</span><h4>Maha Mrutyunjaya Yagna</h4><p style="font-size:0.83rem;color:var(--text-light);">100,000 recitations of the Maha Mrutyunjaya Mantra — for health and liberation.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:linear-gradient(135deg,var(--saffron-dark),var(--saffron),var(--gold));padding:70px 0;text-align:center;">
+  <div class="container">
+    <h2 style="color:white;margin-bottom:14px;">Want to Sponsor or Participate?</h2>
+    <p style="color:rgba(255,255,255,0.85);max-width:560px;margin:0 auto 30px;">All events are free for attendees. Sponsors help us cover costs of materials, priests' travel, and accommodation — making these rare events possible.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="donate.html" class="btn btn-outline btn-lg">Become a Sponsor</a>
+      <a href="contact.html" class="btn btn-outline btn-lg">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><div class="foot-logo"><div class="foot-logo-icon">S3</div>S3 Foundation</div>
+        <p>Shraddha · Saburi · Samidha — Sacred events rooted in Vedic tradition.</p>
+        <div class="footer-social"><a href="#">📘</a><a href="#">▶️</a><a href="#">📷</a><a href="#">🐦</a></div>
+      </div>
+      <div class="footer-col"><h4>Quick Links</h4><ul>
+        <li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li>
+        <li><a href="programs.html">Programs</a></li><li><a href="gaushala.html">Gaushala</a></li>
+        <li><a href="events.html">Events</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Upcoming</h4><ul>
+        <li><a href="#">Guru Purnima — Jul 12</a></li>
+        <li><a href="#">Janmashtami — Aug 15</a></li>
+        <li><a href="#">Laksha Chandi — Oct 16</a></li>
+        <li><a href="#">Diwali — Nov 1</a></li>
+        <li><a href="#">Year-End Homa — Dec 25</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact Us</h4>
+        <div class="footer-contact-item"><span class="icon">📍</span><span>7945 Deadfall Road, Arlington, TN 38002</span></div>
+        <div class="footer-contact-item"><span class="icon">✉️</span><a href="mailto:info@s3foundationusa.org" style="color:rgba(255,255,255,0.6);">info@s3foundationusa.org</a></div>
+        <div style="margin-top:18px;"><a href="donate.html" class="btn btn-primary btn-sm">Donate Now 🙏</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 S3 Foundation. 501(c)(3) Nonprofit.</span></div>
+  </div>
+</footer>
+<button class="scroll-top-btn" id="scrollTopBtn">↑</button>
+<script src="js/main.js"></script>
+<script src="js/content-loader.js"></script>
+</body>
+</html>
