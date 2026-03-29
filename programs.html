@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Programs & Yagnas — S3 Foundation | Memphis, TN</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .program-section-block { margin-bottom: 80px; }
+    .program-hero-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 20px var(--shadow);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-bottom: 40px;
+    }
+    .program-hero-card.reverse { direction: rtl; }
+    .program-hero-card.reverse > * { direction: ltr; }
+    .phc-image { min-height: 360px; }
+    .phc-body { padding: 44px; display: flex; flex-direction: column; justify-content: center; }
+    .phc-body .eyebrow { color: var(--saffron); font-size: 0.78rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; display: block; margin-bottom: 12px; }
+    .phc-body h2 { font-size: 1.9rem; margin-bottom: 8px; }
+    .phc-body .sanskrit { font-family: 'Playfair Display', serif; font-style: italic; color: var(--text-light); font-size: 1rem; margin-bottom: 16px; display: block; }
+    .phc-body p { color: var(--text-light); font-size: 0.95rem; line-height: 1.75; margin-bottom: 12px; }
+    .phc-body .details-list { list-style: none; padding: 0; margin: 18px 0; display: flex; flex-direction: column; gap: 8px; }
+    .phc-body .details-list li { display: flex; gap: 10px; font-size: 0.9rem; color: var(--text-light); align-items: flex-start; }
+    .phc-body .details-list li .bullet { color: var(--saffron); font-weight: 900; flex-shrink: 0; }
+
+    .mini-program-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 12px var(--shadow);
+      transition: all var(--transition);
+    }
+    .mini-program-card:hover { transform: translateY(-5px); box-shadow: 0 14px 36px var(--shadow-deep); }
+    .mpc-img { height: 180px; }
+    .mpc-body { padding: 22px; }
+    .mpc-body h4 { font-size: 1rem; margin-bottom: 6px; }
+    .mpc-body p { font-size: 0.87rem; color: var(--text-light); line-height: 1.65; }
+
+    .yagna-list-section { background: var(--cream-dark); }
+    .yagna-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .yagna-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--saffron);
+      transition: all var(--transition);
+    }
+    .yagna-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px var(--shadow); }
+    .yagna-card .yagna-icon { font-size: 2rem; margin-bottom: 12px; display: block; }
+    .yagna-card h4 { font-size: 1rem; margin-bottom: 6px; color: var(--dark-brown); }
+    .yagna-card p { font-size: 0.85rem; color: var(--text-light); }
+
+    .schedule-table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 2px 12px var(--shadow); }
+    .schedule-table th { background: linear-gradient(135deg, var(--dark-brown), var(--mid-brown)); color: white; padding: 14px 18px; text-align: left; font-family: 'Cinzel', serif; font-size: 0.88rem; letter-spacing: 0.5px; }
+    .schedule-table td { padding: 14px 18px; border-bottom: 1px solid var(--border); font-size: 0.9rem; color: var(--text); }
+    .schedule-table tr:last-child td { border-bottom: none; }
+    .schedule-table tr:hover td { background: var(--cream); }
+    .time-cell { font-weight: 700; color: var(--saffron); font-family: 'Cinzel', serif; white-space: nowrap; }
+
+    @media (max-width: 768px) {
+      .program-hero-card { grid-template-columns: 1fr; }
+      .program-hero-card.reverse { direction: ltr; }
+      .phc-body { padding: 28px; }
+      .yagna-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) { .yagna-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<nav class="navbar solid"><div class="container nav-inner">
+  <a href="index.html" class="nav-logo"><div class="nav-logo-icon">S3</div><div class="nav-logo-text"><span class="org-name">S3 Foundation</span><span class="org-tagline">Shraddha · Saburi · Samidha</span></div></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html" class="active">Programs</a>
+    <a href="gaushala.html">Gaushala</a><a href="events.html">Events</a><a href="gallery.html">Gallery</a>
+    <a href="contact.html">Contact</a><a href="donate.html" class="nav-donate">Donate 🙏</a>
+  </div>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+</div></nav>
+<div class="mobile-nav"><span class="mobile-nav-close">✕</span>
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html">Programs</a>
+  <a href="gaushala.html">Gaushala</a><a href="events.html">Events</a><a href="gallery.html">Gallery</a>
+  <a href="contact.html">Contact</a><a href="donate.html" style="color:var(--saffron-light);">🙏 Donate</a>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">What We Practice</span>
+    <h1>Programs &amp; Sacred Rituals</h1>
+    <div class="divider"><span>✦</span></div>
+    <p>From daily Agnihotra to grand Maha Yagnams — authentic Vedic practices performed with devotion and precision at S3 Foundation, Memphis.</p>
+    <nav class="breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><span>Programs</span></nav>
+  </div>
+</section>
+
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+
+    <!-- AGNIHOTRA -->
+    <div class="program-section-block" id="agnihotra">
+      <div class="program-hero-card reveal">
+        <div class="img-placeholder phc-image">
+          <span class="ph-icon">🔥</span>
+          <span class="ph-label">Daily Agnihotra at Sunrise<br/>S3 Gaushala, Arlington TN</span>
+        </div>
+        <div class="phc-body">
+          <span class="eyebrow">Daily Practice</span>
+          <h2>Agnihotra</h2>
+          <span class="sanskrit">"अग्निहोत्र" — The Sacred Fire Ritual</span>
+          <p>Agnihotra is the most fundamental Vedic ritual — a precise fire ceremony performed at sunrise and sunset every single day at S3 Gaushala. Using dried cow dung, ghee from our Gir cows, and specific mantras, this ancient practice purifies the atmosphere and creates profound inner peace.</p>
+          <p>Scientific research has shown that Agnihotra smoke helps neutralize harmful pathogens in the environment. The ash has medicinal properties and is used in traditional Ayurvedic preparations.</p>
+          <ul class="details-list">
+            <li><span class="bullet">✦</span><span><strong>Frequency:</strong> Twice daily — at exact sunrise and sunset</span></li>
+            <li><span class="bullet">✦</span><span><strong>Materials:</strong> Dried cow dung, pure ghee, rice, copper pyramid</span></li>
+            <li><span class="bullet">✦</span><span><strong>Duration:</strong> 20–30 minutes per session</span></li>
+            <li><span class="bullet">✦</span><span><strong>Open to:</strong> All are welcome to attend, no experience needed</span></li>
+          </ul>
+          <a href="contact.html" class="btn btn-primary">Join Agnihotra</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- LAKSHA CHANDI MAHA YAGNAM -->
+    <div class="program-section-block" id="yagna">
+      <div class="program-hero-card reverse reveal">
+        <div class="phc-body">
+          <span class="eyebrow">Annual Grand Event</span>
+          <h2>Laksha Chandi Maha Yagnam</h2>
+          <span class="sanskrit">"लक्ष चण्डी महायज्ञम्" — The Grand Navaratri Yagna</span>
+          <p>S3 Foundation's most spectacular event — the Laksha (100,000) Chandi Maha Yagnam is performed during Navaratri (October). This is an unprecedented Vedic undertaking in the Americas, bringing together hundreds of priests, thousands of devotees, and divine grace on a monumental scale.</p>
+          <p>The Yagnam spans 10 days of continuous ritual — day and night — in our 30,000 sq.ft Yagna Shala. All participants receive accommodation, meals, and the profound blessing of this rare ritual.</p>
+          <ul class="details-list">
+            <li><span class="bullet">✦</span><span>100,000 Chandi recitations of Devi Mahatmyam</span></li>
+            <li><span class="bullet">✦</span><span>10,000,000 Navakshari (9-syllable) Mantra Japam</span></li>
+            <li><span class="bullet">✦</span><span>1,000 Chandi Homams with sacred fires</span></li>
+            <li><span class="bullet">✦</span><span>1,000,000 Navakshari Mantra Homam offerings</span></li>
+            <li><span class="bullet">✦</span><span>Duration: October 16–26 (10 Days), during Navaratri</span></li>
+          </ul>
+          <a href="events.html" class="btn btn-primary">View Event Schedule</a>
+        </div>
+        <div class="img-placeholder phc-image">
+          <span class="ph-icon">🕉</span>
+          <span class="ph-label">Laksha Chandi Maha Yagnam<br/>Navaratri — S3 Yagna Shala</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- OTHER YAGNAS PERFORMED -->
+    <div class="yagna-list-section section-sm" style="margin:-30px -24px 60px;padding:50px 24px;background:var(--cream-dark);border-radius:var(--radius-lg);">
+      <div class="section-header" style="margin-bottom:36px;">
+        <span class="eyebrow">Vedic Fire Rituals</span>
+        <h2>Yagnas &amp; Homas We Perform</h2>
+        <div class="divider"><span>✦</span></div>
+      </div>
+      <div class="yagna-grid">
+        <div class="yagna-card reveal"><span class="yagna-icon">🔱</span><h4>Maha Mrutyunjaya Yagna</h4><p>Devoted to Lord Shiva — the great ritual for health, longevity, and liberation from fear of death.</p></div>
+        <div class="yagna-card reveal"><span class="yagna-icon">🌟</span><h4>Gayatri Yagna</h4><p>Honoring the supreme Gayatri Mantra — for wisdom, enlightenment, and purification of the intellect.</p></div>
+        <div class="yagna-card reveal"><span class="yagna-icon">🦅</span><h4>Gandabherunda Lakshmi Narasimha</h4><p>A rare and powerful Yagna honoring Lord Narasimha in His Gandabherunda (two-headed eagle) form.</p></div>
+        <div class="yagna-card reveal"><span class="yagna-icon">🌸</span><h4>Ayutha Chandi Homa</h4><p>Ten thousand Chandi Homas — invoking Devi's grace for protection, prosperity, and dharmic victory.</p></div>
+        <div class="yagna-card reveal"><span class="yagna-icon">💛</span><h4>Mahalakshmi Homa</h4><p>Devotional offering to Goddess Lakshmi for abundance, auspiciousness, and material and spiritual prosperity.</p></div>
+        <div class="yagna-card reveal"><span class="yagna-icon">⚡</span><h4>Shiva Shakti Maha Yagnam</h4><p>Celebrating the union of Shiva and Shakti — the primordial divine masculine and feminine energies.</p></div>
+      </div>
+    </div>
+
+    <!-- SADHANA RETREATS -->
+    <div class="program-section-block" id="sadhana">
+      <div class="program-hero-card reveal">
+        <div class="img-placeholder phc-image">
+          <span class="ph-icon">🧘</span>
+          <span class="ph-label">Sadhana Retreat<br/>400-Acre Natural Campus</span>
+        </div>
+        <div class="phc-body">
+          <span class="eyebrow">Residential Program</span>
+          <h2>Sadhana Retreats</h2>
+          <span class="sanskrit">"साधना शिविर" — Intensive Spiritual Practice</span>
+          <p>Immerse yourself in authentic Vedic sadhana on our 400-acre campus in Arlington, Tennessee. Our residential retreats offer a rare opportunity to step away from modern distractions and dive deep into spiritual practice in a pure, natural environment.</p>
+          <ul class="details-list">
+            <li><span class="bullet">✦</span><span>Daily Agnihotra, Yoga, and Pranayama</span></li>
+            <li><span class="bullet">✦</span><span>Guided meditation and mantra japa</span></li>
+            <li><span class="bullet">✦</span><span>Vedanta and scripture study sessions</span></li>
+            <li><span class="bullet">✦</span><span>Gaushala seva and cow care</span></li>
+            <li><span class="bullet">✦</span><span>Simple sattvic meals &amp; guesthouse accommodation</span></li>
+          </ul>
+          <a href="contact.html" class="btn btn-primary">Apply for Retreat</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SATSANG -->
+    <div class="program-section-block" id="satsang">
+      <div class="program-hero-card reverse reveal">
+        <div class="phc-body">
+          <span class="eyebrow">Monthly Gathering</span>
+          <h2>Satsang &amp; Discourses</h2>
+          <span class="sanskrit">"सत्संग" — The Company of Truth</span>
+          <p>Regular satsangs bring together seekers to explore the depth of Vedic wisdom through scriptural discourses, bhajans, kirtan, and guided discussion. Our visiting Gurus and Acharyas bring teachings from Bhagavad Gita, Upanishads, Ramayana, and practical dharmic wisdom for modern life.</p>
+          <ul class="details-list">
+            <li><span class="bullet">✦</span><span>Monthly discourses on Bhagavad Gita &amp; Upanishads</span></li>
+            <li><span class="bullet">✦</span><span>Interactive Q&amp;A with visiting Gurus and Acharyas</span></li>
+            <li><span class="bullet">✦</span><span>Bhajans, kirtans, and devotional singing</span></li>
+            <li><span class="bullet">✦</span><span>Prasad distribution after each satsang</span></li>
+          </ul>
+          <a href="events.html" class="btn btn-primary">Upcoming Satsangs</a>
+        </div>
+        <div class="img-placeholder phc-image">
+          <span class="ph-icon">📿</span>
+          <span class="ph-label">Monthly Satsang &amp; Discourse<br/>S3 Foundation Community Hall</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- OTHER PROGRAMS -->
+    <div id="youth">
+      <div class="section-header" style="margin-bottom:32px;">
+        <span class="eyebrow">More Offerings</span>
+        <h2>Additional Programs</h2>
+        <div class="divider"><span>✦</span></div>
+      </div>
+      <div class="grid-3">
+        <div class="mini-program-card reveal">
+          <div class="img-placeholder mpc-img"><span class="ph-icon">🏇</span><span class="ph-label">Horse Riding Program</span></div>
+          <div class="mpc-body"><span class="badge badge-green" style="margin-bottom:10px;">Youth</span><h4>Horse Riding &amp; Nature Education</h4><p>A unique program for children connecting them with nature, animals, and the disciplined values of traditional equestrian arts on our expansive campus.</p></div>
+        </div>
+        <div class="mini-program-card reveal">
+          <div class="img-placeholder mpc-img"><span class="ph-icon">🌾</span><span class="ph-label">Cow-Based Farming</span></div>
+          <div class="mpc-body"><span class="badge badge-saffron" style="margin-bottom:10px;">Sustainability</span><h4>Panchagavya &amp; Organic Farming</h4><p>Learn ancient Vedic agricultural methods using Panchagavya (five cow products) and participate in sustainable organic farming on our blessed land.</p></div>
+        </div>
+        <div class="mini-program-card reveal">
+          <div class="img-placeholder mpc-img"><span class="ph-icon">🏺</span><span class="ph-label">Vedic Arts Workshop</span></div>
+          <div class="mpc-body"><span class="badge badge-gold" style="margin-bottom:10px;">Workshop</span><h4>Vedic Arts &amp; Culture</h4><p>Workshops on Vedic painting, kolam, rangoli, mantra calligraphy, and other traditional Hindu arts that carry deep spiritual symbolism.</p></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DAILY SCHEDULE -->
+<section class="section" style="background:var(--cream-dark);">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Daily Rhythm</span>
+      <h2>A Typical Day at S3 Gaushala</h2>
+      <div class="divider"><span>✦</span></div>
+      <p>Life at S3 Gaushala follows the natural rhythm of the sun, cows, and Vedic tradition — a living example of ancient Dharmic village life.</p>
+    </div>
+    <table class="schedule-table reveal">
+      <thead>
+        <tr><th>Time</th><th>Activity</th><th>Details</th><th>Open To</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="time-cell">Sunrise</td><td>🔥 Morning Agnihotra</td><td>Vedic fire ritual at exact sunrise with mantras and ghee offerings</td><td>All Welcome</td></tr>
+        <tr><td class="time-cell">6:30 AM</td><td>🐄 Gau Puja &amp; Milk Time</td><td>Morning worship of Gir cows; fresh milk collection</td><td>Residents</td></tr>
+        <tr><td class="time-cell">7:00 AM</td><td>🧘 Yoga &amp; Pranayama</td><td>Group yoga and breathwork session in the open air</td><td>All Welcome</td></tr>
+        <tr><td class="time-cell">8:00 AM</td><td>🍽 Sattvic Breakfast</td><td>Simple vegetarian breakfast using ingredients from our farm</td><td>Residents</td></tr>
+        <tr><td class="time-cell">9:00 AM</td><td>📖 Shastra Study</td><td>Scripture reading and discussion — Gita, Upanishads, or Puranas</td><td>All Welcome</td></tr>
+        <tr><td class="time-cell">10:00 AM</td><td>🌿 Gaushala Seva</td><td>Cow care, cleaning, feeding, and Gau Seva</td><td>Volunteers Welcome</td></tr>
+        <tr><td class="time-cell">12:00 PM</td><td>🍽 Prasad Lunch</td><td>Communal vegetarian lunch with sattvic food</td><td>All Welcome</td></tr>
+        <tr><td class="time-cell">4:00 PM</td><td>📿 Japa &amp; Meditation</td><td>Personal mantra japa, meditation, and contemplation</td><td>All Welcome</td></tr>
+        <tr><td class="time-cell">Sunset</td><td>🔥 Evening Agnihotra</td><td>Vedic fire ritual at exact sunset — the day's closing ceremony</td><td>All Welcome</td></tr>
+        <tr><td class="time-cell">7:00 PM</td><td>🎵 Bhajan &amp; Satsang</td><td>Devotional singing and spiritual discourse (on scheduled days)</td><td>All Welcome</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:linear-gradient(135deg,var(--dark),#3D2314);padding:70px 0;text-align:center;">
+  <div class="container">
+    <span style="color:var(--gold-light);font-size:0.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:14px;">Join Us</span>
+    <h2 style="color:white;margin-bottom:14px;">All Programs Are Free for Sadhakas</h2>
+    <p style="color:rgba(255,255,255,0.75);max-width:560px;margin:0 auto 30px;">S3 Foundation charges nothing for spiritual programs. Your donations make it possible to keep this tradition alive and accessible for all.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="events.html" class="btn btn-primary">View Upcoming Events</a>
+      <a href="donate.html" class="btn btn-outline btn-lg">Support Our Programs</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><div class="foot-logo"><div class="foot-logo-icon">S3</div>S3 Foundation</div>
+        <p>Shraddha · Saburi · Samidha — A 501(c)(3) nonprofit dedicated to authentic Vedic practice.</p>
+        <div class="footer-social"><a href="#">📘</a><a href="#">▶️</a><a href="#">📷</a><a href="#">🐦</a></div>
+      </div>
+      <div class="footer-col"><h4>Quick Links</h4><ul>
+        <li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li>
+        <li><a href="programs.html">Programs</a></li><li><a href="gaushala.html">Gaushala</a></li>
+        <li><a href="events.html">Events</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Programs</h4><ul>
+        <li><a href="#agnihotra">Daily Agnihotra</a></li><li><a href="#yagna">Maha Yagnams</a></li>
+        <li><a href="#sadhana">Sadhana Retreats</a></li><li><a href="#satsang">Satsang</a></li>
+        <li><a href="#youth">Youth Programs</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact Us</h4>
+        <div class="footer-contact-item"><span class="icon">📍</span><span>7945 Deadfall Road, Arlington, TN 38002</span></div>
+        <div class="footer-contact-item"><span class="icon">✉️</span><a href="mailto:info@s3foundationusa.org" style="color:rgba(255,255,255,0.6);">info@s3foundationusa.org</a></div>
+        <div style="margin-top:18px;"><a href="donate.html" class="btn btn-primary btn-sm">Donate Now 🙏</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 S3 Foundation. 501(c)(3) Nonprofit.</span></div>
+  </div>
+</footer>
+<button class="scroll-top-btn" id="scrollTopBtn">↑</button>
+<script src="js/main.js"></script>
+<script src="js/content-loader.js"></script>
+</body>
+</html>
