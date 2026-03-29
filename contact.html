@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us — S3 Foundation | Memphis, TN</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .contact-info-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 12px var(--shadow);
+      height: 100%;
+    }
+    .cic-item {
+      display: flex;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+    .cic-item:last-child { border-bottom: none; }
+    .cic-icon {
+      width: 48px; height: 48px;
+      background: linear-gradient(135deg, #FFF0E0, #FFD5A8);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .cic-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--saffron); margin-bottom: 4px; display: block; }
+    .cic-value { color: var(--text); font-size: 0.95rem; line-height: 1.6; }
+    .cic-value a { color: var(--saffron); font-weight: 700; }
+    .cic-value a:hover { text-decoration: underline; }
+
+    .hours-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-row .day { color: var(--text-light); }
+    .hours-row .time { font-weight: 700; color: var(--dark-brown); }
+    .hours-row .time.open { color: #2E7D32; }
+    .hours-row .time.closed { color: var(--red); }
+
+    .volunteer-card {
+      background: linear-gradient(135deg, var(--dark), var(--dark-brown));
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .volunteer-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 30%, rgba(232,99,10,0.2) 0%, transparent 60%);
+    }
+    .volunteer-card .container { position: relative; z-index: 1; }
+
+    .social-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .social-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      text-align: center;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 10px var(--shadow);
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+    .social-card:hover { transform: translateY(-5px); box-shadow: 0 12px 28px var(--shadow-deep); }
+    .social-card .s-icon { font-size: 2.2rem; margin-bottom: 10px; display: block; }
+    .social-card h4 { font-size: 0.9rem; margin-bottom: 4px; }
+    .social-card p { font-size: 0.8rem; color: var(--text-light); }
+
+    @media(max-width:768px){
+      .social-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar solid"><div class="container nav-inner">
+  <a href="index.html" class="nav-logo"><div class="nav-logo-icon">S3</div><div class="nav-logo-text"><span class="org-name">S3 Foundation</span><span class="org-tagline">Shraddha · Saburi · Samidha</span></div></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html">Programs</a>
+    <a href="gaushala.html">Gaushala</a><a href="events.html">Events</a><a href="gallery.html">Gallery</a>
+    <a href="contact.html" class="active">Contact</a><a href="donate.html" class="nav-donate">Donate 🙏</a>
+  </div>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+</div></nav>
+<div class="mobile-nav"><span class="mobile-nav-close">✕</span>
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html">Programs</a>
+  <a href="gaushala.html">Gaushala</a><a href="events.html">Events</a><a href="gallery.html">Gallery</a>
+  <a href="contact.html">Contact</a><a href="donate.html" style="color:var(--saffron-light);">🙏 Donate</a>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Reach Out</span>
+    <h1>Contact Us</h1>
+    <div class="divider"><span>✦</span></div>
+    <p>Whether you want to visit, volunteer, attend an event, or simply connect — we are always happy to hear from you. Jai Sri Hari!</p>
+    <nav class="breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><span>Contact</span></nav>
+  </div>
+</section>
+
+<!-- CONTACT MAIN -->
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1.1fr;gap:50px;align-items:start;">
+
+      <!-- INFO -->
+      <div class="reveal">
+        <div class="contact-info-card">
+          <h3 style="margin-bottom:24px;font-size:1.2rem;">S3 Foundation</h3>
+          <div class="cic-item">
+            <div class="cic-icon">📍</div>
+            <div>
+              <span class="cic-label">Address</span>
+              <div class="cic-value">S3 Gaushala<br/>7945 Deadfall Road<br/>Arlington, Tennessee 38002, USA</div>
+            </div>
+          </div>
+          <div class="cic-item">
+            <div class="cic-icon">✉️</div>
+            <div>
+              <span class="cic-label">Email</span>
+              <div class="cic-value"><a href="mailto:info@s3foundationusa.org">info@s3foundationusa.org</a><br/><a href="mailto:gaushala@s3foundationusa.org">gaushala@s3foundationusa.org</a></div>
+            </div>
+          </div>
+          <div class="cic-item">
+            <div class="cic-icon">📞</div>
+            <div>
+              <span class="cic-label">Phone</span>
+              <div class="cic-value">[Main Phone Number]<br/><span style="font-size:0.82rem;color:var(--text-light);">Mon–Fri: 9 AM – 5 PM CT</span></div>
+            </div>
+          </div>
+          <div class="cic-item">
+            <div class="cic-icon">🌐</div>
+            <div>
+              <span class="cic-label">Website</span>
+              <div class="cic-value"><a href="https://s3foundationusa.org" target="_blank">s3foundationusa.org</a><br/><a href="https://gaushalausa.org" target="_blank">gaushalausa.org</a></div>
+            </div>
+          </div>
+          <div class="cic-item">
+            <div class="cic-icon">🕐</div>
+            <div>
+              <span class="cic-label">Visit Hours</span>
+              <div class="cic-value">
+                <div style="margin-top:8px;">
+                  <div class="hours-row"><span class="day">Monday – Friday</span><span class="time">By Appointment</span></div>
+                  <div class="hours-row"><span class="day">Saturday</span><span class="time open">8:00 AM – 5:00 PM</span></div>
+                  <div class="hours-row"><span class="day">Sunday</span><span class="time open">8:00 AM – 4:00 PM</span></div>
+                  <div class="hours-row"><span class="day">Major Festival Days</span><span class="time open">Open — See Events</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTACT FORM -->
+      <div class="reveal">
+        <div style="background:var(--white);border-radius:var(--radius-lg);padding:40px;border:1px solid var(--border);box-shadow:0 4px 20px var(--shadow);">
+          <span class="eyebrow" style="color:var(--saffron);font-size:0.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:10px;">Send a Message</span>
+          <h2 style="font-size:1.5rem;margin-bottom:24px;">We'd Love to Hear from You</h2>
+          <form id="contact-form">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+              <div class="form-group"><label>First Name *</label><input type="text" class="form-control" placeholder="Rama" required/></div>
+              <div class="form-group"><label>Last Name *</label><input type="text" class="form-control" placeholder="Krishna" required/></div>
+            </div>
+            <div class="form-group"><label>Email Address *</label><input type="email" class="form-control" placeholder="you@example.com" required/></div>
+            <div class="form-group"><label>Phone (Optional)</label><input type="tel" class="form-control" placeholder="+1 (555) 000-0000"/></div>
+            <div class="form-group">
+              <label>Subject *</label>
+              <select class="form-control" required>
+                <option value="">Select a subject…</option>
+                <option>Schedule a Gaushala Visit</option>
+                <option>Volunteer Opportunities</option>
+                <option>Upcoming Events &amp; Programs</option>
+                <option>Sadhana Retreat Registration</option>
+                <option>Donation &amp; Sponsorship</option>
+                <option>Event Partnership</option>
+                <option>Media &amp; Press Inquiries</option>
+                <option>General Question</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>How Did You Hear About Us?</label>
+              <select class="form-control">
+                <option value="">Select…</option>
+                <option>Friend or Family</option>
+                <option>Google Search</option>
+                <option>Facebook</option>
+                <option>YouTube</option>
+                <option>Indian Community Newsletter</option>
+                <option>Temple Notice Board</option>
+                <option>Event / Conference</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Your Message *</label><textarea class="form-control" rows="5" placeholder="Tell us how we can help you, or share a question, thought, or prayer…" required></textarea></div>
+            <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:20px;">
+              <input type="checkbox" id="newsletter-opt" style="margin-top:4px;accent-color:var(--saffron);" checked/>
+              <label for="newsletter-opt" style="font-size:0.87rem;color:var(--text-light);cursor:pointer;">Subscribe to S3 Foundation newsletter for event updates and spiritual insights.</label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">Send Message 🙏</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="section-sm" style="background:var(--cream-dark);">
+  <div class="container">
+    <div class="section-header" style="margin-bottom:30px;">
+      <span class="eyebrow">Find Us</span>
+      <h2>Location &amp; Directions</h2>
+      <div class="divider"><span>✦</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;">
+      <div class="img-placeholder reveal" style="height:360px;border-radius:var(--radius-lg);">
+        <span class="ph-icon">🗺</span>
+        <span class="ph-label">Google Maps Embed Placeholder<br/>S3 Gaushala · 7945 Deadfall Road<br/>Arlington, Tennessee 38002</span>
+      </div>
+      <div class="reveal">
+        <h3 style="margin-bottom:20px;">How to Get Here</h3>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="background:var(--white);border-radius:var(--radius);padding:20px;border:1px solid var(--border);">
+            <h4 style="font-size:0.95rem;margin-bottom:8px;">🚗 By Car (from downtown Memphis)</h4>
+            <p style="font-size:0.88rem;color:var(--text-light);">Take I-40 W toward Arlington. Exit at Canada Rd / TN-388. Head north, then turn right onto Deadfall Road. S3 Gaushala is approximately 30 minutes from downtown Memphis. Look for the entrance sign on the left side.</p>
+          </div>
+          <div style="background:var(--white);border-radius:var(--radius);padding:20px;border:1px solid var(--border);">
+            <h4 style="font-size:0.95rem;margin-bottom:8px;">✈️ Nearest Airport</h4>
+            <p style="font-size:0.88rem;color:var(--text-light);">Memphis International Airport (MEM) is approximately 35 minutes away. Rental car service is recommended. Please coordinate with us for group shuttle arrangements for large events.</p>
+          </div>
+          <div style="background:var(--white);border-radius:var(--radius);padding:20px;border:1px solid var(--border);">
+            <h4 style="font-size:0.95rem;margin-bottom:8px;">🏨 Nearby Accommodation</h4>
+            <p style="font-size:0.88rem;color:var(--text-light);">For multi-day events, we have a guesthouse on campus for registered sadhakas. Several hotels are also available in Arlington and Bartlett, TN — contact us for recommendations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOLUNTEER + SOCIAL -->
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;">
+      <!-- Volunteer Form -->
+      <div class="volunteer-card reveal">
+        <div style="position:relative;z-index:1;">
+          <span style="color:rgba(255,255,255,0.6);font-size:0.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:12px;">Join the Seva</span>
+          <h2 style="color:white;font-size:1.5rem;margin-bottom:14px;">Become a Volunteer</h2>
+          <p style="color:rgba(255,255,255,0.75);margin-bottom:24px;">Join our growing community of karma yogis! Volunteers are the heart of S3 Foundation — from cow care and kitchen seva to event organizing and administrative support.</p>
+          <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px;">
+            <div style="display:flex;gap:12px;align-items:center;color:rgba(255,255,255,0.8);font-size:0.9rem;"><span style="font-size:1.2rem;">🐄</span>Gaushala Seva (Cow Care &amp; Feeding)</div>
+            <div style="display:flex;gap:12px;align-items:center;color:rgba(255,255,255,0.8);font-size:0.9rem;"><span style="font-size:1.2rem;">🍽</span>Prasad Kitchen &amp; Food Preparation</div>
+            <div style="display:flex;gap:12px;align-items:center;color:rgba(255,255,255,0.8);font-size:0.9rem;"><span style="font-size:1.2rem;">🎤</span>Event Organization &amp; Coordination</div>
+            <div style="display:flex;gap:12px;align-items:center;color:rgba(255,255,255,0.8);font-size:0.9rem;"><span style="font-size:1.2rem;">💻</span>Digital &amp; Media Volunteer Work</div>
+            <div style="display:flex;gap:12px;align-items:center;color:rgba(255,255,255,0.8);font-size:0.9rem;"><span style="font-size:1.2rem;">🌾</span>Organic Farming &amp; Campus Seva</div>
+          </div>
+          <a href="mailto:volunteer@s3foundationusa.org" class="btn btn-outline btn-lg">Apply to Volunteer</a>
+        </div>
+      </div>
+
+      <!-- Connect on Social -->
+      <div class="reveal">
+        <span class="eyebrow" style="color:var(--saffron);font-size:0.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:12px;">Stay Connected</span>
+        <h2 style="font-size:1.5rem;margin-bottom:20px;">Follow Us on Social Media</h2>
+        <p style="color:var(--text-light);margin-bottom:28px;">Stay updated with daily Agnihotra moments, upcoming events, Gaushala news, and spiritual insights — follow us across all platforms.</p>
+        <div class="social-grid">
+          <a href="#" class="social-card">
+            <span class="s-icon">📘</span>
+            <h4>Facebook</h4>
+            <p>Daily updates &amp; live streams</p>
+          </a>
+          <a href="https://www.youtube.com/@gaushalausa" target="_blank" class="social-card">
+            <span class="s-icon">▶️</span>
+            <h4>YouTube</h4>
+            <p>Event videos &amp; satsangs</p>
+          </a>
+          <a href="#" class="social-card">
+            <span class="s-icon">📷</span>
+            <h4>Instagram</h4>
+            <p>Beautiful Gaushala photos</p>
+          </a>
+          <a href="https://twitter.com/gaushalausa" target="_blank" class="social-card">
+            <span class="s-icon">🐦</span>
+            <h4>Twitter / X</h4>
+            <p>News &amp; announcements</p>
+          </a>
+        </div>
+        <div style="margin-top:28px;background:var(--cream-dark);border-radius:var(--radius-lg);padding:24px;border:1px solid var(--border);">
+          <h4 style="margin-bottom:12px;font-size:1rem;">📧 Subscribe to Newsletter</h4>
+          <form class="newsletter-form" onsubmit="return false;" style="display:flex;gap:10px;">
+            <input type="email" placeholder="your@email.com" required style="flex:1;padding:12px 16px;border:1.5px solid var(--border);border-radius:8px;font-size:0.9rem;outline:none;font-family:'Lato',sans-serif;"/>
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESS / PARTNERSHIPS -->
+<section style="background:var(--cream-dark);padding:60px 0;text-align:center;">
+  <div class="container">
+    <h2 style="margin-bottom:14px;">Media &amp; Partnership Inquiries</h2>
+    <p style="color:var(--text-light);max-width:580px;margin:0 auto 28px;">Journalists, filmmakers, academic researchers, or organizations interested in partnerships with S3 Foundation — we warmly welcome your outreach.</p>
+    <a href="mailto:info@s3foundationusa.org" class="btn btn-primary btn-lg">Media Inquiries →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><div class="foot-logo"><div class="foot-logo-icon">S3</div>S3 Foundation</div>
+        <p>Shraddha · Saburi · Samidha — We are here to serve you and the mission of Sanatana Dharma.</p>
+        <div class="footer-social"><a href="#">📘</a><a href="#">▶️</a><a href="#">📷</a><a href="#">🐦</a></div>
+      </div>
+      <div class="footer-col"><h4>Quick Links</h4><ul>
+        <li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li>
+        <li><a href="programs.html">Programs</a></li><li><a href="gaushala.html">Gaushala</a></li>
+        <li><a href="events.html">Events</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul>
+        <li><a href="mailto:info@s3foundationusa.org">info@s3foundationusa.org</a></li>
+        <li><a href="#">Volunteer</a></li>
+        <li><a href="#">Media Inquiries</a></li>
+        <li><a href="donate.html">Donate</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Address</h4>
+        <div class="footer-contact-item"><span class="icon">📍</span><span>S3 Gaushala, 7945 Deadfall Road, Arlington, Tennessee 38002, USA</span></div>
+        <div class="footer-contact-item"><span class="icon">✉️</span><a href="mailto:info@s3foundationusa.org" style="color:rgba(255,255,255,0.6);">info@s3foundationusa.org</a></div>
+        <div style="margin-top:18px;"><a href="donate.html" class="btn btn-primary btn-sm">Donate Now 🙏</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 S3 Foundation. All Rights Reserved. 501(c)(3) Nonprofit.</span></div>
+  </div>
+</footer>
+<button class="scroll-top-btn" id="scrollTopBtn">↑</button>
+<script src="js/main.js"></script>
+<script>
+  // Newsletter inline
+  document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    this.innerHTML = '<div class="alert alert-success" style="margin:0;">🙏 Subscribed! Thank you for joining our community.</div>';
+  });
+</script>
+<script src="js/content-loader.js"></script>
+</body>
+</html>
