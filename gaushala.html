@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>S3 Gaushala — Sacred Cow Sanctuary | Memphis, TN</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .gaushala-hero-section {
+      background: linear-gradient(155deg, #0A1F05 0%, #1A3D0A 40%, #2A5A10 65%, #0A1F05 100%);
+      padding: 140px 0 80px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .gaushala-hero-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 40% 50%, rgba(60,150,20,0.25) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 30%, rgba(232,99,10,0.1) 0%, transparent 50%);
+    }
+    .gaushala-hero-section .container { position: relative; z-index: 1; }
+    .gaushala-hero-section .eyebrow { color: #9FD870; }
+    .gaushala-hero-section h1 { color: white; }
+    .gaushala-hero-section p { color: rgba(255,255,255,0.75); max-width: 600px; margin: 0 auto; }
+    .gh-breadcrumb a { color: rgba(255,255,255,0.6); }
+    .gh-breadcrumb { color: rgba(255,255,255,0.4); display: flex; gap: 8px; justify-content: center; margin-top: 14px; font-size: 0.8rem; }
+
+    .cow-breed-section { background: var(--cream); }
+    .breed-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 12px var(--shadow);
+      display: flex; gap: 20px; align-items: flex-start;
+      transition: all var(--transition);
+    }
+    .breed-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px var(--shadow-deep); }
+    .breed-icon { font-size: 3rem; flex-shrink: 0; }
+    .breed-card h3 { font-size: 1.1rem; margin-bottom: 6px; }
+    .breed-card p { font-size: 0.9rem; color: var(--text-light); }
+
+    .benefit-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .benefit-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 28px 20px;
+      text-align: center;
+      border: 1px solid var(--border);
+      border-bottom: 3px solid var(--saffron);
+      box-shadow: 0 2px 10px var(--shadow);
+      transition: all var(--transition);
+    }
+    .benefit-card:hover { transform: translateY(-5px); box-shadow: 0 14px 32px var(--shadow-deep); }
+    .benefit-card .bicon { font-size: 2.4rem; margin-bottom: 14px; display: block; }
+    .benefit-card h4 { font-size: 0.95rem; margin-bottom: 8px; }
+    .benefit-card p { font-size: 0.85rem; color: var(--text-light); }
+
+    .products-section { background: linear-gradient(135deg, #1A2E10 0%, #2E4A1A 100%); }
+    .product-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius-lg);
+      padding: 28px 22px;
+      text-align: center;
+      backdrop-filter: blur(4px);
+      transition: all var(--transition);
+    }
+    .product-card:hover { background: rgba(255,255,255,0.14); transform: translateY(-4px); }
+    .product-card .picon { font-size: 2.8rem; margin-bottom: 14px; display: block; }
+    .product-card h4 { color: #9FD870; font-size: 1rem; margin-bottom: 8px; }
+    .product-card p { color: rgba(255,255,255,0.7); font-size: 0.87rem; }
+
+    .visit-section { background: var(--cream-dark); }
+    .visit-info-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 12px var(--shadow);
+    }
+    .visit-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--border); font-size: 0.93rem; }
+    .visit-row:last-child { border-bottom: none; }
+    .visit-row .label { color: var(--text-light); font-weight: 700; }
+    .visit-row .value { color: var(--dark-brown); text-align: right; }
+
+    .gallery-preview { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px; }
+    .gallery-preview .gp-main { grid-row: span 2; }
+
+    @media (max-width: 1024px) { .benefit-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 768px) {
+      .benefit-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-preview { grid-template-columns: 1fr 1fr; }
+      .gallery-preview .gp-main { grid-row: auto; grid-column: span 2; }
+    }
+    @media (max-width: 480px) { .benefit-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<nav class="navbar solid"><div class="container nav-inner">
+  <a href="index.html" class="nav-logo"><div class="nav-logo-icon">S3</div><div class="nav-logo-text"><span class="org-name">S3 Foundation</span><span class="org-tagline">Shraddha · Saburi · Samidha</span></div></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html">Programs</a>
+    <a href="gaushala.html" class="active">Gaushala</a><a href="events.html">Events</a><a href="gallery.html">Gallery</a>
+    <a href="contact.html">Contact</a><a href="donate.html" class="nav-donate">Donate 🙏</a>
+  </div>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+</div></nav>
+<div class="mobile-nav"><span class="mobile-nav-close">✕</span>
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html">Programs</a>
+  <a href="gaushala.html">Gaushala</a><a href="events.html">Events</a><a href="gallery.html">Gallery</a>
+  <a href="contact.html">Contact</a><a href="donate.html" style="color:var(--saffron-light);">🙏 Donate</a>
+</div>
+
+<section class="gaushala-hero-section">
+  <div class="container">
+    <span class="eyebrow" style="display:block;font-size:0.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;">Gau Mata Seva</span>
+    <h1>S3 Gaushala</h1>
+    <div class="divider" style="margin:16px auto;"><span>✦</span></div>
+    <p>A sacred sanctuary for 200+ pure-bred Gir cows on 400 acres of blessed land in Arlington, Tennessee — one of the most authentic Vedic Gaushalas in the United States.</p>
+    <nav class="gh-breadcrumb">
+      <a href="index.html">Home</a><span>›</span><span style="color:rgba(255,255,255,0.7);">Gaushala</span>
+    </nav>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;">
+      <div class="reveal">
+        <span class="eyebrow" style="color:var(--saffron);font-size:0.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:12px;">Our Sacred Sanctuary</span>
+        <h2>A Home for Gau Mata in America</h2>
+        <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;color:var(--dark-brown);margin-bottom:16px;">"Gavo vishvasya mataraha — The cow is the mother of the universe."</p>
+        <p style="color:var(--text-light);">In Vedic tradition, the cow is considered sacred — a symbol of abundance, dharma, and compassion. At S3 Gaushala in Arlington, Tennessee, we honor this tradition by providing a loving, authentic Vedic home for over 200 pure-bred Gir cows from India.</p>
+        <p style="color:var(--text-light);">Our Gaushala is not merely a farm — it is a sacred space where ancient knowledge meets modern land stewardship. Guided by Vedic principles, we practice cow-based organic farming using Panchagavya products, perform daily Agnihotra, and offer the healing presence of these gentle beings to all who visit.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px;">
+          <div class="stat-box"><span class="stat-num" data-target="200" data-suffix="+">200+</span><span class="stat-label">Gir Cows</span></div>
+          <div class="stat-box"><span class="stat-num" data-target="400" data-suffix="+">400+</span><span class="stat-label">Acres of Land</span></div>
+          <div class="stat-box"><span class="stat-num" data-target="365" data-suffix="">365</span><span class="stat-label">Days of Agnihotra</span></div>
+          <div class="stat-box"><span class="stat-num" data-target="10" data-suffix="+">10+</span><span class="stat-label">Years of Seva</span></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="gallery-preview">
+          <div class="img-placeholder gp-main" style="height:340px;border-radius:var(--radius-lg);">
+            <span class="ph-icon">🐄</span>
+            <span class="ph-label">Gir Cows Grazing<br/>S3 Gaushala, Arlington TN</span>
+          </div>
+          <div class="img-placeholder" style="height:162px;border-radius:var(--radius);">
+            <span class="ph-icon">🌾</span><span class="ph-label">Organic Farm</span>
+          </div>
+          <div class="img-placeholder" style="height:162px;border-radius:var(--radius);">
+            <span class="ph-icon">🔥</span><span class="ph-label">Agnihotra</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GIR COW BREED -->
+<section class="section cow-breed-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">About Our Cows</span>
+      <h2>The Sacred Gir Cow</h2>
+      <div class="divider"><span>✦</span></div>
+      <p>We house authentic Gir cows — one of India's oldest and most revered Desi (indigenous) breeds, originating from the Gir forests of Gujarat.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:50px;">
+      <div class="breed-card reveal"><span class="breed-icon">🐄</span>
+        <div><h3>Authentic Desi Breed</h3><p>Gir cows (Bos Indicus) are an indigenous Indian breed prized for millennia for their gentle nature, high-quality A2 milk, and spiritual significance in Hindu tradition.</p></div>
+      </div>
+      <div class="breed-card reveal"><span class="breed-icon">🥛</span>
+        <div><h3>A2 Milk — Nature's Gift</h3><p>Our Gir cows produce pure A2 milk containing A2 beta-casein protein — the original form of milk that is gentler on human digestion and considered superior in Ayurvedic science.</p></div>
+      </div>
+      <div class="breed-card reveal"><span class="breed-icon">🌿</span>
+        <div><h3>Free-Range Natural Life</h3><p>Our cows graze freely on 400+ acres of pesticide-free natural pasture, fed with organic fodder and lovingly cared for by dedicated Gaushala sevaks year-round.</p></div>
+      </div>
+      <div class="breed-card reveal"><span class="breed-icon">📿</span>
+        <div><h3>Daily Gau Puja</h3><p>Every morning, our Gir cows receive Vedic worship — anointed with sacred substances, adorned with garlands, and offered prayers as Gau Mata, the mother of the universe.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS OF COW SEVA -->
+<section class="section" style="background:var(--cream-dark);">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Why It Matters</span>
+      <h2>Benefits of Gaushala Seva</h2>
+      <div class="divider"><span>✦</span></div>
+      <p>Ancient Vedic texts describe the multi-dimensional benefits of Gau Seva — physical, spiritual, environmental, and karmic.</p>
+    </div>
+    <div class="benefit-grid">
+      <div class="benefit-card reveal"><span class="bicon">🙏</span><h4>Spiritual Merit</h4><p>Serving Gau Mata is among the highest forms of dharmic seva — generating profound punya (spiritual merit) for the donor and their family.</p></div>
+      <div class="benefit-card reveal"><span class="bicon">🌿</span><h4>Environmental Healing</h4><p>Cow dung fertilizer enriches soil. Agnihotra smoke purifies air. Panchagavya revives depleted farmland. Cows are Earth's greatest healers.</p></div>
+      <div class="benefit-card reveal"><span class="bicon">🥛</span><h4>Nutritional Abundance</h4><p>Pure A2 milk, ghee, curd, and other cow products provide superior nutrition aligned with Ayurvedic principles for optimal health.</p></div>
+      <div class="benefit-card reveal"><span class="bicon">🧘</span><h4>Inner Peace</h4><p>Being in the presence of cows is deeply calming. The gentle energy of Gau Mata reduces stress, anxiety, and promotes mental tranquility.</p></div>
+      <div class="benefit-card reveal"><span class="bicon">💚</span><h4>Ahimsa in Action</h4><p>Supporting a Gaushala is a tangible practice of Ahimsa (non-violence) — protecting gentle beings from exploitation and harm.</p></div>
+      <div class="benefit-card reveal"><span class="bicon">🌾</span><h4>Sustainable Living</h4><p>Cow-based farming creates a self-sustaining ecosystem — from organic fertilizer to bioenergy — embodying the Vedic vision of sustainable living.</p></div>
+      <div class="benefit-card reveal"><span class="bicon">👨‍👩‍👧</span><h4>Family Blessings</h4><p>Donating for cow care is believed to bring blessings of health, prosperity, and harmony to the donor's entire family lineage.</p></div>
+      <div class="benefit-card reveal"><span class="bicon">🏛</span><h4>Cultural Preservation</h4><p>Supporting the Gaushala preserves indigenous breeds of cattle and keeps ancient Vedic traditions alive for future generations.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PANCHAGAVYA PRODUCTS -->
+<section class="section products-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow" style="color:#9FD870;">Gau Products</span>
+      <h2 style="color:white;">Panchagavya — The Five Sacred Products</h2>
+      <div class="divider"><span>✦</span></div>
+      <p style="color:rgba(255,255,255,0.7);">The five products of the sacred cow — together forming Panchagavya — have been used for thousands of years in Ayurveda, agriculture, and Vedic rituals.</p>
+    </div>
+    <div class="grid-3">
+      <div class="product-card reveal"><span class="picon">🥛</span><h4>Milk (Dugdha)</h4><p>Pure A2 milk from our Gir cows — sattvic, nutritious, and the foundation of all dairy products on our campus.</p></div>
+      <div class="product-card reveal"><span class="picon">🧈</span><h4>Ghee (Ghrita)</h4><p>Clarified butter made from our Gir cow milk — used in Agnihotra, Ayurvedic medicine, and as a sacred food offering.</p></div>
+      <div class="product-card reveal"><span class="picon">🍶</span><h4>Curd (Dadhi)</h4><p>Naturally fermented curd rich in probiotics — used in Panchagavya preparations and as an offering in puja ceremonies.</p></div>
+      <div class="product-card reveal"><span class="picon">💧</span><h4>Cow Urine (Gomutra)</h4><p>Considered medicinal in Ayurveda — used in traditional formulations, organic pesticides, and ritual purification.</p></div>
+      <div class="product-card reveal"><span class="picon">🌱</span><h4>Cow Dung (Gobar)</h4><p>Rich organic fertilizer and fuel — used in Agnihotra, as building material, and to create superb compost for our organic farm.</p></div>
+      <div class="product-card reveal"><span class="picon">🌿</span><h4>Panchagavya Mix</h4><p>The combined preparation of all five products — a powerful natural growth promoter for plants and soil-health booster used throughout our farm.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT INFO -->
+<section class="section visit-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Plan Your Visit</span>
+      <h2>Visit S3 Gaushala</h2>
+      <div class="divider"><span>✦</span></div>
+      <p>Come experience the healing power of Gau Mata Seva firsthand. All are welcome — families, children, school groups, and spiritual seekers.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;">
+      <div class="visit-info-card reveal">
+        <h3 style="margin-bottom:24px;font-size:1.2rem;">Visit Information</h3>
+        <div class="visit-row"><span class="label">📍 Location</span><span class="value">7945 Deadfall Road, Arlington, Tennessee 38002</span></div>
+        <div class="visit-row"><span class="label">🕐 Visit Hours</span><span class="value">Weekends: 8:00 AM – 5:00 PM<br/>Weekdays: By Appointment</span></div>
+        <div class="visit-row"><span class="label">💰 Entry Fee</span><span class="value">Free (Donations Welcome)</span></div>
+        <div class="visit-row"><span class="label">👨‍👩‍👧 Groups</span><span class="value">School &amp; Group tours available<br/>Please schedule in advance</span></div>
+        <div class="visit-row"><span class="label">🌾 Seva Options</span><span class="value">Cow feeding, cleaning, farming — all available for volunteers</span></div>
+        <div class="visit-row"><span class="label">📞 To Schedule</span><span class="value"><a href="contact.html" style="color:var(--saffron);">Contact us here</a></span></div>
+        <a href="contact.html" class="btn btn-primary" style="margin-top:24px;width:100%;justify-content:center;">Schedule Your Visit</a>
+      </div>
+      <div class="reveal">
+        <div class="img-placeholder" style="height:320px;border-radius:var(--radius-lg);margin-bottom:16px;">
+          <span class="ph-icon">🗺</span>
+          <span class="ph-label">Map / Directions to S3 Gaushala<br/>7945 Deadfall Road, Arlington TN 38002</span>
+        </div>
+        <div class="alert alert-info">
+          🚗 <strong>Getting Here:</strong> S3 Gaushala is located in Arlington, TN — approximately 30 minutes from downtown Memphis. Detailed directions will be provided upon scheduling your visit.
+        </div>
+        <div style="margin-top:16px;">
+          <h4 style="font-size:1rem;margin-bottom:12px;">What to Bring</h4>
+          <ul style="color:var(--text-light);font-size:0.9rem;display:flex;flex-direction:column;gap:8px;">
+            <li>✦ Comfortable, modest clothing (preferably cotton)</li>
+            <li>✦ No leather items (footwear or belts) inside the Gaushala</li>
+            <li>✦ Water bottle and sun protection for outdoor tours</li>
+            <li>✦ An open heart and reverence for Gau Mata</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DONATE FOR GAUSEVA -->
+<section style="background:linear-gradient(135deg,#1A2E10,#2E4A1A);padding:70px 0;text-align:center;">
+  <div class="container">
+    <span style="color:#9FD870;font-size:0.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:14px;">Support Gau Mata</span>
+    <h2 style="color:white;margin-bottom:14px;">Donate for Gaushala Seva</h2>
+    <p style="color:rgba(255,255,255,0.75);max-width:580px;margin:0 auto 30px;">Your donation directly feeds, shelters, and provides medical care for our sacred Gir cows. Even a small offering carries immense spiritual merit.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:600px;margin:0 auto 30px;">
+      <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:var(--radius);padding:18px;text-align:center;color:white;">
+        <div style="font-family:'Cinzel',serif;font-size:1.4rem;font-weight:700;color:#9FD870;">$11</div>
+        <div style="font-size:0.8rem;opacity:0.75;margin-top:4px;">1 Day of Feed</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:var(--radius);padding:18px;text-align:center;color:white;">
+        <div style="font-family:'Cinzel',serif;font-size:1.4rem;font-weight:700;color:#9FD870;">$51</div>
+        <div style="font-size:0.8rem;opacity:0.75;margin-top:4px;">1 Week of Care</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:var(--radius);padding:18px;text-align:center;color:white;">
+        <div style="font-family:'Cinzel',serif;font-size:1.4rem;font-weight:700;color:#9FD870;">$201</div>
+        <div style="font-size:0.8rem;opacity:0.75;margin-top:4px;">Monthly Sponsor</div>
+      </div>
+    </div>
+    <a href="donate.html" class="btn btn-primary btn-lg">Donate for Gau Seva 🐄</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><div class="foot-logo"><div class="foot-logo-icon">S3</div>S3 Foundation</div>
+        <p>Shraddha · Saburi · Samidha — Gau Mata Seva in the Heart of Tennessee.</p>
+        <div class="footer-social"><a href="#">📘</a><a href="#">▶️</a><a href="#">📷</a><a href="#">🐦</a></div>
+      </div>
+      <div class="footer-col"><h4>Quick Links</h4><ul>
+        <li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li>
+        <li><a href="programs.html">Programs</a></li><li><a href="gaushala.html">Gaushala</a></li>
+        <li><a href="events.html">Events</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Gaushala</h4><ul>
+        <li><a href="#">About Gir Cows</a></li><li><a href="#">Panchagavya Products</a></li>
+        <li><a href="#">Gaushala Tours</a></li><li><a href="#">Volunteer Seva</a></li>
+        <li><a href="donate.html">Donate for Gau Seva</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact Us</h4>
+        <div class="footer-contact-item"><span class="icon">📍</span><span>7945 Deadfall Road, Arlington, TN 38002</span></div>
+        <div class="footer-contact-item"><span class="icon">✉️</span><a href="mailto:info@s3foundationusa.org" style="color:rgba(255,255,255,0.6);">info@s3foundationusa.org</a></div>
+        <div style="margin-top:18px;"><a href="donate.html" class="btn btn-primary btn-sm">Donate Now 🙏</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 S3 Foundation. 501(c)(3) Nonprofit.</span></div>
+  </div>
+</footer>
+<button class="scroll-top-btn" id="scrollTopBtn">↑</button>
+<script src="js/main.js"></script>
+<script src="js/content-loader.js"></script>
+</body>
+</html>
