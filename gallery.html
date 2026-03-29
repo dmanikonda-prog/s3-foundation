@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery — S3 Foundation | Memphis, TN</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .gallery-filter-bar{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:36px;}
+    .gfb{padding:8px 22px;border:1.5px solid var(--border);border-radius:30px;font-size:0.83rem;font-weight:700;cursor:pointer;background:var(--white);color:var(--text);font-family:'Lato',sans-serif;transition:all var(--transition);}
+    .gfb:hover,.gfb.active{background:var(--saffron);border-color:var(--saffron);color:white;}
+
+    .masonry-grid{
+      columns: 3;
+      column-gap: 16px;
+    }
+    .gallery-item{
+      break-inside: avoid;
+      margin-bottom: 16px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      display: block;
+      transition: transform var(--transition);
+    }
+    .gallery-item:hover{transform:scale(1.02);}
+    .gallery-item img{width:100%;height:100%;object-fit:cover;display:block;}
+    .gallery-item .gi-overlay{
+      position:absolute;inset:0;background:linear-gradient(to top,rgba(28,16,8,0.85) 0%,transparent 50%);
+      opacity:0;transition:opacity var(--transition);display:flex;align-items:flex-end;padding:16px;
+    }
+    .gallery-item:hover .gi-overlay{opacity:1;}
+    .gi-overlay .gi-caption{color:white;font-size:0.85rem;font-weight:700;}
+    .gi-overlay .gi-cat{font-size:0.72rem;color:var(--gold-light);letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:4px;}
+
+    /* Placeholder gallery items with different heights */
+    .gph{background:linear-gradient(135deg,var(--cream-dark),#E8D5A3);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--text-light);}
+    .gph .gph-icon{font-size:2rem;margin-bottom:8px;opacity:0.5;}
+    .gph .gph-label{font-size:0.75rem;font-weight:700;opacity:0.6;letter-spacing:0.5px;text-transform:uppercase;padding:0 10px;}
+
+    .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+    .video-card{background:var(--white);border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);box-shadow:0 2px 12px var(--shadow);transition:all var(--transition);}
+    .video-card:hover{transform:translateY(-5px);box-shadow:0 14px 36px var(--shadow-deep);}
+    .video-thumb{height:180px;position:relative;cursor:pointer;}
+    .video-play-btn{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);transition:background var(--transition);}
+    .video-play-btn:hover{background:rgba(0,0,0,0.5);}
+    .video-play-btn .play-icon{width:54px;height:54px;background:linear-gradient(135deg,var(--saffron),var(--saffron-dark));border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:1.4rem;box-shadow:0 4px 18px rgba(232,99,10,0.5);transition:transform var(--transition);}
+    .video-play-btn:hover .play-icon{transform:scale(1.1);}
+    .video-body{padding:18px;}
+    .video-body h4{font-size:0.95rem;margin-bottom:6px;}
+    .video-body p{font-size:0.82rem;color:var(--text-light);}
+
+    @media(max-width:768px){
+      .masonry-grid{columns:2;}
+      .video-grid{grid-template-columns:1fr 1fr;}
+    }
+    @media(max-width:480px){
+      .masonry-grid{columns:1;}
+      .video-grid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar solid"><div class="container nav-inner">
+  <a href="index.html" class="nav-logo"><div class="nav-logo-icon">S3</div><div class="nav-logo-text"><span class="org-name">S3 Foundation</span><span class="org-tagline">Shraddha · Saburi · Samidha</span></div></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html">Programs</a>
+    <a href="gaushala.html">Gaushala</a><a href="events.html">Events</a><a href="gallery.html" class="active">Gallery</a>
+    <a href="contact.html">Contact</a><a href="donate.html" class="nav-donate">Donate 🙏</a>
+  </div>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+</div></nav>
+<div class="mobile-nav"><span class="mobile-nav-close">✕</span>
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html">Programs</a>
+  <a href="gaushala.html">Gaushala</a><a href="events.html">Events</a><a href="gallery.html">Gallery</a>
+  <a href="contact.html">Contact</a><a href="donate.html" style="color:var(--saffron-light);">🙏 Donate</a>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Visual Journey</span>
+    <h1>Photo &amp; Video Gallery</h1>
+    <div class="divider"><span>✦</span></div>
+    <p>A glimpse into the sacred world of S3 Foundation — Yagnas, Gaushala life, festivals, and the serene beauty of our 400-acre campus in Arlington, Tennessee.</p>
+    <nav class="breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><span>Gallery</span></nav>
+  </div>
+</section>
+
+<!-- PHOTO GALLERY -->
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Photos</span>
+      <h2>Photo Gallery</h2>
+      <div class="divider"><span>✦</span></div>
+    </div>
+
+    <div class="gallery-filter-bar">
+      <button class="gfb active" data-filter="all" onclick="filterGallery('all',this)">All Photos</button>
+      <button class="gfb" data-filter="yagna" onclick="filterGallery('yagna',this)">Yagnas &amp; Homas</button>
+      <button class="gfb" data-filter="gaushala" onclick="filterGallery('gaushala',this)">Gaushala</button>
+      <button class="gfb" data-filter="festival" onclick="filterGallery('festival',this)">Festivals</button>
+      <button class="gfb" data-filter="campus" onclick="filterGallery('campus',this)">Campus</button>
+      <button class="gfb" data-filter="satsang" onclick="filterGallery('satsang',this)">Satsang</button>
+    </div>
+
+    <div class="masonry-grid" id="galleryGrid">
+
+      <!-- YAGNA -->
+      <div class="gallery-item" data-cat="yagna">
+        <div class="gph" style="height:280px;"><span class="gph-icon">🔥</span><span class="gph-label">Laksha Chandi Maha Yagnam — Sacred Fire<br/>S3 Yagna Shala · Oct 2023</span></div>
+        <div class="gi-overlay"><div class="gi-caption"><span class="gi-cat">Yagna</span>Laksha Chandi Maha Yagnam 2023</div></div>
+      </div>
+      <div class="gallery-item" data-cat="gaushala">
+        <div class="gph" style="height:220px;"><span class="gph-icon">🐄</span><span class="gph-label">Gir Cows Grazing<br/>S3 Gaushala · Arlington TN</span></div>
+        <div class="gi-overlay"><div class="gi-caption"><span class="gi-cat">Gaushala</span>Gir Cows at S3 Gaushala</div></div>
+      </div>
+      <div class="gallery-item" data-cat="campus">
+        <div class="gph" style="height:200px;"><span class="gph-icon">🌿</span><span class="gph-label">S3 Foundation Campus<br/>400 Acres · Arlington TN</span></div>
+        <div class="gi-overlay"><div class="gi-caption"><span class="gi-cat">Campus</span>400-Acre Sacred Campus</div></div>
+      </div>
+      <div class="gallery-item" data-cat="yagna">
+        <div class="gph" style="height:240px;"><span class="gph-icon">🕉</span><span class="gph-label">Vedic Priests at Yagna Shala<br/>30,000 sq.ft · S3 Foundation</span></div>
+        <div class="gi-overlay"><div class="gi-caption"><span class="gi-cat">Yagna</span>Vedic Priests — Grand Yagna</div></div>
+      </div>
+      <div class="gallery-item" data-cat="festival">
+        <div class="gph" style="height:190px;"><span class="gph-icon">🪔</span><span class="gph-label">Diwali Deepotsava<br/>1000+ Diyas · S3 Foundation</span></div>
+        <div class="gi-overlay"><div class="gi-caption"><span class="gi-cat">Festival</span>Diwali — Festival of Lights</div></div>
+      </div>
+      <div class="gallery-item" data-cat="gaushala">
+        <div class="gph" style="height:260px;"><span class="gph-icon">🌾</span><span class="gph-label">Organic Farming<br/>Panchagavya · S3 Gaushala</span></div>
+        <div class="gi-overlay"><div class="gi-caption"><span class="gi-cat">Gaushala</span>Cow-Based Organic Farming</div></div>
+      </div>
+      <div class="gallery-item" data-cat="satsang">
+        <div class="gph" style="height:210px;"><span class="gph-icon">📿</span><span class="gph-label">Monthly Satsang<br/>Bhagavad Gita Discourse</span></div>
+        <div class="gi-overlay"><div class="gi-caption"><span class="gi-cat">Satsang</span>Monthly Bhagavad Gita Satsang</div></div>
+      </div>
+      <div class="gallery-item" data-cat="yagna">
+        <div class="gph" style="height:230px;"><span class="gph-icon">⚡</span><span class="gph-label">Shiva Shakti Maha Yagnam 2023<br/>S3 Foundation</span></div>
+        <div class="gi-overlay"><div class="gi-caption"><span class="gi-cat">Yagna</span>Shiva Shakti Maha Yagnam</div></div>
+      </div>
+      <div class="gallery-item" data-cat="gaushala">
+        <div class="gph" style="height:200px;"><span class="gph-icon">🔥</span><span class="gph-label">Morning Agnihotra<br/>Daily · Sunrise · S3 Gaushala</span></div>
+        <div class="gi-overlay"><div class="gi-caption"><span class="gi-cat">Gaushala</span>Daily Agnihotra at Sunrise</div></div>
+      </div>
+      <div class="gallery-item" data-cat="festival">
+        <div class="gph" style="height:250px;"><span class="gph-icon">🌸</span><span class="gph-label">Guru Purnima Pada Puja<br/>S3 Foundation · Annual</span></div>
+        <div class="gi-overlay"><div class="gi-caption"><span class="gi-cat">Festival</span>Guru Purnima Celebration</div></div>
+      </div>
+      <div class="gallery-item" data-cat="campus">
+        <div class="gph" style="height:220px;"><span class="gph-icon">🏛</span><span class="gph-label">Yagna Shala Interior<br/>30,000 sq.ft · S3 Foundation</span></div>
+        <div class="gi-overlay"><div class="gi-caption"><span class="gi-cat">Campus</span>Grand Yagna Shala Interior</div></div>
+      </div>
+      <div class="gallery-item" data-cat="satsang">
+        <div class="gph" style="height:190px;"><span class="gph-icon">🎵</span><span class="gph-label">Bhajan &amp; Kirtan<br/>Devotional Music · S3 Foundation</span></div>
+        <div class="gi-overlay"><div class="gi-caption"><span class="gi-cat">Satsang</span>Evening Bhajan &amp; Kirtan</div></div>
+      </div>
+      <div class="gallery-item" data-cat="gaushala">
+        <div class="gph" style="height:240px;"><span class="gph-icon">🐄</span><span class="gph-label">Gau Puja — Morning Worship<br/>Gir Cows · S3 Gaushala</span></div>
+        <div class="gi-overlay"><div class="gi-caption"><span class="gi-cat">Gaushala</span>Daily Gau Puja</div></div>
+      </div>
+      <div class="gallery-item" data-cat="yagna">
+        <div class="gph" style="height:200px;"><span class="gph-icon">🦅</span><span class="gph-label">Gandabherunda Narasimha Yagna<br/>S3 Foundation</span></div>
+        <div class="gi-overlay"><div class="gi-caption"><span class="gi-cat">Yagna</span>Gandabherunda Narasimha Yagna</div></div>
+      </div>
+      <div class="gallery-item" data-cat="campus">
+        <div class="gph" style="height:215px;"><span class="gph-icon">🌅</span><span class="gph-label">Sunrise at S3 Gaushala<br/>Arlington Tennessee</span></div>
+        <div class="gi-overlay"><div class="gi-caption"><span class="gi-cat">Campus</span>Sunrise at S3 Gaushala</div></div>
+      </div>
+      <div class="gallery-item" data-cat="festival">
+        <div class="gph" style="height:230px;"><span class="gph-icon">🐣</span><span class="gph-label">Krishna Janmashtami<br/>Midnight Puja · S3 Foundation</span></div>
+        <div class="gi-overlay"><div class="gi-caption"><span class="gi-cat">Festival</span>Krishna Janmashtami Celebration</div></div>
+      </div>
+      <div class="gallery-item" data-cat="satsang">
+        <div class="gph" style="height:200px;"><span class="gph-icon">📖</span><span class="gph-label">Vedic Scripture Study<br/>Upanishad Classes · S3 Foundation</span></div>
+        <div class="gi-overlay"><div class="gi-caption"><span class="gi-cat">Satsang</span>Upanishad Study Sessions</div></div>
+      </div>
+      <div class="gallery-item" data-cat="gaushala">
+        <div class="gph" style="height:195px;"><span class="gph-icon">🏇</span><span class="gph-label">Horse Riding Program<br/>Youth · S3 Foundation Campus</span></div>
+        <div class="gi-overlay"><div class="gi-caption"><span class="gi-cat">Gaushala</span>Youth Horse Riding Program</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO GALLERY -->
+<section class="section" style="background:var(--cream-dark);">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Video Archive</span>
+      <h2>Video Gallery</h2>
+      <div class="divider"><span>✦</span></div>
+      <p>Relive the sacred moments — watch recordings of our Yagnas, Satsangs, and Gaushala life.</p>
+    </div>
+    <div class="video-grid">
+      <div class="video-card reveal">
+        <div class="video-thumb">
+          <div class="img-placeholder" style="height:100%;border-radius:0;"><span class="ph-icon">🎬</span><span class="ph-label">Video Thumbnail Placeholder<br/>Laksha Chandi Yagnam Highlights</span></div>
+          <div class="video-play-btn"><div class="play-icon">▶</div></div>
+        </div>
+        <div class="video-body"><span class="badge badge-saffron" style="margin-bottom:8px;">Yagna</span><h4>Laksha Chandi Maha Yagnam — Highlights</h4><p>Experience the grandeur of the 10-day Navaratri Maha Yagnam 2023 in this highlight reel.</p></div>
+      </div>
+      <div class="video-card reveal">
+        <div class="video-thumb">
+          <div class="img-placeholder" style="height:100%;border-radius:0;"><span class="ph-icon">🎬</span><span class="ph-label">Video Thumbnail Placeholder<br/>Morning Agnihotra at Sunrise</span></div>
+          <div class="video-play-btn"><div class="play-icon">▶</div></div>
+        </div>
+        <div class="video-body"><span class="badge badge-green" style="margin-bottom:8px;">Daily Practice</span><h4>Morning Agnihotra — A Day at S3 Gaushala</h4><p>Watch the peaceful daily Agnihotra ritual performed at sunrise — a beautiful window into Gaushala life.</p></div>
+      </div>
+      <div class="video-card reveal">
+        <div class="video-thumb">
+          <div class="img-placeholder" style="height:100%;border-radius:0;"><span class="ph-icon">🎬</span><span class="ph-label">Video Thumbnail Placeholder<br/>Gir Cow Farm Tour</span></div>
+          <div class="video-play-btn"><div class="play-icon">▶</div></div>
+        </div>
+        <div class="video-body"><span class="badge badge-gold" style="margin-bottom:8px;">Gaushala</span><h4>S3 Gaushala — Full Farm Tour</h4><p>A guided tour of our Gaushala — meet the Gir cows, see the organic farm, and explore the 400-acre campus.</p></div>
+      </div>
+      <div class="video-card reveal">
+        <div class="video-thumb">
+          <div class="img-placeholder" style="height:100%;border-radius:0;"><span class="ph-icon">🎬</span><span class="ph-label">Video Thumbnail Placeholder<br/>Satsang Discourse</span></div>
+          <div class="video-play-btn"><div class="play-icon">▶</div></div>
+        </div>
+        <div class="video-body"><span class="badge badge-saffron" style="margin-bottom:8px;">Satsang</span><h4>Bhagavad Gita — Chapter 12 Discourse</h4><p>Monthly satsang recording — an enlightening discourse on the Yoga of Devotion from the Bhagavad Gita.</p></div>
+      </div>
+      <div class="video-card reveal">
+        <div class="video-thumb">
+          <div class="img-placeholder" style="height:100%;border-radius:0;"><span class="ph-icon">🎬</span><span class="ph-label">Video Thumbnail Placeholder<br/>Shiva Shakti Yagnam</span></div>
+          <div class="video-play-btn"><div class="play-icon">▶</div></div>
+        </div>
+        <div class="video-body"><span class="badge badge-red" style="margin-bottom:8px;">Yagna</span><h4>Shiva Shakti Maha Yagnam 2023</h4><p>Highlights from the powerful Shiva Shakti Maha Yagnam — the union of the divine masculine and feminine.</p></div>
+      </div>
+      <div class="video-card reveal">
+        <div class="video-thumb">
+          <div class="img-placeholder" style="height:100%;border-radius:0;"><span class="ph-icon">🎬</span><span class="ph-label">Video Thumbnail Placeholder<br/>Diwali Deepotsava</span></div>
+          <div class="video-play-btn"><div class="play-icon">▶</div></div>
+        </div>
+        <div class="video-body"><span class="badge badge-gold" style="margin-bottom:8px;">Festival</span><h4>Diwali Deepotsava — Festival of Lights</h4><p>1,000+ diyas, fireworks, and the joyful energy of our community Diwali celebration at S3 Gaushala.</p></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="https://www.youtube.com/@gaushalausa" target="_blank" class="btn btn-outline-saffron btn-lg">▶ Visit Our YouTube Channel</a>
+    </div>
+  </div>
+</section>
+
+<!-- UPLOAD YOUR PHOTOS CTA -->
+<section style="background:linear-gradient(135deg,var(--dark),#3D2314);padding:60px 0;text-align:center;">
+  <div class="container">
+    <h2 style="color:white;margin-bottom:14px;">Share Your S3 Moments</h2>
+    <p style="color:rgba(255,255,255,0.75);max-width:520px;margin:0 auto 28px;">Did you attend one of our events? We'd love to feature your photos and memories! Tag us on social media or send your photos directly.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <a href="contact.html" class="btn btn-primary">Submit Photos</a>
+      <a href="#" class="btn btn-outline btn-lg">#S3Foundation</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><div class="foot-logo"><div class="foot-logo-icon">S3</div>S3 Foundation</div>
+        <p>Shraddha · Saburi · Samidha — Sacred moments captured in time.</p>
+        <div class="footer-social"><a href="#">📘</a><a href="#">▶️</a><a href="#">📷</a><a href="#">🐦</a></div>
+      </div>
+      <div class="footer-col"><h4>Quick Links</h4><ul>
+        <li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li>
+        <li><a href="programs.html">Programs</a></li><li><a href="gaushala.html">Gaushala</a></li>
+        <li><a href="events.html">Events</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Gallery</h4><ul>
+        <li><a href="#">Yagna &amp; Homa Photos</a></li><li><a href="#">Gaushala Photos</a></li>
+        <li><a href="#">Festival Photos</a></li><li><a href="#">Campus Photos</a></li>
+        <li><a href="#">Video Archive</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact Us</h4>
+        <div class="footer-contact-item"><span class="icon">📍</span><span>7945 Deadfall Road, Arlington, TN 38002</span></div>
+        <div class="footer-contact-item"><span class="icon">✉️</span><a href="mailto:info@s3foundationusa.org" style="color:rgba(255,255,255,0.6);">info@s3foundationusa.org</a></div>
+        <div style="margin-top:18px;"><a href="donate.html" class="btn btn-primary btn-sm">Donate Now 🙏</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 S3 Foundation. 501(c)(3) Nonprofit.</span></div>
+  </div>
+</footer>
+<button class="scroll-top-btn" id="scrollTopBtn">↑</button>
+<script src="js/main.js"></script>
+<script>
+function filterGallery(cat, btn) {
+  document.querySelectorAll('.gfb').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#galleryGrid .gallery-item').forEach(item => {
+    if (cat === 'all' || item.dataset.cat === cat) {
+      item.style.display = '';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+</script>
+<script src="js/content-loader.js"></script>
+</body>
+</html>
