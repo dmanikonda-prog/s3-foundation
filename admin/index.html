@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>S3 Foundation — Admin Panel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<!-- Cloudinary Upload Widget -->
+<script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --brand:#E8630A;--brand-dark:#c4510a;--brand-light:#fdf3ec;
+  --gold:#C9960C;--sidebar-bg:#1a1a2e;--sidebar-text:#c8ccd4;
+  --sidebar-active:#E8630A;--bg:#f5f6fa;--card:#fff;
+  --border:#e2e8f0;--text:#1e293b;--muted:#64748b;
+  --success:#10b981;--danger:#ef4444;--info:#3b82f6;
+  --radius:10px;--shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+a{color:inherit;text-decoration:none;}
+button{cursor:pointer;font-family:inherit;}
+
+/* ── Login Screen ── */
+#login-screen{position:fixed;inset:0;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);
+  display:flex;align-items:center;justify-content:center;z-index:1000;}
+#login-screen.hidden{display:none;}
+.login-box{background:#fff;border-radius:16px;padding:48px 40px;width:360px;text-align:center;
+  box-shadow:0 25px 60px rgba(0,0,0,0.4);}
+.login-logo{font-size:2.5rem;font-weight:800;color:var(--brand);letter-spacing:-1px;margin-bottom:6px;}
+.login-sub{font-size:.85rem;color:var(--muted);margin-bottom:32px;}
+.login-box input{width:100%;border:1.5px solid var(--border);border-radius:8px;padding:12px 16px;
+  font-size:.95rem;font-family:inherit;outline:none;transition:border-color .2s;}
+.login-box input:focus{border-color:var(--brand);}
+.login-btn{width:100%;margin-top:16px;padding:13px;background:var(--brand);color:#fff;
+  border:none;border-radius:8px;font-size:1rem;font-weight:600;transition:background .2s;}
+.login-btn:hover{background:var(--brand-dark);}
+.login-err{margin-top:12px;color:var(--danger);font-size:.85rem;min-height:20px;}
+
+/* ── Layout ── */
+.app{display:flex;min-height:100vh;}
+.app.hidden{display:none;}
+
+/* ── Sidebar ── */
+.sidebar{width:240px;background:var(--sidebar-bg);color:var(--sidebar-text);
+  display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100;}
+.sidebar-logo{padding:24px 20px 16px;border-bottom:1px solid rgba(255,255,255,.07);}
+.sidebar-logo .org{font-size:1.1rem;font-weight:700;color:#fff;}
+.sidebar-logo .sub{font-size:.7rem;color:rgba(255,255,255,.4);margin-top:2px;}
+.sidebar-badge{display:inline-block;background:var(--brand);color:#fff;font-size:.6rem;
+  padding:2px 6px;border-radius:20px;margin-left:6px;font-weight:600;vertical-align:middle;}
+nav.sidebar-nav{flex:1;padding:12px 0;}
+.nav-section{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.25);padding:16px 20px 6px;}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 20px;cursor:pointer;
+  border-radius:0;transition:all .15s;font-size:.88rem;color:var(--sidebar-text);}
+.nav-item:hover{background:rgba(255,255,255,.06);color:#fff;}
+.nav-item.active{background:rgba(232,99,10,.15);color:var(--sidebar-active);border-right:3px solid var(--sidebar-active);}
+.nav-icon{font-size:1.1rem;width:22px;text-align:center;}
+.sidebar-footer{padding:16px 20px;border-top:1px solid rgba(255,255,255,.07);font-size:.78rem;color:rgba(255,255,255,.3);}
+.logout-btn{background:none;border:none;color:rgba(255,255,255,.35);font-size:.78rem;cursor:pointer;
+  display:flex;align-items:center;gap:6px;padding:6px 0;margin-top:4px;transition:color .2s;}
+.logout-btn:hover{color:var(--danger);}
+
+/* ── Main ── */
+.main{margin-left:240px;flex:1;display:flex;flex-direction:column;min-height:100vh;}
+.topbar{background:#fff;border-bottom:1px solid var(--border);padding:0 32px;
+  height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;}
+.topbar-title{font-size:1.05rem;font-weight:600;color:var(--text);}
+.topbar-actions{display:flex;align-items:center;gap:12px;}
+.save-btn{background:var(--brand);color:#fff;border:none;border-radius:8px;
+  padding:8px 20px;font-size:.9rem;font-weight:600;display:flex;align-items:center;gap:6px;transition:all .2s;}
+.save-btn:hover{background:var(--brand-dark);}
+.save-btn:disabled{background:#cbd5e1;cursor:not-allowed;}
+.saved-indicator{font-size:.82rem;color:var(--success);font-weight:500;display:none;}
+.saved-indicator.show{display:block;}
+.preview-btn{background:#f1f5f9;color:var(--muted);border:1px solid var(--border);border-radius:8px;
+  padding:8px 16px;font-size:.9rem;font-weight:500;transition:all .2s;}
+.preview-btn:hover{background:var(--border);color:var(--text);}
+.content-area{padding:32px;flex:1;}
+.section-panel{display:none;}
+.section-panel.active{display:block;}
+
+/* ── Cards & Form ── */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:24px;margin-bottom:20px;box-shadow:var(--shadow);}
+.card-title{font-size:.95rem;font-weight:600;color:var(--text);margin-bottom:16px;
+  padding-bottom:12px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;}
+.card-title .icon{font-size:1.1rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.form-row.full{grid-template-columns:1fr;}
+.form-row.three{grid-template-columns:1fr 1fr 1fr;}
+.form-group{display:flex;flex-direction:column;gap:6px;}
+.form-group label{font-size:.8rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
+.form-group input,.form-group textarea,.form-group select{
+  border:1.5px solid var(--border);border-radius:8px;padding:10px 12px;font-size:.9rem;
+  font-family:inherit;outline:none;transition:border-color .2s;background:#fff;color:var(--text);}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--brand);}
+.form-group textarea{resize:vertical;min-height:90px;}
+.form-group small{font-size:.75rem;color:var(--muted);}
+
+/* ── Image Upload ── */
+.img-upload-wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.img-preview{width:90px;height:60px;border-radius:8px;object-fit:cover;border:1.5px solid var(--border);
+  background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:1.5rem;overflow:hidden;}
+.img-preview img{width:100%;height:100%;object-fit:cover;}
+.img-preview.empty{color:var(--muted);}
+.upload-btn{background:#f8fafc;border:1.5px dashed var(--border);border-radius:8px;
+  padding:8px 16px;font-size:.85rem;color:var(--muted);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;}
+.upload-btn:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light);}
+.url-input-wrap{flex:1;min-width:200px;}
+
+/* ── List Editor (announcements, stats, timeline) ── */
+.list-editor{display:flex;flex-direction:column;gap:8px;}
+.list-item{display:flex;align-items:center;gap:8px;background:#f8fafc;border:1.5px solid var(--border);
+  border-radius:8px;padding:10px 12px;}
+.list-item input{flex:1;border:none;background:transparent;font-size:.9rem;font-family:inherit;outline:none;color:var(--text);}
+.list-item .del-btn{background:none;border:none;color:#cbd5e1;font-size:1.1rem;padding:2px;
+  cursor:pointer;transition:color .15s;flex-shrink:0;}
+.list-item .del-btn:hover{color:var(--danger);}
+.drag-handle{color:#cbd5e1;cursor:grab;font-size:.9rem;user-select:none;}
+.add-item-btn{background:none;border:1.5px dashed var(--border);border-radius:8px;padding:10px;
+  font-size:.85rem;color:var(--muted);cursor:pointer;transition:all .2s;text-align:center;}
+.add-item-btn:hover{border-color:var(--brand);color:var(--brand);}
+
+/* ── Event / Gallery Cards ── */
+.item-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:12px;}
+.item-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow);position:relative;}
+.item-card-header{background:#f8fafc;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}
+.item-card-title{font-size:.85rem;font-weight:600;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.item-card-badge{font-size:.65rem;font-weight:700;text-transform:uppercase;padding:3px 8px;
+  border-radius:20px;background:var(--brand-light);color:var(--brand);}
+.item-card-body{padding:16px;display:flex;flex-direction:column;gap:10px;}
+.item-card .form-group label{font-size:.72rem;}
+.item-card .form-group input,.item-card .form-group textarea,.item-card .form-group select{font-size:.85rem;padding:8px 10px;}
+.item-card .form-group textarea{min-height:60px;}
+.item-card-footer{padding:12px 16px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px;}
+.icon-btn{background:none;border:none;padding:4px 8px;border-radius:6px;cursor:pointer;font-size:.9rem;transition:all .15s;}
+.icon-btn.danger:hover{background:#fef2f2;color:var(--danger);}
+.icon-btn.info:hover{background:#eff6ff;color:var(--info);}
+.add-card-btn{background:linear-gradient(135deg,var(--brand-light),#fff);border:2px dashed #f0c9ab;
+  border-radius:var(--radius);padding:24px;text-align:center;cursor:pointer;transition:all .2s;color:var(--brand);font-weight:600;}
+.add-card-btn:hover{background:var(--brand-light);border-color:var(--brand);}
+
+/* ── Stats editor ── */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.stat-box{background:#f8fafc;border:1.5px solid var(--border);border-radius:8px;padding:16px;text-align:center;}
+.stat-box input{border:none;background:transparent;text-align:center;font-family:inherit;outline:none;width:100%;}
+.stat-num{font-size:1.6rem;font-weight:800;color:var(--brand);}
+.stat-num input{font-size:1.6rem;font-weight:800;color:var(--brand);}
+.stat-suffix input{font-size:.9rem;color:var(--muted);font-weight:600;}
+.stat-label input{font-size:.75rem;color:var(--muted);margin-top:4px;}
+
+/* ── Toggle ── */
+.toggle-wrap{display:flex;align-items:center;gap:10px;}
+.toggle{width:44px;height:24px;background:#e2e8f0;border-radius:12px;position:relative;
+  cursor:pointer;transition:background .2s;flex-shrink:0;}
+.toggle.on{background:var(--brand);}
+.toggle::after{content:'';width:18px;height:18px;background:#fff;border-radius:50%;
+  position:absolute;top:3px;left:3px;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.3);}
+.toggle.on::after{transform:translateX(20px);}
+.toggle-label{font-size:.85rem;font-weight:500;}
+
+/* ── Alert ── */
+.alert{padding:12px 16px;border-radius:8px;font-size:.87rem;margin-bottom:20px;display:flex;align-items:flex-start;gap:10px;}
+.alert.info{background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af;}
+.alert.success{background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;}
+.alert.warning{background:#fffbeb;border:1px solid #fde68a;color:#92400e;}
+
+/* ── Dashboard stats ── */
+.dash-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;margin-bottom:24px;}
+.dash-stat{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:20px;
+  box-shadow:var(--shadow);}
+.dash-stat .num{font-size:2rem;font-weight:800;color:var(--brand);}
+.dash-stat .lbl{font-size:.8rem;color:var(--muted);margin-top:2px;}
+
+/* ── Cloudinary setup banner ── */
+.setup-banner{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;border-radius:var(--radius);
+  padding:20px 24px;margin-bottom:20px;display:flex;align-items:center;gap:16px;}
+.setup-banner .icon{font-size:2rem;}
+.setup-banner h4{font-size:.95rem;font-weight:700;margin-bottom:4px;}
+.setup-banner p{font-size:.8rem;color:rgba(255,255,255,.65);line-height:1.5;}
+.setup-banner a{color:var(--brand);text-decoration:underline;}
+
+/* ── Responsive ── */
+@media(max-width:900px){
+  .sidebar{transform:translateX(-100%);transition:transform .3s;}
+  .sidebar.open{transform:translateX(0);}
+  .main{margin-left:0;}
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+  .form-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════
+     LOGIN SCREEN
+══════════════════════════════════════════════════════ -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">S3 Admin</div>
+    <div class="login-sub">S3 Foundation · Content Management</div>
+    <input type="password" id="pw-input" placeholder="Enter admin password" autocomplete="current-password"/>
+    <button class="login-btn" onclick="doLogin()">Sign In →</button>
+    <div class="login-err" id="login-err"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     MAIN APP
+══════════════════════════════════════════════════════ -->
+<div class="app hidden" id="app">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="org">S3 Foundation</div>
+      <div class="sub">Admin Dashboard</div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section">Overview</div>
+      <div class="nav-item active" data-panel="dashboard" onclick="showPanel('dashboard',this)">
+        <span class="nav-icon">🏠</span> Dashboard
+      </div>
+
+      <div class="nav-section">Content</div>
+      <div class="nav-item" data-panel="site" onclick="showPanel('site',this)">
+        <span class="nav-icon">⚙️</span> Site Settings
+      </div>
+      <div class="nav-item" data-panel="home" onclick="showPanel('home',this)">
+        <span class="nav-icon">🌅</span> Home Page
+      </div>
+      <div class="nav-item" data-panel="about" onclick="showPanel('about',this)">
+        <span class="nav-icon">📖</span> About
+      </div>
+      <div class="nav-item" data-panel="programs" onclick="showPanel('programs',this)">
+        <span class="nav-icon">🕉</span> Programs
+      </div>
+      <div class="nav-item" data-panel="gaushala" onclick="showPanel('gaushala',this)">
+        <span class="nav-icon">🐄</span> Gaushala
+      </div>
+
+      <div class="nav-section">Engage</div>
+      <div class="nav-item" data-panel="events" onclick="showPanel('events',this)">
+        <span class="nav-icon">📅</span> Events
+      </div>
+      <div class="nav-item" data-panel="gallery" onclick="showPanel('gallery',this)">
+        <span class="nav-icon">🖼</span> Gallery & Media
+      </div>
+      <div class="nav-item" data-panel="donate" onclick="showPanel('donate',this)">
+        <span class="nav-icon">🙏</span> Donations
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div>Logged in as Admin</div>
+      <button class="logout-btn" onclick="doLogout()">⬅ Sign Out</button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="main">
+    <div class="topbar">
+      <div class="topbar-title" id="topbar-title">Dashboard</div>
+      <div class="topbar-actions">
+        <span class="saved-indicator" id="saved-indicator">✓ Saved</span>
+        <button class="preview-btn" onclick="window.open('../index.html','_blank')">👁 Preview Site</button>
+        <button class="save-btn" id="save-btn" onclick="saveContent()">💾 Save Changes</button>
+      </div>
+    </div>
+
+    <div class="content-area">
+
+      <!-- ── DASHBOARD ── -->
+      <div class="section-panel active" id="panel-dashboard">
+        <div class="alert info">
+          ℹ️ <span><strong>Welcome!</strong> Use the sidebar to navigate sections. Click <strong>Save Changes</strong> after editing any section to publish your updates.</span>
+        </div>
+        <div class="dash-grid" id="dash-stats"></div>
+        <div class="card">
+          <div class="card-title"><span class="icon">☁️</span> Cloudinary Media Setup</div>
+          <div class="setup-banner">
+            <div class="icon">📸</div>
+            <div>
+              <h4>Set up Cloudinary for image/video uploads</h4>
+              <p>To upload images directly from this panel, you need a free Cloudinary account.
+              Go to <a href="https://cloudinary.com" target="_blank">cloudinary.com</a> → sign up free →
+              copy your <strong>Cloud Name</strong> and create an <strong>unsigned upload preset</strong>.<br/>
+              Then enter those details below.</p>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Cloudinary Cloud Name</label>
+              <input type="text" id="cl-cloud" placeholder="e.g. my-cloud-name" value=""/>
+              <small>Found in your Cloudinary Dashboard → Settings → Cloud name</small>
+            </div>
+            <div class="form-group">
+              <label>Upload Preset (unsigned)</label>
+              <input type="text" id="cl-preset" placeholder="e.g. s3foundation_preset" value=""/>
+              <small>Create at: Settings → Upload → Add upload preset → set to <em>Unsigned</em></small>
+            </div>
+          </div>
+          <button class="save-btn" style="width:auto;" onclick="saveCloudinaryConfig()">Save Cloudinary Settings</button>
+        </div>
+      </div>
+
+      <!-- ── SITE SETTINGS ── -->
+      <div class="section-panel" id="panel-site">
+        <div class="card">
+          <div class="card-title"><span class="icon">🏢</span> Organization Info</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Organization Name</label>
+              <input type="text" id="site-name" placeholder="S3 Foundation"/>
+            </div>
+            <div class="form-group">
+              <label>Tagline</label>
+              <input type="text" id="site-tagline" placeholder="Shraddha · Saburi · Samidha"/>
+            </div>
+          </div>
+          <div class="form-row full">
+            <div class="form-group">
+              <label>Address</label>
+              <input type="text" id="site-address" placeholder="7945 Deadfall Road, Arlington, TN 38002"/>
+            </div>
+          </div>
+          <div class="form-row three">
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" id="site-email" placeholder="info@s3foundationusa.org"/>
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="text" id="site-phone" placeholder="+1 (901) 000-0000"/>
+            </div>
+            <div class="form-group">
+              <label>EIN / Tax ID (for donate page)</label>
+              <input type="text" id="site-ein" placeholder="XX-XXXXXXX"/>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="icon">🕐</span> Visiting Hours</div>
+          <div class="form-row three">
+            <div class="form-group">
+              <label>Weekdays</label>
+              <input type="text" id="hours-weekdays" placeholder="By Appointment Only"/>
+            </div>
+            <div class="form-group">
+              <label>Saturday</label>
+              <input type="text" id="hours-saturday" placeholder="8:00 AM – 5:00 PM"/>
+            </div>
+            <div class="form-group">
+              <label>Sunday</label>
+              <input type="text" id="hours-sunday" placeholder="8:00 AM – 4:00 PM"/>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="icon">🔗</span> Social Media Links</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Facebook URL</label>
+              <input type="url" id="social-facebook" placeholder="https://facebook.com/..."/>
+            </div>
+            <div class="form-group">
+              <label>YouTube URL</label>
+              <input type="url" id="social-youtube" placeholder="https://youtube.com/@..."/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Instagram URL</label>
+              <input type="url" id="social-instagram" placeholder="https://instagram.com/..."/>
+            </div>
+            <div class="form-group">
+              <label>Twitter / X URL</label>
+              <input type="url" id="social-twitter" placeholder="https://twitter.com/..."/>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="icon">🗺</span> Google Maps Embed</div>
+          <div class="form-group">
+            <label>Google Maps Embed URL</label>
+            <input type="url" id="site-mapurl" placeholder="Paste the embed src URL from Google Maps → Share → Embed a map"/>
+            <small>Go to Google Maps → search your address → Share → Embed a map → copy the src="..." URL only</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── HOME PAGE ── -->
+      <div class="section-panel" id="panel-home">
+        <div class="card">
+          <div class="card-title"><span class="icon">🌅</span> Hero Section</div>
+          <div class="form-row full">
+            <div class="form-group">
+              <label>Main Heading</label>
+              <input type="text" id="home-heroTitle" placeholder="Where Ancient Vedic Wisdom Meets Sacred Service"/>
+            </div>
+          </div>
+          <div class="form-row full">
+            <div class="form-group">
+              <label>Subheading / Description</label>
+              <textarea id="home-heroSubtitle" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Button 1 Text</label>
+              <input type="text" id="home-heroCta1Text"/>
+            </div>
+            <div class="form-group">
+              <label>Button 1 Link</label>
+              <input type="text" id="home-heroCta1Link"/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Button 2 Text</label>
+              <input type="text" id="home-heroCta2Text"/>
+            </div>
+            <div class="form-group">
+              <label>Button 2 Link</label>
+              <input type="text" id="home-heroCta2Link"/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Hero Background Image</label>
+              <div class="img-upload-wrap">
+                <div class="img-preview empty" id="prev-home-heroImage">🌅</div>
+                <button class="upload-btn" onclick="openCloudinary('home-heroImage','prev-home-heroImage')">☁ Upload Image</button>
+                <div class="url-input-wrap">
+                  <input type="url" id="home-heroImage" placeholder="Or paste image URL" oninput="updatePreview('home-heroImage','prev-home-heroImage')"/>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>About Section Image</label>
+              <div class="img-upload-wrap">
+                <div class="img-preview empty" id="prev-home-aboutImage">📖</div>
+                <button class="upload-btn" onclick="openCloudinary('home-aboutImage','prev-home-aboutImage')">☁ Upload Image</button>
+                <div class="url-input-wrap">
+                  <input type="url" id="home-aboutImage" placeholder="Or paste image URL" oninput="updatePreview('home-aboutImage','prev-home-aboutImage')"/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title"><span class="icon">📢</span> Scrolling Announcements</div>
+          <div class="list-editor" id="announcements-list"></div>
+          <button class="add-item-btn" onclick="addAnnouncement()">＋ Add Announcement</button>
+        </div>
+
+        <div class="card">
+          <div class="card-title"><span class="icon">📊</span> Stats Counters</div>
+          <div class="stats-grid" id="stats-grid"></div>
+        </div>
+      </div>
+
+      <!-- ── ABOUT ── -->
+      <div class="section-panel" id="panel-about">
+        <div class="card">
+          <div class="card-title"><span class="icon">🎯</span> Mission & Story</div>
+          <div class="form-row full">
+            <div class="form-group">
+              <label>Mission Statement</label>
+              <textarea id="about-mission" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="form-row full">
+            <div class="form-group">
+              <label>Founding Story</label>
+              <textarea id="about-story" rows="4"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="icon">👤</span> Spiritual Leadership</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Founder Name</label>
+              <input type="text" id="about-founderName"/>
+            </div>
+            <div class="form-group">
+              <label>Founder Title</label>
+              <input type="text" id="about-founderTitle"/>
+            </div>
+          </div>
+          <div class="form-row full">
+            <div class="form-group">
+              <label>Founder Bio</label>
+              <textarea id="about-founderBio" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="form-group" style="margin-bottom:16px;">
+            <label>Founder Photo</label>
+            <div class="img-upload-wrap">
+              <div class="img-preview empty" id="prev-about-founderImage">👤</div>
+              <button class="upload-btn" onclick="openCloudinary('about-founderImage','prev-about-founderImage')">☁ Upload Photo</button>
+              <div class="url-input-wrap"><input type="url" id="about-founderImage" placeholder="Or paste URL" oninput="updatePreview('about-founderImage','prev-about-founderImage')"/></div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Chief Acharya Name</label>
+              <input type="text" id="about-chiefAcharyaName" placeholder="Enter name"/>
+            </div>
+            <div class="form-group">
+              <label>Chief Acharya Title</label>
+              <input type="text" id="about-chiefAcharyaTitle" placeholder="Chief Acharya"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Chief Acharya Photo</label>
+            <div class="img-upload-wrap">
+              <div class="img-preview empty" id="prev-about-chiefImage">👤</div>
+              <button class="upload-btn" onclick="openCloudinary('about-chiefAcharyaImage','prev-about-chiefImage')">☁ Upload Photo</button>
+              <div class="url-input-wrap"><input type="url" id="about-chiefAcharyaImage" placeholder="Or paste URL" oninput="updatePreview('about-chiefAcharyaImage','prev-about-chiefImage')"/></div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="icon">📅</span> History Timeline</div>
+          <div id="timeline-list" class="list-editor"></div>
+          <button class="add-item-btn" onclick="addTimelineItem()">＋ Add Timeline Entry</button>
+        </div>
+      </div>
+
+      <!-- ── PROGRAMS ── -->
+      <div class="section-panel" id="panel-programs">
+        <div class="alert info">ℹ️ Edit each program's description and upload a representative image. Changes apply to both the home page cards and the Programs page.</div>
+        <div class="item-cards" id="programs-cards"></div>
+      </div>
+
+      <!-- ── GAUSHALA ── -->
+      <div class="section-panel" id="panel-gaushala">
+        <div class="card">
+          <div class="card-title"><span class="icon">🐄</span> Gaushala Overview</div>
+          <div class="form-row">
+            <div class="form-group"><label>Total Cows</label><input type="text" id="g-totalCows" placeholder="200+"/></div>
+            <div class="form-group"><label>Acres</label><input type="text" id="g-acres" placeholder="400+"/></div>
+            <div class="form-group"><label>Breeds</label><input type="text" id="g-breeds" placeholder="3+"/></div>
+            <div class="form-group"><label>Daily Visitors</label><input type="text" id="g-dailyVisitors" placeholder="50+"/></div>
+          </div>
+          <div class="form-group" style="margin-bottom:16px;">
+            <label>Introduction Text</label>
+            <textarea id="g-intro" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Gaushala Hero Image</label>
+            <div class="img-upload-wrap">
+              <div class="img-preview empty" id="prev-g-heroImage">🐄</div>
+              <button class="upload-btn" onclick="openCloudinary('g-heroImage','prev-g-heroImage')">☁ Upload Image</button>
+              <div class="url-input-wrap"><input type="url" id="g-heroImage" placeholder="Or paste URL" oninput="updatePreview('g-heroImage','prev-g-heroImage')"/></div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="icon">🛒</span> Panchagavya Products</div>
+          <div class="item-cards" id="products-cards"></div>
+        </div>
+      </div>
+
+      <!-- ── EVENTS ── -->
+      <div class="section-panel" id="panel-events">
+        <div class="alert info">ℹ️ Add upcoming and past events. Toggle <strong>Upcoming</strong> to show/hide in the upcoming events section. Mark one event as <strong>Featured</strong> to show it as the banner event.</div>
+        <div class="item-cards" id="events-cards"></div>
+        <button class="add-card-btn" onclick="addEvent()">＋ Add New Event</button>
+      </div>
+
+      <!-- ── GALLERY & MEDIA ── -->
+      <div class="section-panel" id="panel-gallery">
+        <div class="card">
+          <div class="card-title"><span class="icon">📷</span> Photo Gallery</div>
+          <div class="alert warning">⚡ Upload images to Cloudinary using the ☁ button, or paste any direct image URL. Categories: yagna · gaushala · festival · sadhana</div>
+          <div class="item-cards" id="photos-cards"></div>
+          <button class="add-card-btn" onclick="addPhoto()">＋ Add Photo</button>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="icon">▶️</span> Video Gallery</div>
+          <div class="alert info">ℹ️ Paste YouTube video URLs (e.g. https://youtube.com/watch?v=XXXX). The thumbnail can be left blank — it will be auto-generated from YouTube.</div>
+          <div class="item-cards" id="videos-cards"></div>
+          <button class="add-card-btn" onclick="addVideo()">＋ Add Video</button>
+        </div>
+      </div>
+
+      <!-- ── DONATIONS ── -->
+      <div class="section-panel" id="panel-donate">
+        <div class="card">
+          <div class="card-title"><span class="icon">🙏</span> Donation Page Settings</div>
+          <div class="form-row">
+            <div class="form-group"><label>EIN / Tax ID</label><input type="text" id="donate-ein" placeholder="XX-XXXXXXX"/></div>
+            <div class="form-group"><label>Check Payable To</label><input type="text" id="donate-checkTo" placeholder="S3 Foundation"/></div>
+          </div>
+          <div class="form-row full"><div class="form-group"><label>Hero Title</label><input type="text" id="donate-heroTitle"/></div></div>
+          <div class="form-row full"><div class="form-group"><label>Hero Subtitle</label><textarea id="donate-heroSubtitle" rows="2"></textarea></div></div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="icon">💰</span> Quick Donation Amounts</div>
+          <div id="amounts-list" class="list-editor"></div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="icon">🏅</span> Sponsorship Tiers</div>
+          <div class="item-cards" id="tiers-cards"></div>
+        </div>
+      </div>
+
+    </div><!-- /content-area -->
+  </div><!-- /main -->
+</div><!-- /app -->
+
+<script>
+// ══════════════════════════════════════════════════════════
+//  GLOBALS
+// ══════════════════════════════════════════════════════════
+let AUTH_TOKEN = sessionStorage.getItem('s3_admin_token') || '';
+let CONTENT = {};
+const API_BASE = window.location.origin;
+
+// ── Login ────────────────────────────────────────────────
+async function doLogin() {
+  const pw = document.getElementById('pw-input').value.trim();
+  document.getElementById('login-err').textContent = '';
+  try {
+    const r = await fetch(`${API_BASE}/api/auth`, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({password:pw})
+    });
+    const d = await r.json();
+    if (r.ok && d.token) {
+      AUTH_TOKEN = d.token;
+      sessionStorage.setItem('s3_admin_token', AUTH_TOKEN);
+      document.getElementById('login-screen').classList.add('hidden');
+      document.getElementById('app').classList.remove('hidden');
+      await loadContent();
+    } else {
+      document.getElementById('login-err').textContent = 'Incorrect password. Try again.';
+    }
+  } catch(e) {
+    document.getElementById('login-err').textContent = 'Cannot connect to server. Is it running?';
+  }
+}
+document.getElementById('pw-input').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
+
+function doLogout() {
+  sessionStorage.removeItem('s3_admin_token');
+  AUTH_TOKEN = '';
+  location.reload();
+}
+
+// Auto-login if token in session
+(async function init() {
+  if (AUTH_TOKEN) {
+    try {
+      document.getElementById('login-screen').classList.add('hidden');
+      document.getElementById('app').classList.remove('hidden');
+      await loadContent();
+    } catch(e) {
+      doLogout();
+    }
+  }
+})();
+
+// ── Load & Save Content ──────────────────────────────────
+async function loadContent() {
+  const r = await fetch(`${API_BASE}/api/content`);
+  CONTENT = await r.json();
+  populateAll();
+}
+
+async function saveContent() {
+  const btn = document.getElementById('save-btn');
+  btn.disabled = true; btn.textContent = '⏳ Saving...';
+  harvestAll();
+  CONTENT._updatedAt = new Date().toISOString();
+  try {
+    const r = await fetch(`${API_BASE}/api/content`, {
+      method: 'POST',
+      headers: { 'Content-Type':'application/json', 'Authorization': `Bearer ${AUTH_TOKEN}` },
+      body: JSON.stringify(CONTENT)
+    });
+    if (r.ok) {
+      const ind = document.getElementById('saved-indicator');
+      ind.classList.add('show');
+      setTimeout(()=>ind.classList.remove('show'), 3000);
+    } else {
+      alert('Save failed. Check your connection or re-login.');
+    }
+  } catch(e) {
+    alert('Save error: ' + e.message);
+  }
+  btn.disabled = false; btn.textContent = '💾 Save Changes';
+}
+
+// ── Panel Navigation ─────────────────────────────────────
+const PANEL_TITLES = {
+  dashboard:'Dashboard', site:'Site Settings', home:'Home Page',
+  about:'About', programs:'Programs', gaushala:'Gaushala',
+  events:'Events', gallery:'Gallery & Media', donate:'Donations'
+};
+function showPanel(id, el) {
+  document.querySelectorAll('.section-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  el.classList.add('active');
+  document.getElementById('topbar-title').textContent = PANEL_TITLES[id] || id;
+}
+
+// ── Cloudinary ───────────────────────────────────────────
+function getCloudinaryConfig() {
+  return { cloud: localStorage.getItem('cl_cloud')||'', preset: localStorage.getItem('cl_preset')||'' };
+}
+function saveCloudinaryConfig() {
+  localStorage.setItem('cl_cloud', document.getElementById('cl-cloud').value.trim());
+  localStorage.setItem('cl_preset', document.getElementById('cl-preset').value.trim());
+  alert('Cloudinary settings saved!');
+}
+function openCloudinary(inputId, previewId) {
+  const { cloud, preset } = getCloudinaryConfig();
+  if (!cloud || !preset) { alert('Please configure your Cloudinary Cloud Name and Upload Preset in the Dashboard section first.'); return; }
+  cloudinary.openUploadWidget({
+    cloudName: cloud, uploadPreset: preset,
+    sources: ['local','url','camera'],
+    multiple: false, cropping: false,
+    styles: { palette: { window:'#FFF', tabIcon:'#E8630A', link:'#E8630A', action:'#E8630A', inactiveTabIcon:'#999', sourceBg:'#F8FAFC' }}
+  }, (err, result) => {
+    if (!err && result && result.event === 'success') {
+      const url = result.info.secure_url;
+      document.getElementById(inputId).value = url;
+      updatePreview(inputId, previewId);
+    }
+  });
+}
+function updatePreview(inputId, previewId) {
+  const url = document.getElementById(inputId).value;
+  const el = document.getElementById(previewId);
+  if (url) {
+    el.innerHTML = `<img src="${url}" alt="preview"/>`;
+    el.classList.remove('empty');
+  } else {
+    el.innerHTML = '🖼'; el.classList.add('empty');
+  }
+}
+
+// ══════════════════════════════════════════════════════════
+//  POPULATE (content → UI)
+// ══════════════════════════════════════════════════════════
+function populateAll() {
+  populateDashboard();
+  populateSite();
+  populateHome();
+  populateAbout();
+  populatePrograms();
+  populateGaushala();
+  populateEvents();
+  populateGallery();
+  populateDonate();
+  // restore cloudinary settings
+  const {cloud,preset} = getCloudinaryConfig();
+  document.getElementById('cl-cloud').value = cloud;
+  document.getElementById('cl-preset').value = preset;
+}
+
+function v(id, val='') { const el=document.getElementById(id); if(el) el.value=val||''; }
+
+function populateDashboard() {
+  const c = CONTENT;
+  const stats = [
+    { num: (c.events||[]).filter(e=>e.upcoming).length, lbl:'Upcoming Events' },
+    { num: (c.gallery?.photos||[]).length, lbl:'Gallery Photos' },
+    { num: (c.gallery?.videos||[]).length, lbl:'Videos' },
+    { num: (c.home?.announcements||[]).length, lbl:'Announcements' }
+  ];
+  document.getElementById('dash-stats').innerHTML = stats.map(s=>
+    `<div class="dash-stat"><div class="num">${s.num}</div><div class="lbl">${s.lbl}</div></div>`
+  ).join('');
+}
+
+function populateSite() {
+  const s = CONTENT.site||{};
+  v('site-name', s.name); v('site-tagline', s.tagline);
+  v('site-address', s.address); v('site-email', s.email);
+  v('site-phone', s.phone); v('site-ein', s.ein||CONTENT.donate?.ein);
+  v('site-mapurl', s.mapEmbedUrl);
+  v('hours-weekdays', s.hours?.weekdays); v('hours-saturday', s.hours?.saturday); v('hours-sunday', s.hours?.sunday);
+  v('social-facebook', s.social?.facebook); v('social-youtube', s.social?.youtube);
+  v('social-instagram', s.social?.instagram); v('social-twitter', s.social?.twitter);
+}
+
+function populateHome() {
+  const h = CONTENT.home||{};
+  v('home-heroTitle', h.heroTitle); v('home-heroSubtitle', h.heroSubtitle);
+  v('home-heroCta1Text', h.heroCta1Text); v('home-heroCta1Link', h.heroCta1Link);
+  v('home-heroCta2Text', h.heroCta2Text); v('home-heroCta2Link', h.heroCta2Link);
+  v('home-heroImage', h.heroImage); updatePreview('home-heroImage','prev-home-heroImage');
+  v('home-aboutImage', h.aboutImage); updatePreview('home-aboutImage','prev-home-aboutImage');
+  // Announcements
+  const list = document.getElementById('announcements-list');
+  list.innerHTML = '';
+  (h.announcements||[]).forEach(a => list.appendChild(makeAnnouncementItem(a)));
+  // Stats
+  renderStats(h.stats||[]);
+}
+
+function makeAnnouncementItem(text) {
+  const div = document.createElement('div'); div.className='list-item';
+  div.innerHTML = `<span class="drag-handle">⠿</span><input type="text" value="${escHtml(text)}" placeholder="Announcement text"/><button class="del-btn" onclick="this.closest('.list-item').remove()">✕</button>`;
+  return div;
+}
+function addAnnouncement() {
+  document.getElementById('announcements-list').appendChild(makeAnnouncementItem(''));
+}
+
+function renderStats(stats) {
+  document.getElementById('stats-grid').innerHTML = stats.map((s,i)=>`
+    <div class="stat-box">
+      <div class="stat-num"><input type="number" id="stat-val-${i}" value="${s.value}" style="width:60%;font-size:1.4rem;font-weight:800;color:var(--brand);text-align:center;border:none;background:transparent;outline:none;"/><input type="text" id="stat-suf-${i}" value="${s.suffix||''}" style="width:30%;font-size:1rem;font-weight:700;color:var(--muted);border:none;background:transparent;outline:none;"/></div>
+      <div class="stat-label"><input type="text" id="stat-lbl-${i}" value="${escHtml(s.label)}" style="font-size:.75rem;color:var(--muted);text-align:center;border:none;background:transparent;outline:none;width:100%;"/></div>
+    </div>`).join('');
+}
+
+function populateAbout() {
+  const a = CONTENT.about||{};
+  v('about-mission', a.missionStatement); v('about-story', a.foundingStory);
+  v('about-founderName', a.founderName); v('about-founderTitle', a.founderTitle);
+  v('about-founderBio', a.founderBio);
+  v('about-founderImage', a.founderImage); updatePreview('about-founderImage','prev-about-founderImage');
+  v('about-chiefAcharyaName', a.chiefAcharyaName); v('about-chiefAcharyaTitle', a.chiefAcharyaTitle);
+  v('about-chiefAcharyaImage', a.chiefAcharyaImage); updatePreview('about-chiefAcharyaImage','prev-about-chiefImage');
+  // Timeline
+  const tl = document.getElementById('timeline-list');
+  tl.innerHTML = '';
+  (a.timeline||[]).forEach(t => tl.appendChild(makeTimelineItem(t.year, t.event)));
+}
+function makeTimelineItem(year='', event='') {
+  const d=document.createElement('div'); d.className='list-item';
+  d.innerHTML=`<input type="text" value="${escHtml(year)}" placeholder="Year" style="width:70px;flex-shrink:0;font-weight:700;color:var(--brand);"/><input type="text" value="${escHtml(event)}" placeholder="What happened?" style="flex:1;"/><button class="del-btn" onclick="this.closest('.list-item').remove()">✕</button>`;
+  return d;
+}
+function addTimelineItem() {
+  document.getElementById('timeline-list').appendChild(makeTimelineItem('',''));
+}
+
+function populatePrograms() {
+  const progs = CONTENT.programs||[];
+  document.getElementById('programs-cards').innerHTML = progs.map((p,i)=>`
+    <div class="item-card" data-prog="${i}">
+      <div class="item-card-header">
+        <div class="item-card-title">${escHtml(p.title)}</div>
+        <span class="item-card-badge">${escHtml(p.subtitle||'')}</span>
+      </div>
+      <div class="item-card-body">
+        <div class="form-group"><label>Description</label><textarea id="prog-desc-${i}" rows="3">${escHtml(p.description)}</textarea></div>
+        <div class="form-group"><label>Schedule</label><input type="text" id="prog-sched-${i}" value="${escHtml(p.schedule||'')}"/></div>
+        <div class="form-group"><label>Image</label>
+          <div class="img-upload-wrap">
+            <div class="img-preview ${p.image?'':'empty'}" id="prev-prog-${i}">${p.image?`<img src="${p.image}"/>`:'🕉'}</div>
+            <button class="upload-btn" onclick="openCloudinary('prog-img-${i}','prev-prog-${i}')">☁ Upload</button>
+            <div class="url-input-wrap"><input type="url" id="prog-img-${i}" value="${escHtml(p.image||'')}" placeholder="Image URL" oninput="updatePreview('prog-img-${i}','prev-prog-${i}')"/></div>
+          </div>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function populateGaushala() {
+  const g = CONTENT.gaushala||{};
+  v('g-totalCows',g.totalCows); v('g-acres',g.acres); v('g-breeds',g.breeds); v('g-dailyVisitors',g.dailyVisitors);
+  v('g-intro',g.intro); v('g-heroImage',g.heroImage); updatePreview('g-heroImage','prev-g-heroImage');
+  const pc = document.getElementById('products-cards');
+  pc.innerHTML = (g.products||[]).map((p,i)=>`
+    <div class="item-card" data-prod="${i}">
+      <div class="item-card-header"><div class="item-card-title">${p.icon} ${escHtml(p.name)}</div></div>
+      <div class="item-card-body">
+        <div class="form-group"><label>Description</label><input type="text" id="prod-desc-${i}" value="${escHtml(p.description)}"/></div>
+        <div class="form-group"><label>Image</label>
+          <div class="img-upload-wrap">
+            <div class="img-preview ${p.image?'':'empty'}" id="prev-prod-${i}">${p.image?`<img src="${p.image}"/>`:'🛒'}</div>
+            <button class="upload-btn" onclick="openCloudinary('prod-img-${i}','prev-prod-${i}')">☁ Upload</button>
+            <div class="url-input-wrap"><input type="url" id="prod-img-${i}" value="${escHtml(p.image||'')}" placeholder="Image URL" oninput="updatePreview('prod-img-${i}','prev-prod-${i}')"/></div>
+          </div>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function populateEvents() {
+  renderEventCards(CONTENT.events||[]);
+}
+function renderEventCards(events) {
+  document.getElementById('events-cards').innerHTML = events.map((e,i)=>`
+    <div class="item-card" data-evt="${i}">
+      <div class="item-card-header">
+        <div class="item-card-title">${escHtml(e.title)}</div>
+        <span class="item-card-badge">${escHtml(e.category)}</span>
+      </div>
+      <div class="item-card-body">
+        <div class="form-group"><label>Title</label><input type="text" id="evt-title-${i}" value="${escHtml(e.title)}"/></div>
+        <div class="form-row" style="gap:8px;">
+          <div class="form-group"><label>Date</label><input type="text" id="evt-date-${i}" value="${escHtml(e.date)}"/></div>
+          <div class="form-group"><label>Category</label>
+            <select id="evt-cat-${i}">
+              ${['yagna','festival','satsang','seva','retreat'].map(c=>`<option ${e.category===c?'selected':''}>${c}</option>`).join('')}
+            </select>
+          </div>
+        </div>
+        <div class="form-group"><label>Description</label><textarea id="evt-desc-${i}" rows="2">${escHtml(e.description)}</textarea></div>
+        <div class="form-group"><label>Image</label>
+          <div class="img-upload-wrap">
+            <div class="img-preview ${e.image?'':'empty'}" id="prev-evt-${i}">${e.image?`<img src="${e.image}"/>`:'📅'}</div>
+            <button class="upload-btn" onclick="openCloudinary('evt-img-${i}','prev-evt-${i}')">☁ Upload</button>
+            <div class="url-input-wrap"><input type="url" id="evt-img-${i}" value="${escHtml(e.image||'')}" placeholder="Image URL" oninput="updatePreview('evt-img-${i}','prev-evt-${i}')"/></div>
+          </div>
+        </div>
+        <div class="form-group"><label>Registration Link</label><input type="text" id="evt-reg-${i}" value="${escHtml(e.registrationLink||'')}"/></div>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:4px;">
+          <label class="toggle-wrap"><span class="toggle ${e.upcoming?'on':''}" id="tog-up-${i}" onclick="toggleEl(this)"></span><span class="toggle-label">Upcoming</span></label>
+          <label class="toggle-wrap"><span class="toggle ${e.featured?'on':''}" id="tog-feat-${i}" onclick="toggleEl(this)"></span><span class="toggle-label">Featured Banner</span></label>
+        </div>
+      </div>
+      <div class="item-card-footer">
+        <button class="icon-btn danger" title="Delete event" onclick="deleteEvent(${i})">🗑 Delete</button>
+      </div>
+    </div>`).join('');
+}
+function addEvent() {
+  CONTENT.events = CONTENT.events||[];
+  CONTENT.events.push({id:'evt'+Date.now(),title:'New Event',date:'',category:'festival',description:'',image:'',upcoming:true,featured:false,registrationLink:''});
+  renderEventCards(CONTENT.events);
+}
+function deleteEvent(i) {
+  if (!confirm('Delete this event?')) return;
+  CONTENT.events.splice(i,1);
+  renderEventCards(CONTENT.events);
+}
+
+function populateGallery() {
+  renderPhotoCards(CONTENT.gallery?.photos||[]);
+  renderVideoCards(CONTENT.gallery?.videos||[]);
+}
+function renderPhotoCards(photos) {
+  document.getElementById('photos-cards').innerHTML = photos.map((p,i)=>`
+    <div class="item-card" data-photo="${i}">
+      <div class="item-card-header"><div class="item-card-title">Photo ${i+1}</div><span class="item-card-badge">${escHtml(p.category)}</span></div>
+      <div class="item-card-body">
+        <div class="form-group"><label>Image</label>
+          <div class="img-upload-wrap">
+            <div class="img-preview ${p.url?'':'empty'}" id="prev-photo-${i}">${p.url?`<img src="${p.url}"/>`:'📷'}</div>
+            <button class="upload-btn" onclick="openCloudinary('photo-url-${i}','prev-photo-${i}')">☁ Upload</button>
+            <div class="url-input-wrap"><input type="url" id="photo-url-${i}" value="${escHtml(p.url||'')}" placeholder="Image URL" oninput="updatePreview('photo-url-${i}','prev-photo-${i}')"/></div>
+          </div>
+        </div>
+        <div class="form-row" style="gap:8px;">
+          <div class="form-group"><label>Caption</label><input type="text" id="photo-cap-${i}" value="${escHtml(p.caption)}"/></div>
+          <div class="form-group"><label>Category</label>
+            <select id="photo-cat-${i}">${['yagna','gaushala','festival','sadhana','seva'].map(c=>`<option ${p.category===c?'selected':''}>${c}</option>`).join('')}</select>
+          </div>
+        </div>
+      </div>
+      <div class="item-card-footer"><button class="icon-btn danger" onclick="deletePhoto(${i})">🗑 Delete</button></div>
+    </div>`).join('');
+}
+function addPhoto() {
+  CONTENT.gallery = CONTENT.gallery||{photos:[],videos:[]};
+  CONTENT.gallery.photos.push({url:'',category:'yagna',caption:''});
+  renderPhotoCards(CONTENT.gallery.photos);
+}
+function deletePhoto(i) { if(!confirm('Delete photo?')) return; CONTENT.gallery.photos.splice(i,1); renderPhotoCards(CONTENT.gallery.photos); }
+
+function renderVideoCards(videos) {
+  document.getElementById('videos-cards').innerHTML = videos.map((v,i)=>`
+    <div class="item-card" data-video="${i}">
+      <div class="item-card-header"><div class="item-card-title">Video ${i+1}</div><span class="item-card-badge">${escHtml(v.category)}</span></div>
+      <div class="item-card-body">
+        <div class="form-group"><label>YouTube URL</label><input type="url" id="vid-url-${i}" value="${escHtml(v.url||'')}"/></div>
+        <div class="form-group"><label>Title</label><input type="text" id="vid-title-${i}" value="${escHtml(v.title||'')}"/></div>
+        <div class="form-group"><label>Thumbnail URL (optional)</label>
+          <div class="img-upload-wrap">
+            <div class="img-preview ${v.thumbnail?'':'empty'}" id="prev-vid-${i}">${v.thumbnail?`<img src="${v.thumbnail}"/>`:'▶'}</div>
+            <button class="upload-btn" onclick="openCloudinary('vid-thumb-${i}','prev-vid-${i}')">☁ Upload</button>
+            <div class="url-input-wrap"><input type="url" id="vid-thumb-${i}" value="${escHtml(v.thumbnail||'')}" placeholder="Thumbnail URL" oninput="updatePreview('vid-thumb-${i}','prev-vid-${i}')"/></div>
+          </div>
+        </div>
+        <div class="form-group"><label>Category</label>
+          <select id="vid-cat-${i}">${['yagna','gaushala','festival','sadhana'].map(c=>`<option ${v.category===c?'selected':''}>${c}</option>`).join('')}</select>
+        </div>
+      </div>
+      <div class="item-card-footer"><button class="icon-btn danger" onclick="deleteVideo(${i})">🗑 Delete</button></div>
+    </div>`).join('');
+}
+function addVideo() {
+  CONTENT.gallery = CONTENT.gallery||{photos:[],videos:[]};
+  CONTENT.gallery.videos.push({url:'',title:'',thumbnail:'',category:'yagna'});
+  renderVideoCards(CONTENT.gallery.videos);
+}
+function deleteVideo(i) { if(!confirm('Delete video?')) return; CONTENT.gallery.videos.splice(i,1); renderVideoCards(CONTENT.gallery.videos); }
+
+function populateDonate() {
+  const d = CONTENT.donate||{};
+  v('donate-ein', d.ein); v('donate-checkTo', d.checkPayableTo);
+  v('donate-heroTitle', d.heroTitle); v('donate-heroSubtitle', d.heroSubtitle);
+  // Amounts
+  const al = document.getElementById('amounts-list');
+  al.innerHTML = '';
+  const amounts = d.amounts||[];
+  const labels  = d.amountLabels||{};
+  amounts.forEach((amt,i) => {
+    const div = document.createElement('div'); div.className='list-item';
+    div.innerHTML = `<span style="color:var(--muted);font-size:.8rem;width:20px;">$</span><input type="number" value="${amt}" placeholder="Amount" style="width:80px;flex-shrink:0;" data-amt-idx="${i}"/><input type="text" value="${escHtml(labels[amt]||'')}" placeholder="Label (e.g. 1 Day Cow Feed)" style="flex:1;" data-lbl-idx="${i}"/><button class="del-btn" onclick="this.closest('.list-item').remove()">✕</button>`;
+    al.appendChild(div);
+  });
+  // Tiers
+  document.getElementById('tiers-cards').innerHTML = (d.tiers||[]).map((t,i)=>`
+    <div class="item-card" data-tier="${i}">
+      <div class="item-card-header">
+        <div class="item-card-title">${escHtml(t.name)}</div>
+        <span class="item-card-badge">$${t.amount}</span>
+      </div>
+      <div class="item-card-body">
+        <div class="form-row" style="gap:8px;">
+          <div class="form-group"><label>Tier Name</label><input type="text" id="tier-name-${i}" value="${escHtml(t.name)}"/></div>
+          <div class="form-group"><label>Sanskrit Name</label><input type="text" id="tier-sanskrit-${i}" value="${escHtml(t.sanskrit||'')}"/></div>
+          <div class="form-group"><label>Amount ($)</label><input type="number" id="tier-amt-${i}" value="${t.amount}"/></div>
+        </div>
+        <div class="form-group"><label>Benefits Description</label><textarea id="tier-desc-${i}" rows="2">${escHtml(t.description)}</textarea></div>
+        <label class="toggle-wrap"><span class="toggle ${t.featured?'on':''}" id="tog-tier-${i}" onclick="toggleEl(this)"></span><span class="toggle-label">Featured (highlighted)</span></label>
+      </div>
+    </div>`).join('');
+}
+
+// ══════════════════════════════════════════════════════════
+//  HARVEST (UI → content)
+// ══════════════════════════════════════════════════════════
+function gv(id) { const el=document.getElementById(id); return el?el.value:''; }
+function toggleEl(el) { el.classList.toggle('on'); }
+function isOn(id) { const el=document.getElementById(id); return el&&el.classList.contains('on'); }
+
+function harvestAll() {
+  harvestSite(); harvestHome(); harvestAbout();
+  harvestPrograms(); harvestGaushala(); harvestEvents();
+  harvestGallery(); harvestDonate();
+}
+
+function harvestSite() {
+  CONTENT.site = CONTENT.site||{};
+  Object.assign(CONTENT.site, {
+    name: gv('site-name'), tagline: gv('site-tagline'), address: gv('site-address'),
+    email: gv('site-email'), phone: gv('site-phone'), ein: gv('site-ein'),
+    mapEmbedUrl: gv('site-mapurl'),
+    hours: { weekdays: gv('hours-weekdays'), saturday: gv('hours-saturday'), sunday: gv('hours-sunday') },
+    social: { facebook: gv('social-facebook'), youtube: gv('social-youtube'), instagram: gv('social-instagram'), twitter: gv('social-twitter') }
+  });
+}
+
+function harvestHome() {
+  CONTENT.home = CONTENT.home||{};
+  // Announcements
+  const anns = [...document.querySelectorAll('#announcements-list .list-item input[type=text]')].map(i=>i.value).filter(Boolean);
+  // Stats
+  const statsEl = document.querySelectorAll('.stat-box');
+  const stats = [...statsEl].map((_,i)=>({
+    value: parseFloat(document.getElementById(`stat-val-${i}`)?.value)||0,
+    suffix: document.getElementById(`stat-suf-${i}`)?.value||'',
+    label: document.getElementById(`stat-lbl-${i}`)?.value||''
+  }));
+  Object.assign(CONTENT.home, {
+    heroTitle: gv('home-heroTitle'), heroSubtitle: gv('home-heroSubtitle'),
+    heroCta1Text: gv('home-heroCta1Text'), heroCta1Link: gv('home-heroCta1Link'),
+    heroCta2Text: gv('home-heroCta2Text'), heroCta2Link: gv('home-heroCta2Link'),
+    heroImage: gv('home-heroImage'), aboutImage: gv('home-aboutImage'),
+    announcements: anns, stats
+  });
+}
+
+function harvestAbout() {
+  CONTENT.about = CONTENT.about||{};
+  const timelineItems = [...document.querySelectorAll('#timeline-list .list-item')].map(item => {
+    const inputs = item.querySelectorAll('input');
+    return { year: inputs[0]?.value||'', event: inputs[1]?.value||'' };
+  }).filter(t=>t.year||t.event);
+  Object.assign(CONTENT.about, {
+    missionStatement: gv('about-mission'), foundingStory: gv('about-story'),
+    founderName: gv('about-founderName'), founderTitle: gv('about-founderTitle'),
+    founderBio: gv('about-founderBio'), founderImage: gv('about-founderImage'),
+    chiefAcharyaName: gv('about-chiefAcharyaName'), chiefAcharyaTitle: gv('about-chiefAcharyaTitle'),
+    chiefAcharyaImage: gv('about-chiefAcharyaImage'), timeline: timelineItems
+  });
+}
+
+function harvestPrograms() {
+  CONTENT.programs = (CONTENT.programs||[]).map((p,i)=>({
+    ...p,
+    description: gv(`prog-desc-${i}`), schedule: gv(`prog-sched-${i}`), image: gv(`prog-img-${i}`)
+  }));
+}
+
+function harvestGaushala() {
+  CONTENT.gaushala = CONTENT.gaushala||{};
+  const products = (CONTENT.gaushala.products||[]).map((p,i)=>({
+    ...p, description: gv(`prod-desc-${i}`), image: gv(`prod-img-${i}`)
+  }));
+  Object.assign(CONTENT.gaushala, {
+    totalCows: gv('g-totalCows'), acres: gv('g-acres'), breeds: gv('g-breeds'),
+    dailyVisitors: gv('g-dailyVisitors'), intro: gv('g-intro'),
+    heroImage: gv('g-heroImage'), products
+  });
+}
+
+function harvestEvents() {
+  CONTENT.events = (CONTENT.events||[]).map((e,i)=>({
+    ...e,
+    title: gv(`evt-title-${i}`), date: gv(`evt-date-${i}`), category: gv(`evt-cat-${i}`),
+    description: gv(`evt-desc-${i}`), image: gv(`evt-img-${i}`),
+    registrationLink: gv(`evt-reg-${i}`),
+    upcoming: isOn(`tog-up-${i}`), featured: isOn(`tog-feat-${i}`)
+  }));
+}
+
+function harvestGallery() {
+  const photos = (CONTENT.gallery?.photos||[]).map((p,i)=>({
+    ...p, url: gv(`photo-url-${i}`), caption: gv(`photo-cap-${i}`), category: gv(`photo-cat-${i}`)
+  }));
+  const videos = (CONTENT.gallery?.videos||[]).map((v,i)=>({
+    ...v, url: gv(`vid-url-${i}`), title: gv(`vid-title-${i}`),
+    thumbnail: gv(`vid-thumb-${i}`), category: gv(`vid-cat-${i}`)
+  }));
+  CONTENT.gallery = { photos, videos };
+}
+
+function harvestDonate() {
+  // Amounts
+  const amtItems = [...document.querySelectorAll('#amounts-list .list-item')];
+  const amounts = [], amountLabels = {};
+  amtItems.forEach(item=>{
+    const [, amtIn, lblIn] = item.querySelectorAll('input');
+    const a = parseInt(amtIn?.value); const l = lblIn?.value||'';
+    if (a) { amounts.push(a); amountLabels[a]=l; }
+  });
+  // Tiers
+  const tiers = (CONTENT.donate?.tiers||[]).map((t,i)=>({
+    ...t, name: gv(`tier-name-${i}`), sanskrit: gv(`tier-sanskrit-${i}`),
+    amount: parseInt(gv(`tier-amt-${i}`))||t.amount,
+    description: gv(`tier-desc-${i}`), featured: isOn(`tog-tier-${i}`)
+  }));
+  CONTENT.donate = {
+    ...(CONTENT.donate||{}),
+    ein: gv('donate-ein'), checkPayableTo: gv('donate-checkTo'),
+    heroTitle: gv('donate-heroTitle'), heroSubtitle: gv('donate-heroSubtitle'),
+    amounts, amountLabels, tiers
+  };
+}
+
+// ── Utility ──────────────────────────────────────────────
+function escHtml(str='') {
+  return String(str).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+</script>
+</body>
+</html>
