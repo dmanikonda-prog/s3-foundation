@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us — S3 Foundation | Memphis, TN</title>
+  <meta name="description" content="Learn about S3 Foundation's history, vision, mission, founders, and our journey of Sanatana Dharma from Memphis, Tennessee since 2005."/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .timeline { position: relative; padding-left: 40px; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 16px; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--saffron), var(--gold));
+    }
+    .timeline-item { position: relative; margin-bottom: 42px; }
+    .timeline-dot {
+      position: absolute;
+      left: -32px;
+      top: 6px;
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: var(--saffron);
+      border: 3px solid var(--white);
+      box-shadow: 0 0 0 3px var(--saffron);
+    }
+    .timeline-year {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--saffron);
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+    }
+    .timeline-title { font-size: 1.05rem; font-weight: 700; color: var(--dark-brown); margin-bottom: 6px; }
+    .timeline-text { color: var(--text-light); font-size: 0.92rem; line-height: 1.7; }
+
+    .value-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 32px 24px;
+      text-align: center;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 12px var(--shadow);
+      transition: all var(--transition);
+    }
+    .value-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px var(--shadow-deep); }
+    .value-icon { font-size: 2.4rem; margin-bottom: 14px; display: block; }
+    .value-card h4 { font-size: 1rem; margin-bottom: 8px; color: var(--dark-brown); }
+    .value-card p { font-size: 0.88rem; color: var(--text-light); }
+
+    .team-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 12px var(--shadow);
+      text-align: center;
+      transition: all var(--transition);
+    }
+    .team-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px var(--shadow-deep); }
+    .team-photo { height: 220px; }
+    .team-body { padding: 22px; }
+    .team-body h3 { font-size: 1.1rem; margin-bottom: 4px; }
+    .team-body .role { font-size: 0.82rem; color: var(--saffron); font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 10px; display: block; }
+    .team-body p { font-size: 0.88rem; color: var(--text-light); }
+
+    .mission-box {
+      background: linear-gradient(135deg, var(--dark) 0%, #3D2314 100%);
+      border-radius: var(--radius-lg);
+      padding: 50px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .mission-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, rgba(232,99,10,0.15) 0%, transparent 70%);
+    }
+    .mission-box .container { position: relative; z-index: 1; }
+    .mission-box h2 { color: white; margin-bottom: 16px; }
+    .mission-box p { color: rgba(255,255,255,0.75); max-width: 700px; margin: 0 auto 10px; font-size: 1.05rem; }
+    .mission-box .quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.4rem;
+      color: var(--gold-light);
+      margin: 20px 0;
+    }
+
+    .accordion-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 12px;
+      overflow: hidden;
+      background: var(--white);
+    }
+    .accordion-header {
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.97rem;
+      color: var(--dark-brown);
+      transition: background var(--transition);
+    }
+    .accordion-header:hover { background: var(--cream); }
+    .accordion-icon { font-size: 1.2rem; transition: transform var(--transition); color: var(--saffron); }
+    .accordion-item.open .accordion-icon { transform: rotate(45deg); }
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s;
+      padding: 0 22px;
+      color: var(--text-light);
+      font-size: 0.92rem;
+      line-height: 1.75;
+    }
+    .accordion-item.open .accordion-body { max-height: 400px; padding: 0 22px 20px; }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar solid" id="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">S3</div>
+      <div class="nav-logo-text">
+        <span class="org-name">S3 Foundation</span>
+        <span class="org-tagline">Shraddha · Saburi · Samidha</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="gaushala.html">Gaushala</a>
+      <a href="events.html">Events</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+      <a href="donate.html" class="nav-donate">Donate 🙏</a>
+    </div>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mobile-nav"><span class="mobile-nav-close">✕</span>
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html">Programs</a>
+  <a href="gaushala.html">Gaushala</a><a href="events.html">Events</a><a href="gallery.html">Gallery</a>
+  <a href="contact.html">Contact</a><a href="donate.html" style="color:var(--saffron-light);">🙏 Donate</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Our Story</span>
+    <h1>About S3 Foundation</h1>
+    <div class="divider"><span>✦</span></div>
+    <p>Born from faith, sustained by patience, offered in service — the story of Shraddha, Saburi &amp; Samidha in the heart of Memphis, Tennessee.</p>
+    <nav class="breadcrumb">
+      <a href="index.html">Home</a><span class="sep">›</span><span>About Us</span>
+    </nav>
+  </div>
+</section>
+
+<!-- MISSION BOX -->
+<section class="section-sm">
+  <div class="container">
+    <div class="mission-box reveal">
+      <h2>Our Mission</h2>
+      <p class="quote">"To uplift society through individual development rooted in Sanatana Dharma."</p>
+      <p>S3 Foundation exists to create a living bridge between ancient Vedic wisdom and the modern world — providing every sincere seeker, regardless of background, with access to authentic spiritual practices, Vedic knowledge, and a sacred community of dharmic companions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS S3 -->
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;">
+      <div class="reveal">
+        <span class="eyebrow" style="color:var(--saffron);font-size:0.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:12px;">The Name &amp; Meaning</span>
+        <h2>What Does S3 Stand For?</h2>
+        <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;color:var(--dark-brown);margin-bottom:16px;">Three Sanskrit words that capture the entire spiritual journey.</p>
+        <p style="color:var(--text-light);">The name S3 represents the foundational triad of spiritual life as described in Sanatana Dharma. Each 'S' is a pillar — and together, they form the complete path from aspiration to liberation.</p>
+        <div style="margin-top:30px;display:flex;flex-direction:column;gap:20px;">
+          <div style="display:flex;gap:20px;align-items:flex-start;padding:20px;background:var(--white);border-radius:var(--radius);border:1px solid var(--border);border-left:4px solid var(--saffron);">
+            <span style="font-size:2rem;">🙌</span>
+            <div>
+              <strong style="font-family:'Cinzel',serif;color:var(--dark-brown);">Shraddha — श्रद्धा</strong>
+              <p style="color:var(--text-light);font-size:0.9rem;margin-top:4px;">Faith. The sincere, heartfelt belief in the Divine, in the Guru, and in the sacred texts. Shraddha is the very seed of the spiritual journey.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:20px;align-items:flex-start;padding:20px;background:var(--white);border-radius:var(--radius);border:1px solid var(--border);border-left:4px solid var(--gold);">
+            <span style="font-size:2rem;">🧘</span>
+            <div>
+              <strong style="font-family:'Cinzel',serif;color:var(--dark-brown);">Saburi — सबुरी</strong>
+              <p style="color:var(--text-light);font-size:0.9rem;margin-top:4px;">Patience. The steadfast, patient perseverance on the spiritual path — trusting in divine timing and remaining unwavering through all of life's challenges.</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:20px;align-items:flex-start;padding:20px;background:var(--white);border-radius:var(--radius);border:1px solid var(--border);border-left:4px solid var(--red);">
+            <span style="font-size:2rem;">🔥</span>
+            <div>
+              <strong style="font-family:'Cinzel',serif;color:var(--dark-brown);">Samidha — समिधा</strong>
+              <p style="color:var(--text-light);font-size:0.9rem;margin-top:4px;">Sacred Offering. The sacred wood offered into the Vedic fire — symbolizing the complete offering of the self to the Divine through seva and yajna.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="img-placeholder" style="height:500px;border-radius:var(--radius-lg);">
+          <span class="ph-icon">🕉</span>
+          <span class="ph-label">S3 Foundation — Sacred Yagna Shala<br/>30,000 sq.ft · Arlington, Tennessee</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORY TIMELINE -->
+<section class="section" style="background:var(--cream-dark);">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Our Journey</span>
+      <h2>20 Years of Dharmic Growth</h2>
+      <div class="divider"><span>✦</span></div>
+      <p>From a small student organization to a 400-acre Vedic campus — our timeline of faith and service.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;">
+      <div class="timeline reveal">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2005</div>
+          <div class="timeline-title">Foundation Established</div>
+          <div class="timeline-text">S3 Foundation was founded by students at the University of Memphis, inspired by Sri Purushottamji's vision for authentic Vedic spiritual practice in the USA.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2008</div>
+          <div class="timeline-title">First Grand Yagna</div>
+          <div class="timeline-text">Successfully organized the first Gayatri Yagna and Maha Mrutyunjaya Homa, drawing hundreds of devotees from across the region.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2012</div>
+          <div class="timeline-title">Land Acquisition</div>
+          <div class="timeline-text">Acquired 400+ acres of pristine land in Arlington, Tennessee — the foundation of the future Vedic campus and Gaushala.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2015</div>
+          <div class="timeline-title">Gaushala Inaugurated</div>
+          <div class="timeline-text">S3 Gaushala was inaugurated with the arrival of the first Gir cows from India — a landmark moment for Gau Mata Seva in the USA.</div>
+        </div>
+      </div>
+      <div class="timeline reveal">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2018</div>
+          <div class="timeline-title">Yagna Shala Completed</div>
+          <div class="timeline-text">The magnificent 30,000 sq.ft Yagna Shala was completed, enabling grand Vedic rituals with proper traditional infrastructure.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2020</div>
+          <div class="timeline-title">Laksha Chandi Maha Yagnam</div>
+          <div class="timeline-text">Organized the landmark Laksha (100,000) Chandi Maha Yagnam during Navaratri — an unprecedented Vedic event in the Americas.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2023</div>
+          <div class="timeline-title">Shiva Shakti Maha Yagnam</div>
+          <div class="timeline-text">Conducted the Shiva Shakti Maha Yagnam with thousands of devotees participating, further establishing S3 as a premier Vedic center in North America.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2025+</div>
+          <div class="timeline-title">Continuing the Mission</div>
+          <div class="timeline-text">200+ Gir cows, ongoing daily Agnihotra, residential sadhana programs, and expansion of the Vedic campus — the journey continues.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CORE VALUES -->
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">What We Stand For</span>
+      <h2>Our Core Values</h2>
+      <div class="divider"><span>✦</span></div>
+    </div>
+    <div class="grid-4">
+      <div class="value-card reveal"><span class="value-icon">🕉</span><h4>Dharma First</h4><p>Every action is guided by the principles of Sanatana Dharma — eternal truths that transcend time, culture, and geography.</p></div>
+      <div class="value-card reveal"><span class="value-icon">🌿</span><h4>Ahimsa</h4><p>Non-violence toward all beings — from our cherished Gir cows to every visitor. Our campus is a sanctuary of compassion.</p></div>
+      <div class="value-card reveal"><span class="value-icon">🤝</span><h4>Inclusivity</h4><p>All programs are free and open to every sincere seeker regardless of caste, creed, nationality, or background.</p></div>
+      <div class="value-card reveal"><span class="value-icon">📖</span><h4>Authentic Tradition</h4><p>We follow Vedic rituals and practices precisely as prescribed in ancient scriptures — preserving the original living tradition.</p></div>
+      <div class="value-card reveal"><span class="value-icon">🌱</span><h4>Sustainability</h4><p>Cow-based organic farming, zero-waste practices, and deep respect for Bhumi Mata (Mother Earth) in all our activities.</p></div>
+      <div class="value-card reveal"><span class="value-icon">🎓</span><h4>Knowledge</h4><p>Sharing Vedic wisdom through satsangs, discourses, workshops, and direct transmission from learned Gurus and Acharyas.</p></div>
+      <div class="value-card reveal"><span class="value-icon">💚</span><h4>Community</h4><p>Building a thriving dharmic community where families, students, and seekers support each other on the spiritual path.</p></div>
+      <div class="value-card reveal"><span class="value-icon">🙏</span><h4>Humility</h4><p>Recognizing that we are instruments of the Divine. All credit belongs to the blessings of Gurus and the grace of the Divine.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPIRITUAL LEADERSHIP -->
+<section class="section" style="background:var(--cream-dark);">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Our Guides</span>
+      <h2>Spiritual Leadership</h2>
+      <div class="divider"><span>✦</span></div>
+      <p>Guided by realized spiritual masters rooted in the unbroken tradition of Vedic wisdom.</p>
+    </div>
+    <div class="grid-3">
+      <div class="team-card reveal">
+        <div class="img-placeholder team-photo">
+          <span class="ph-icon">🙏</span>
+          <span class="ph-label">Sri Purushottamji<br/>Photo Placeholder</span>
+        </div>
+        <div class="team-body">
+          <h3>Sri Purushottamji</h3>
+          <span class="role">Founder &amp; Spiritual Director</span>
+          <p>The visionary founder of S3 Foundation whose inspiration led to this flourishing Vedic center in Memphis, dedicated to authentic Sanatana Dharma practice in the West.</p>
+        </div>
+      </div>
+      <div class="team-card reveal">
+        <div class="img-placeholder team-photo">
+          <span class="ph-icon">🕉</span>
+          <span class="ph-label">Acharya / Priest<br/>Photo Placeholder</span>
+        </div>
+        <div class="team-body">
+          <h3>[Chief Acharya]</h3>
+          <span class="role">Resident Acharya &amp; Head Priest</span>
+          <p>A deeply learned Vedic scholar and priest who conducts all major Yagnas, Homas, and daily Agnihotra at the S3 Gaushala with traditional authenticity.</p>
+        </div>
+      </div>
+      <div class="team-card reveal">
+        <div class="img-placeholder team-photo">
+          <span class="ph-icon">🌸</span>
+          <span class="ph-label">Organizing Committee<br/>Photo Placeholder</span>
+        </div>
+        <div class="team-body">
+          <h3>Core Team &amp; Trustees</h3>
+          <span class="role">Board of Trustees</span>
+          <p>A dedicated team of volunteers and trustees who have given years of selfless service — organizing events, managing the Gaushala, and sustaining this sacred mission.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:70px;align-items:start;">
+      <div class="reveal">
+        <span class="eyebrow" style="color:var(--saffron);font-size:0.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:12px;">Questions</span>
+        <h2>Frequently Asked Questions</h2>
+        <p style="color:var(--text-light);margin-top:16px;">Have more questions? We're happy to help — reach out to us at any time.</p>
+        <a href="contact.html" class="btn btn-primary" style="margin-top:24px;">Contact Us</a>
+      </div>
+      <div class="reveal">
+        <div class="accordion-item open">
+          <div class="accordion-header">Is S3 Foundation open to everyone? <span class="accordion-icon">+</span></div>
+          <div class="accordion-body">Yes! S3 Foundation is open to all sincere seekers of truth regardless of religion, caste, nationality, or background. All our programs are free of charge to sadhakas.</div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">How can I visit the Gaushala? <span class="accordion-icon">+</span></div>
+          <div class="accordion-body">Gaushala visits are available through scheduled tours. Please contact us in advance to arrange your visit. The Gaushala is located at 7945 Deadfall Road, Arlington, Tennessee.</div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Can I stay at the Gaushala for sadhana? <span class="accordion-icon">+</span></div>
+          <div class="accordion-body">Yes! We have a guesthouse available for sadhakas who wish to stay and do intensive sadhana. Accommodation is modest and spiritually focused. Please contact us to check availability.</div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">How can I volunteer? <span class="accordion-icon">+</span></div>
+          <div class="accordion-body">We welcome volunteers for cow care, kitchen seva, event organization, and administrative support. Fill out our volunteer form on the Contact page or email us directly.</div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">Is S3 Foundation a registered nonprofit? <span class="accordion-icon">+</span></div>
+          <div class="accordion-body">Yes, S3 Foundation is a registered 501(c)(3) nonprofit organization. All donations are tax-deductible to the extent permitted by law.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section style="background:linear-gradient(135deg,var(--saffron-dark),var(--saffron),var(--gold));padding:70px 0;text-align:center;">
+  <div class="container">
+    <h2 style="color:white;margin-bottom:14px;">Be Part of This Sacred Mission</h2>
+    <p style="color:rgba(255,255,255,0.85);max-width:560px;margin:0 auto 30px;font-size:1.05rem;">Whether through Seva, Sadhana, Donation, or simply a visit — every act of participation strengthens the flame of Dharma.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="donate.html" class="btn btn-outline btn-lg">Donate Now</a>
+      <a href="contact.html" class="btn btn-outline btn-lg">Get Involved</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="foot-logo"><div class="foot-logo-icon">S3</div>S3 Foundation</div>
+        <p>Shraddha · Saburi · Samidha — A 501(c)(3) nonprofit dedicated to uplifting society through Vedic wisdom, selfless service, and authentic spiritual practice.</p>
+        <div class="footer-social"><a href="#">📘</a><a href="#">▶️</a><a href="#">📷</a><a href="#">🐦</a></div>
+      </div>
+      <div class="footer-col"><h4>Quick Links</h4><ul>
+        <li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li>
+        <li><a href="programs.html">Programs</a></li><li><a href="gaushala.html">Gaushala</a></li>
+        <li><a href="events.html">Events</a></li><li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Programs</h4><ul>
+        <li><a href="programs.html">Daily Agnihotra</a></li><li><a href="programs.html">Maha Yagnams</a></li>
+        <li><a href="programs.html">Sadhana Retreats</a></li><li><a href="programs.html">Satsang</a></li>
+        <li><a href="gaushala.html">Gaushala Tours</a></li><li><a href="donate.html">Donate</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact Us</h4>
+        <div class="footer-contact-item"><span class="icon">📍</span><span>7945 Deadfall Road, Arlington, TN 38002</span></div>
+        <div class="footer-contact-item"><span class="icon">✉️</span><a href="mailto:info@s3foundationusa.org" style="color:rgba(255,255,255,0.6);">info@s3foundationusa.org</a></div>
+        <div style="margin-top:18px;"><a href="donate.html" class="btn btn-primary btn-sm">Donate Now 🙏</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 S3 Foundation. All Rights Reserved. 501(c)(3) Nonprofit.</span>
+      <span>Designed with 🙏 for Sanatana Dharma</span>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top-btn" id="scrollTopBtn">↑</button>
+<script src="js/main.js"></script>
+<script src="js/content-loader.js"></script>
+</body>
+</html>
