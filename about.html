@@ -123,6 +123,22 @@
       line-height: 1.75;
     }
     .accordion-item.open .accordion-body { max-height: 400px; padding: 0 22px 20px; }
+
+    /* ── RESPONSIVE GRIDS (replacing inline styles) ── */
+    .about-2col-center { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+    .about-2col-start  { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .about-2col-wide   { display: grid; grid-template-columns: 1fr 1.5fr; gap: 70px; align-items: start; }
+
+    @media (max-width: 768px) {
+      .about-2col-center,
+      .about-2col-start,
+      .about-2col-wide { grid-template-columns: 1fr; gap: 32px; }
+      .mission-box { padding: 32px 20px; }
+      .mission-box .quote { font-size: 1.1rem; }
+    }
+    @media (max-width: 480px) {
+      .timeline { padding-left: 28px; }
+    }
   </style>
 </head>
 <body>
@@ -183,7 +199,7 @@
 <!-- WHAT IS S3 -->
 <section class="section" style="background:var(--cream);">
   <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;">
+    <div class="about-2col-center">
       <div class="reveal">
         <span class="eyebrow" style="color:var(--saffron);font-size:0.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:12px;">The Name &amp; Meaning</span>
         <h2>What Does S3 Stand For?</h2>
@@ -232,7 +248,7 @@
       <div class="divider"><span>✦</span></div>
       <p>From a small student organization to a 400-acre Vedic campus — our timeline of faith and service.</p>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;">
+    <div class="about-2col-start">
       <div class="timeline reveal">
         <div class="timeline-item">
           <div class="timeline-dot"></div>
@@ -246,7 +262,7 @@
           <div class="timeline-title">First Grand Yagna</div>
           <div class="timeline-text">Successfully organized the first Gayatri Yagna and Maha Mrutyunjaya Homa, drawing hundreds of devotees from across the region.</div>
         </div>
-        <div class="timeline-item">
+        <ass="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-year">2012</div>
           <div class="timeline-title">Land Acquisition</div>
@@ -360,7 +376,7 @@
 <!-- FAQ -->
 <section class="section" style="background:var(--cream);">
   <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:70px;align-items:start;">
+    <div class="about-2col-wide">
       <div class="reveal">
         <span class="eyebrow" style="color:var(--saffron);font-size:0.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:12px;">Questions</span>
         <h2>Frequently Asked Questions</h2>
