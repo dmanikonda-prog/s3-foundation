@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>S3 Foundation — Admin Panel</title>
+<title>S3 Foundation â Admin Panel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <!-- Cloudinary Upload Widget -->
@@ -22,7 +22,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 a{color:inherit;text-decoration:none;}
 button{cursor:pointer;font-family:inherit;}
 
-/* ── Login Screen ── */
+/* ââ Login Screen ââ */
 #login-screen{position:fixed;inset:0;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);
   display:flex;align-items:center;justify-content:center;z-index:1000;}
 #login-screen.hidden{display:none;}
@@ -38,11 +38,11 @@ button{cursor:pointer;font-family:inherit;}
 .login-btn:hover{background:var(--brand-dark);}
 .login-err{margin-top:12px;color:var(--danger);font-size:.85rem;min-height:20px;}
 
-/* ── Layout ── */
+/* ââ Layout ââ */
 .app{display:flex;min-height:100vh;}
 .app.hidden{display:none;}
 
-/* ── Sidebar ── */
+/* ââ Sidebar ââ */
 .sidebar{width:240px;background:var(--sidebar-bg);color:var(--sidebar-text);
   display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100;}
 .sidebar-logo{padding:24px 20px 16px;border-bottom:1px solid rgba(255,255,255,.07);}
@@ -63,7 +63,7 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
   display:flex;align-items:center;gap:6px;padding:6px 0;margin-top:4px;transition:color .2s;}
 .logout-btn:hover{color:var(--danger);}
 
-/* ── Main ── */
+/* ââ Main ââ */
 .main{margin-left:240px;flex:1;display:flex;flex-direction:column;min-height:100vh;}
 .topbar{background:#fff;border-bottom:1px solid var(--border);padding:0 32px;
   height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;}
@@ -82,7 +82,7 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
 .section-panel{display:none;}
 .section-panel.active{display:block;}
 
-/* ── Cards & Form ── */
+/* ââ Cards & Form ââ */
 .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
   padding:24px;margin-bottom:20px;box-shadow:var(--shadow);}
 .card-title{font-size:.95rem;font-weight:600;color:var(--text);margin-bottom:16px;
@@ -100,7 +100,7 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
 .form-group textarea{resize:vertical;min-height:90px;}
 .form-group small{font-size:.75rem;color:var(--muted);}
 
-/* ── Image Upload ── */
+/* ââ Image Upload ââ */
 .img-upload-wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
 .img-preview{width:90px;height:60px;border-radius:8px;object-fit:cover;border:1.5px solid var(--border);
   background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:1.5rem;overflow:hidden;}
@@ -111,7 +111,7 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
 .upload-btn:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light);}
 .url-input-wrap{flex:1;min-width:200px;}
 
-/* ── List Editor (announcements, stats, timeline) ── */
+/* ââ List Editor (announcements, stats, timeline) ââ */
 .list-editor{display:flex;flex-direction:column;gap:8px;}
 .list-item{display:flex;align-items:center;gap:8px;background:#f8fafc;border:1.5px solid var(--border);
   border-radius:8px;padding:10px 12px;}
@@ -124,7 +124,7 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
   font-size:.85rem;color:var(--muted);cursor:pointer;transition:all .2s;text-align:center;}
 .add-item-btn:hover{border-color:var(--brand);color:var(--brand);}
 
-/* ── Event / Gallery Cards ── */
+/* ââ Event / Gallery Cards ââ */
 .item-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:12px;}
 .item-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;
   box-shadow:var(--shadow);position:relative;}
@@ -144,7 +144,7 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
   border-radius:var(--radius);padding:24px;text-align:center;cursor:pointer;transition:all .2s;color:var(--brand);font-weight:600;}
 .add-card-btn:hover{background:var(--brand-light);border-color:var(--brand);}
 
-/* ── Stats editor ── */
+/* ââ Stats editor ââ */
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
 .stat-box{background:#f8fafc;border:1.5px solid var(--border);border-radius:8px;padding:16px;text-align:center;}
 .stat-box input{border:none;background:transparent;text-align:center;font-family:inherit;outline:none;width:100%;}
@@ -153,7 +153,7 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
 .stat-suffix input{font-size:.9rem;color:var(--muted);font-weight:600;}
 .stat-label input{font-size:.75rem;color:var(--muted);margin-top:4px;}
 
-/* ── Toggle ── */
+/* ââ Toggle ââ */
 .toggle-wrap{display:flex;align-items:center;gap:10px;}
 .toggle{width:44px;height:24px;background:#e2e8f0;border-radius:12px;position:relative;
   cursor:pointer;transition:background .2s;flex-shrink:0;}
@@ -163,20 +163,20 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
 .toggle.on::after{transform:translateX(20px);}
 .toggle-label{font-size:.85rem;font-weight:500;}
 
-/* ── Alert ── */
+/* ââ Alert ââ */
 .alert{padding:12px 16px;border-radius:8px;font-size:.87rem;margin-bottom:20px;display:flex;align-items:flex-start;gap:10px;}
 .alert.info{background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af;}
 .alert.success{background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;}
 .alert.warning{background:#fffbeb;border:1px solid #fde68a;color:#92400e;}
 
-/* ── Dashboard stats ── */
+/* ââ Dashboard stats ââ */
 .dash-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;margin-bottom:24px;}
 .dash-stat{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:20px;
   box-shadow:var(--shadow);}
 .dash-stat .num{font-size:2rem;font-weight:800;color:var(--brand);}
 .dash-stat .lbl{font-size:.8rem;color:var(--muted);margin-top:2px;}
 
-/* ── Cloudinary setup banner ── */
+/* ââ Cloudinary setup banner ââ */
 .setup-banner{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;border-radius:var(--radius);
   padding:20px 24px;margin-bottom:20px;display:flex;align-items:center;gap:16px;}
 .setup-banner .icon{font-size:2rem;}
@@ -184,7 +184,7 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
 .setup-banner p{font-size:.8rem;color:rgba(255,255,255,.65);line-height:1.5;}
 .setup-banner a{color:var(--brand);text-decoration:underline;}
 
-/* ── Responsive ── */
+/* ââ Responsive ââ */
 @media(max-width:900px){
   .sidebar{transform:translateX(-100%);transition:transform .3s;}
   .sidebar.open{transform:translateX(0);}
@@ -196,22 +196,22 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════════════════
+<!-- ââââââââââââââââââââââââââââââââââââââââââââââââââââââ
      LOGIN SCREEN
-══════════════════════════════════════════════════════ -->
+ââââââââââââââââââââââââââââââââââââââââââââââââââââââ -->
 <div id="login-screen">
   <div class="login-box">
     <div class="login-logo">S3 Admin</div>
-    <div class="login-sub">S3 Foundation · Content Management</div>
+    <div class="login-sub">S3 Foundation Â· Content Management</div>
     <input type="password" id="pw-input" placeholder="Enter admin password" autocomplete="current-password"/>
-    <button class="login-btn" onclick="doLogin()">Sign In →</button>
+    <button class="login-btn" onclick="doLogin()">Sign In â</button>
     <div class="login-err" id="login-err"></div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════════════════
+<!-- ââââââââââââââââââââââââââââââââââââââââââââââââââââââ
      MAIN APP
-══════════════════════════════════════════════════════ -->
+ââââââââââââââââââââââââââââââââââââââââââââââââââââââ -->
 <div class="app hidden" id="app">
 
   <!-- Sidebar -->
@@ -223,40 +223,40 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
     <nav class="sidebar-nav">
       <div class="nav-section">Overview</div>
       <div class="nav-item active" data-panel="dashboard" onclick="showPanel('dashboard',this)">
-        <span class="nav-icon">🏠</span> Dashboard
+        <span class="nav-icon">ð </span> Dashboard
       </div>
 
       <div class="nav-section">Content</div>
       <div class="nav-item" data-panel="site" onclick="showPanel('site',this)">
-        <span class="nav-icon">⚙️</span> Site Settings
+        <span class="nav-icon">âï¸</span> Site Settings
       </div>
       <div class="nav-item" data-panel="home" onclick="showPanel('home',this)">
-        <span class="nav-icon">🌅</span> Home Page
+        <span class="nav-icon">ð</span> Home Page
       </div>
       <div class="nav-item" data-panel="about" onclick="showPanel('about',this)">
-        <span class="nav-icon">📖</span> About
+        <span class="nav-icon">ð</span> About
       </div>
       <div class="nav-item" data-panel="programs" onclick="showPanel('programs',this)">
-        <span class="nav-icon">🕉</span> Programs
+        <span class="nav-icon">ð</span> Programs
       </div>
       <div class="nav-item" data-panel="gaushala" onclick="showPanel('gaushala',this)">
-        <span class="nav-icon">🐄</span> Gaushala
+        <span class="nav-icon">ð</span> Gaushala
       </div>
 
       <div class="nav-section">Engage</div>
       <div class="nav-item" data-panel="events" onclick="showPanel('events',this)">
-        <span class="nav-icon">📅</span> Events
+        <span class="nav-icon">ð</span> Events
       </div>
       <div class="nav-item" data-panel="gallery" onclick="showPanel('gallery',this)">
-        <span class="nav-icon">🖼</span> Gallery & Media
+        <span class="nav-icon">ð¼</span> Gallery & Media
       </div>
       <div class="nav-item" data-panel="donate" onclick="showPanel('donate',this)">
-        <span class="nav-icon">🙏</span> Donations
+        <span class="nav-icon">ð</span> Donations
       </div>
     </nav>
     <div class="sidebar-footer">
       <div>Logged in as Admin</div>
-      <button class="logout-btn" onclick="doLogout()">⬅ Sign Out</button>
+      <button class="logout-btn" onclick="doLogout()">â¬ Sign Out</button>
     </div>
   </aside>
 
@@ -265,28 +265,28 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
     <div class="topbar">
       <div class="topbar-title" id="topbar-title">Dashboard</div>
       <div class="topbar-actions">
-        <span class="saved-indicator" id="saved-indicator">✓ Saved</span>
-        <button class="preview-btn" onclick="window.open('../index.html','_blank')">👁 Preview Site</button>
-        <button class="save-btn" id="save-btn" onclick="saveContent()">💾 Save Changes</button>
+        <span class="saved-indicator" id="saved-indicator">â Saved</span>
+        <button class="preview-btn" onclick="window.open('../index.html','_blank')">ð Preview Site</button>
+        <button class="save-btn" id="save-btn" onclick="saveContent()">ð¾ Save Changes</button>
       </div>
     </div>
 
     <div class="content-area">
 
-      <!-- ── DASHBOARD ── -->
+      <!-- ââ DASHBOARD ââ -->
       <div class="section-panel active" id="panel-dashboard">
         <div class="alert info">
-          ℹ️ <span><strong>Welcome!</strong> Use the sidebar to navigate sections. Click <strong>Save Changes</strong> after editing any section to publish your updates.</span>
+          â¹ï¸ <span><strong>Welcome!</strong> Use the sidebar to navigate sections. Click <strong>Save Changes</strong> after editing any section to publish your updates.</span>
         </div>
         <div class="dash-grid" id="dash-stats"></div>
         <div class="card">
-          <div class="card-title"><span class="icon">☁️</span> Cloudinary Media Setup</div>
+          <div class="card-title"><span class="icon">âï¸</span> Cloudinary Media Setup</div>
           <div class="setup-banner">
-            <div class="icon">📸</div>
+            <div class="icon">ð¸</div>
             <div>
               <h4>Set up Cloudinary for image/video uploads</h4>
               <p>To upload images directly from this panel, you need a free Cloudinary account.
-              Go to <a href="https://cloudinary.com" target="_blank">cloudinary.com</a> → sign up free →
+              Go to <a href="https://cloudinary.com" target="_blank">cloudinary.com</a> â sign up free â
               copy your <strong>Cloud Name</strong> and create an <strong>unsigned upload preset</strong>.<br/>
               Then enter those details below.</p>
             </div>
@@ -295,22 +295,22 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
             <div class="form-group">
               <label>Cloudinary Cloud Name</label>
               <input type="text" id="cl-cloud" placeholder="e.g. my-cloud-name" value=""/>
-              <small>Found in your Cloudinary Dashboard → Settings → Cloud name</small>
+              <small>Found in your Cloudinary Dashboard â Settings â Cloud name</small>
             </div>
             <div class="form-group">
               <label>Upload Preset (unsigned)</label>
               <input type="text" id="cl-preset" placeholder="e.g. s3foundation_preset" value=""/>
-              <small>Create at: Settings → Upload → Add upload preset → set to <em>Unsigned</em></small>
+              <small>Create at: Settings â Upload â Add upload preset â set to <em>Unsigned</em></small>
             </div>
           </div>
           <button class="save-btn" style="width:auto;" onclick="saveCloudinaryConfig()">Save Cloudinary Settings</button>
         </div>
       </div>
 
-      <!-- ── SITE SETTINGS ── -->
+      <!-- ââ SITE SETTINGS ââ -->
       <div class="section-panel" id="panel-site">
         <div class="card">
-          <div class="card-title"><span class="icon">🏢</span> Organization Info</div>
+          <div class="card-title"><span class="icon">ð¢</span> Organization Info</div>
           <div class="form-row">
             <div class="form-group">
               <label>Organization Name</label>
@@ -318,7 +318,7 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
             </div>
             <div class="form-group">
               <label>Tagline</label>
-              <input type="text" id="site-tagline" placeholder="Shraddha · Saburi · Samidha"/>
+              <input type="text" id="site-tagline" placeholder="Shraddha Â· Saburi Â· Samidha"/>
             </div>
           </div>
           <div class="form-row full">
@@ -343,7 +343,7 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
           </div>
         </div>
         <div class="card">
-          <div class="card-title"><span class="icon">🕐</span> Visiting Hours</div>
+          <div class="card-title"><span class="icon">ð</span> Visiting Hours</div>
           <div class="form-row three">
             <div class="form-group">
               <label>Weekdays</label>
@@ -351,16 +351,16 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
             </div>
             <div class="form-group">
               <label>Saturday</label>
-              <input type="text" id="hours-saturday" placeholder="8:00 AM – 5:00 PM"/>
+              <input type="text" id="hours-saturday" placeholder="8:00 AM â 5:00 PM"/>
             </div>
             <div class="form-group">
               <label>Sunday</label>
-              <input type="text" id="hours-sunday" placeholder="8:00 AM – 4:00 PM"/>
+              <input type="text" id="hours-sunday" placeholder="8:00 AM â 4:00 PM"/>
             </div>
           </div>
         </div>
         <div class="card">
-          <div class="card-title"><span class="icon">🔗</span> Social Media Links</div>
+          <div class="card-title"><span class="icon">ð</span> Social Media Links</div>
           <div class="form-row">
             <div class="form-group">
               <label>Facebook URL</label>
@@ -383,19 +383,19 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
           </div>
         </div>
         <div class="card">
-          <div class="card-title"><span class="icon">🗺</span> Google Maps Embed</div>
+          <div class="card-title"><span class="icon">ðº</span> Google Maps Embed</div>
           <div class="form-group">
             <label>Google Maps Embed URL</label>
-            <input type="url" id="site-mapurl" placeholder="Paste the embed src URL from Google Maps → Share → Embed a map"/>
-            <small>Go to Google Maps → search your address → Share → Embed a map → copy the src="..." URL only</small>
+            <input type="url" id="site-mapurl" placeholder="Paste the embed src URL from Google Maps â Share â Embed a map"/>
+            <small>Go to Google Maps â search your address â Share â Embed a map â copy the src="..." URL only</small>
           </div>
         </div>
       </div>
 
-      <!-- ── HOME PAGE ── -->
+      <!-- ââ HOME PAGE ââ -->
       <div class="section-panel" id="panel-home">
         <div class="card">
-          <div class="card-title"><span class="icon">🌅</span> Hero Section</div>
+          <div class="card-title"><span class="icon">ð</span> Hero Section</div>
           <div class="form-row full">
             <div class="form-group">
               <label>Main Heading</label>
@@ -432,8 +432,8 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
             <div class="form-group">
               <label>Hero Background Image</label>
               <div class="img-upload-wrap">
-                <div class="img-preview empty" id="prev-home-heroImage">🌅</div>
-                <button class="upload-btn" onclick="openCloudinary('home-heroImage','prev-home-heroImage')">☁ Upload Image</button>
+                <div class="img-preview empty" id="prev-home-heroImage">ð</div>
+                <button class="upload-btn" onclick="openCloudinary('home-heroImage','prev-home-heroImage')">â Upload Image</button>
                 <div class="url-input-wrap">
                   <input type="url" id="home-heroImage" placeholder="Or paste image URL" oninput="updatePreview('home-heroImage','prev-home-heroImage')"/>
                 </div>
@@ -442,8 +442,8 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
             <div class="form-group">
               <label>About Section Image</label>
               <div class="img-upload-wrap">
-                <div class="img-preview empty" id="prev-home-aboutImage">📖</div>
-                <button class="upload-btn" onclick="openCloudinary('home-aboutImage','prev-home-aboutImage')">☁ Upload Image</button>
+                <div class="img-preview empty" id="prev-home-aboutImage">ð</div>
+                <button class="upload-btn" onclick="openCloudinary('home-aboutImage','prev-home-aboutImage')">â Upload Image</button>
                 <div class="url-input-wrap">
                   <input type="url" id="home-aboutImage" placeholder="Or paste image URL" oninput="updatePreview('home-aboutImage','prev-home-aboutImage')"/>
                 </div>
@@ -453,21 +453,21 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
         </div>
 
         <div class="card">
-          <div class="card-title"><span class="icon">📢</span> Scrolling Announcements</div>
+          <div class="card-title"><span class="icon">ð¢</span> Scrolling Announcements</div>
           <div class="list-editor" id="announcements-list"></div>
-          <button class="add-item-btn" onclick="addAnnouncement()">＋ Add Announcement</button>
+          <button class="add-item-btn" onclick="addAnnouncement()">ï¼ Add Announcement</button>
         </div>
 
         <div class="card">
-          <div class="card-title"><span class="icon">📊</span> Stats Counters</div>
+          <div class="card-title"><span class="icon">ð</span> Stats Counters</div>
           <div class="stats-grid" id="stats-grid"></div>
         </div>
       </div>
 
-      <!-- ── ABOUT ── -->
+      <!-- ââ ABOUT ââ -->
       <div class="section-panel" id="panel-about">
         <div class="card">
-          <div class="card-title"><span class="icon">🎯</span> Mission & Story</div>
+          <div class="card-title"><span class="icon">ð¯</span> Mission & Story</div>
           <div class="form-row full">
             <div class="form-group">
               <label>Mission Statement</label>
@@ -482,7 +482,7 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
           </div>
         </div>
         <div class="card">
-          <div class="card-title"><span class="icon">👤</span> Spiritual Leadership</div>
+          <div class="card-title"><span class="icon">ð¤</span> Spiritual Leadership</div>
           <div class="form-row">
             <div class="form-group">
               <label>Founder Name</label>
@@ -502,8 +502,8 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
           <div class="form-group" style="margin-bottom:16px;">
             <label>Founder Photo</label>
             <div class="img-upload-wrap">
-              <div class="img-preview empty" id="prev-about-founderImage">👤</div>
-              <button class="upload-btn" onclick="openCloudinary('about-founderImage','prev-about-founderImage')">☁ Upload Photo</button>
+              <div class="img-preview empty" id="prev-about-founderImage">ð¤</div>
+              <button class="upload-btn" onclick="openCloudinary('about-founderImage','prev-about-founderImage')">â Upload Photo</button>
               <div class="url-input-wrap"><input type="url" id="about-founderImage" placeholder="Or paste URL" oninput="updatePreview('about-founderImage','prev-about-founderImage')"/></div>
             </div>
           </div>
@@ -520,29 +520,29 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
           <div class="form-group">
             <label>Chief Acharya Photo</label>
             <div class="img-upload-wrap">
-              <div class="img-preview empty" id="prev-about-chiefImage">👤</div>
-              <button class="upload-btn" onclick="openCloudinary('about-chiefAcharyaImage','prev-about-chiefImage')">☁ Upload Photo</button>
+              <div class="img-preview empty" id="prev-about-chiefImage">ð¤</div>
+              <button class="upload-btn" onclick="openCloudinary('about-chiefAcharyaImage','prev-about-chiefImage')">â Upload Photo</button>
               <div class="url-input-wrap"><input type="url" id="about-chiefAcharyaImage" placeholder="Or paste URL" oninput="updatePreview('about-chiefAcharyaImage','prev-about-chiefImage')"/></div>
             </div>
           </div>
         </div>
         <div class="card">
-          <div class="card-title"><span class="icon">📅</span> History Timeline</div>
+          <div class="card-title"><span class="icon">ð</span> History Timeline</div>
           <div id="timeline-list" class="list-editor"></div>
-          <button class="add-item-btn" onclick="addTimelineItem()">＋ Add Timeline Entry</button>
+          <button class="add-item-btn" onclick="addTimelineItem()">ï¼ Add Timeline Entry</button>
         </div>
       </div>
 
-      <!-- ── PROGRAMS ── -->
+      <!-- ââ PROGRAMS ââ -->
       <div class="section-panel" id="panel-programs">
-        <div class="alert info">ℹ️ Edit each program's description and upload a representative image. Changes apply to both the home page cards and the Programs page.</div>
+        <div class="alert info">â¹ï¸ Edit each program's description and upload a representative image. Changes apply to both the home page cards and the Programs page.</div>
         <div class="item-cards" id="programs-cards"></div>
       </div>
 
-      <!-- ── GAUSHALA ── -->
+      <!-- ââ GAUSHALA ââ -->
       <div class="section-panel" id="panel-gaushala">
         <div class="card">
-          <div class="card-title"><span class="icon">🐄</span> Gaushala Overview</div>
+          <div class="card-title"><span class="icon">ð</span> Gaushala Overview</div>
           <div class="form-row">
             <div class="form-group"><label>Total Cows</label><input type="text" id="g-totalCows" placeholder="200+"/></div>
             <div class="form-group"><label>Acres</label><input type="text" id="g-acres" placeholder="400+"/></div>
@@ -556,45 +556,45 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
           <div class="form-group">
             <label>Gaushala Hero Image</label>
             <div class="img-upload-wrap">
-              <div class="img-preview empty" id="prev-g-heroImage">🐄</div>
-              <button class="upload-btn" onclick="openCloudinary('g-heroImage','prev-g-heroImage')">☁ Upload Image</button>
+              <div class="img-preview empty" id="prev-g-heroImage">ð</div>
+              <button class="upload-btn" onclick="openCloudinary('g-heroImage','prev-g-heroImage')">â Upload Image</button>
               <div class="url-input-wrap"><input type="url" id="g-heroImage" placeholder="Or paste URL" oninput="updatePreview('g-heroImage','prev-g-heroImage')"/></div>
             </div>
           </div>
         </div>
         <div class="card">
-          <div class="card-title"><span class="icon">🛒</span> Panchagavya Products</div>
+          <div class="card-title"><span class="icon">ð</span> Panchagavya Products</div>
           <div class="item-cards" id="products-cards"></div>
         </div>
       </div>
 
-      <!-- ── EVENTS ── -->
+      <!-- ââ EVENTS ââ -->
       <div class="section-panel" id="panel-events">
-        <div class="alert info">ℹ️ Add upcoming and past events. Toggle <strong>Upcoming</strong> to show/hide in the upcoming events section. Mark one event as <strong>Featured</strong> to show it as the banner event.</div>
+        <div class="alert info">â¹ï¸ Add upcoming and past events. Toggle <strong>Upcoming</strong> to show/hide in the upcoming events section. Mark one event as <strong>Featured</strong> to show it as the banner event.</div>
         <div class="item-cards" id="events-cards"></div>
-        <button class="add-card-btn" onclick="addEvent()">＋ Add New Event</button>
+        <button class="add-card-btn" onclick="addEvent()">ï¼ Add New Event</button>
       </div>
 
-      <!-- ── GALLERY & MEDIA ── -->
+      <!-- ââ GALLERY & MEDIA ââ -->
       <div class="section-panel" id="panel-gallery">
         <div class="card">
-          <div class="card-title"><span class="icon">📷</span> Photo Gallery</div>
-          <div class="alert warning">⚡ Upload images to Cloudinary using the ☁ button, or paste any direct image URL. Categories: yagna · gaushala · festival · sadhana</div>
+          <div class="card-title"><span class="icon">ð·</span> Photo Gallery</div>
+          <div class="alert warning">â¡ Upload images to Cloudinary using the â button, or paste any direct image URL. Categories: yagna Â· gaushala Â· festival Â· sadhana</div>
           <div class="item-cards" id="photos-cards"></div>
-          <button class="add-card-btn" onclick="addPhoto()">＋ Add Photo</button>
+          <button class="add-card-btn" onclick="addPhoto()">ï¼ Add Photo</button>
         </div>
         <div class="card">
-          <div class="card-title"><span class="icon">▶️</span> Video Gallery</div>
-          <div class="alert info">ℹ️ Paste YouTube video URLs (e.g. https://youtube.com/watch?v=XXXX). The thumbnail can be left blank — it will be auto-generated from YouTube.</div>
+          <div class="card-title"><span class="icon">â¶ï¸</span> Video Gallery</div>
+          <div class="alert info">â¹ï¸ Paste YouTube video URLs (e.g. https://youtube.com/watch?v=XXXX). The thumbnail can be left blank â it will be auto-generated from YouTube.</div>
           <div class="item-cards" id="videos-cards"></div>
-          <button class="add-card-btn" onclick="addVideo()">＋ Add Video</button>
+          <button class="add-card-btn" onclick="addVideo()">ï¼ Add Video</button>
         </div>
       </div>
 
-      <!-- ── DONATIONS ── -->
+      <!-- ââ DONATIONS ââ -->
       <div class="section-panel" id="panel-donate">
         <div class="card">
-          <div class="card-title"><span class="icon">🙏</span> Donation Page Settings</div>
+          <div class="card-title"><span class="icon">ð</span> Donation Page Settings</div>
           <div class="form-row">
             <div class="form-group"><label>EIN / Tax ID</label><input type="text" id="donate-ein" placeholder="XX-XXXXXXX"/></div>
             <div class="form-group"><label>Check Payable To</label><input type="text" id="donate-checkTo" placeholder="S3 Foundation"/></div>
@@ -603,11 +603,11 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
           <div class="form-row full"><div class="form-group"><label>Hero Subtitle</label><textarea id="donate-heroSubtitle" rows="2"></textarea></div></div>
         </div>
         <div class="card">
-          <div class="card-title"><span class="icon">💰</span> Quick Donation Amounts</div>
+          <div class="card-title"><span class="icon">ð°</span> Quick Donation Amounts</div>
           <div id="amounts-list" class="list-editor"></div>
         </div>
         <div class="card">
-          <div class="card-title"><span class="icon">🏅</span> Sponsorship Tiers</div>
+          <div class="card-title"><span class="icon">ð</span> Sponsorship Tiers</div>
           <div class="item-cards" id="tiers-cards"></div>
         </div>
       </div>
@@ -617,14 +617,14 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
 </div><!-- /app -->
 
 <script>
-// ══════════════════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 //  GLOBALS
-// ══════════════════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 let AUTH_TOKEN = sessionStorage.getItem('s3_admin_token') || '';
 let CONTENT = {};
 const API_BASE = window.location.origin;
 
-// ── Login ────────────────────────────────────────────────
+// ââ Login ââââââââââââââââââââââââââââââââââââââââââââââââ
 async function doLogin() {
   const pw = document.getElementById('pw-input').value.trim();
   document.getElementById('login-err').textContent = '';
@@ -668,7 +668,7 @@ function doLogout() {
   }
 })();
 
-// ── Load & Save Content ──────────────────────────────────
+// ââ Load & Save Content ââââââââââââââââââââââââââââââââââ
 async function loadContent() {
   const r = await fetch(`${API_BASE}/api/content`);
   CONTENT = await r.json();
@@ -677,7 +677,7 @@ async function loadContent() {
 
 async function saveContent() {
   const btn = document.getElementById('save-btn');
-  btn.disabled = true; btn.textContent = '⏳ Saving...';
+  btn.disabled = true; btn.textContent = 'â³ Saving...';
   harvestAll();
   CONTENT._updatedAt = new Date().toISOString();
   try {
@@ -696,10 +696,10 @@ async function saveContent() {
   } catch(e) {
     alert('Save error: ' + e.message);
   }
-  btn.disabled = false; btn.textContent = '💾 Save Changes';
+  btn.disabled = false; btn.textContent = 'ð¾ Save Changes';
 }
 
-// ── Panel Navigation ─────────────────────────────────────
+// ââ Panel Navigation âââââââââââââââââââââââââââââââââââââ
 const PANEL_TITLES = {
   dashboard:'Dashboard', site:'Site Settings', home:'Home Page',
   about:'About', programs:'Programs', gaushala:'Gaushala',
@@ -713,7 +713,7 @@ function showPanel(id, el) {
   document.getElementById('topbar-title').textContent = PANEL_TITLES[id] || id;
 }
 
-// ── Cloudinary ───────────────────────────────────────────
+// ââ Cloudinary âââââââââââââââââââââââââââââââââââââââââââ
 function getCloudinaryConfig() {
   return { cloud: localStorage.getItem('cl_cloud')||'', preset: localStorage.getItem('cl_preset')||'' };
 }
@@ -745,13 +745,13 @@ function updatePreview(inputId, previewId) {
     el.innerHTML = `<img src="${url}" alt="preview"/>`;
     el.classList.remove('empty');
   } else {
-    el.innerHTML = '🖼'; el.classList.add('empty');
+    el.innerHTML = 'ð¼'; el.classList.add('empty');
   }
 }
 
-// ══════════════════════════════════════════════════════════
-//  POPULATE (content → UI)
-// ══════════════════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+//  POPULATE (content â UI)
+// ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 function populateAll() {
   populateDashboard();
   populateSite();
@@ -811,7 +811,7 @@ function populateHome() {
 
 function makeAnnouncementItem(text) {
   const div = document.createElement('div'); div.className='list-item';
-  div.innerHTML = `<span class="drag-handle">⠿</span><input type="text" value="${escHtml(text)}" placeholder="Announcement text"/><button class="del-btn" onclick="this.closest('.list-item').remove()">✕</button>`;
+  div.innerHTML = `<span class="drag-handle">â ¿</span><input type="text" value="${escHtml(text)}" placeholder="Announcement text"/><button class="del-btn" onclick="this.closest('.list-item').remove()">â</button>`;
   return div;
 }
 function addAnnouncement() {
@@ -841,7 +841,7 @@ function populateAbout() {
 }
 function makeTimelineItem(year='', event='') {
   const d=document.createElement('div'); d.className='list-item';
-  d.innerHTML=`<input type="text" value="${escHtml(year)}" placeholder="Year" style="width:70px;flex-shrink:0;font-weight:700;color:var(--brand);"/><input type="text" value="${escHtml(event)}" placeholder="What happened?" style="flex:1;"/><button class="del-btn" onclick="this.closest('.list-item').remove()">✕</button>`;
+  d.innerHTML=`<input type="text" value="${escHtml(year)}" placeholder="Year" style="width:70px;flex-shrink:0;font-weight:700;color:var(--brand);"/><input type="text" value="${escHtml(event)}" placeholder="What happened?" style="flex:1;"/><button class="del-btn" onclick="this.closest('.list-item').remove()">â</button>`;
   return d;
 }
 function addTimelineItem() {
@@ -861,8 +861,8 @@ function populatePrograms() {
         <div class="form-group"><label>Schedule</label><input type="text" id="prog-sched-${i}" value="${escHtml(p.schedule||'')}"/></div>
         <div class="form-group"><label>Image</label>
           <div class="img-upload-wrap">
-            <div class="img-preview ${p.image?'':'empty'}" id="prev-prog-${i}">${p.image?`<img src="${p.image}"/>`:'🕉'}</div>
-            <button class="upload-btn" onclick="openCloudinary('prog-img-${i}','prev-prog-${i}')">☁ Upload</button>
+            <div class="img-preview ${p.image?'':'empty'}" id="prev-prog-${i}">${p.image?`<img src="${p.image}"/>`:'ð'}</div>
+            <button class="upload-btn" onclick="openCloudinary('prog-img-${i}','prev-prog-${i}')">â Upload</button>
             <div class="url-input-wrap"><input type="url" id="prog-img-${i}" value="${escHtml(p.image||'')}" placeholder="Image URL" oninput="updatePreview('prog-img-${i}','prev-prog-${i}')"/></div>
           </div>
         </div>
@@ -882,8 +882,8 @@ function populateGaushala() {
         <div class="form-group"><label>Description</label><input type="text" id="prod-desc-${i}" value="${escHtml(p.description)}"/></div>
         <div class="form-group"><label>Image</label>
           <div class="img-upload-wrap">
-            <div class="img-preview ${p.image?'':'empty'}" id="prev-prod-${i}">${p.image?`<img src="${p.image}"/>`:'🛒'}</div>
-            <button class="upload-btn" onclick="openCloudinary('prod-img-${i}','prev-prod-${i}')">☁ Upload</button>
+            <div class="img-preview ${p.image?'':'empty'}" id="prev-prod-${i}">${p.image?`<img src="${p.image}"/>`:'ð'}</div>
+            <button class="upload-btn" onclick="openCloudinary('prod-img-${i}','prev-prod-${i}')">â Upload</button>
             <div class="url-input-wrap"><input type="url" id="prod-img-${i}" value="${escHtml(p.image||'')}" placeholder="Image URL" oninput="updatePreview('prod-img-${i}','prev-prod-${i}')"/></div>
           </div>
         </div>
@@ -914,8 +914,8 @@ function renderEventCards(events) {
         <div class="form-group"><label>Description</label><textarea id="evt-desc-${i}" rows="2">${escHtml(e.description)}</textarea></div>
         <div class="form-group"><label>Image</label>
           <div class="img-upload-wrap">
-            <div class="img-preview ${e.image?'':'empty'}" id="prev-evt-${i}">${e.image?`<img src="${e.image}"/>`:'📅'}</div>
-            <button class="upload-btn" onclick="openCloudinary('evt-img-${i}','prev-evt-${i}')">☁ Upload</button>
+            <div class="img-preview ${e.image?'':'empty'}" id="prev-evt-${i}">${e.image?`<img src="${e.image}"/>`:'ð'}</div>
+            <button class="upload-btn" onclick="openCloudinary('evt-img-${i}','prev-evt-${i}')">â Upload</button>
             <div class="url-input-wrap"><input type="url" id="evt-img-${i}" value="${escHtml(e.image||'')}" placeholder="Image URL" oninput="updatePreview('evt-img-${i}','prev-evt-${i}')"/></div>
           </div>
         </div>
@@ -926,7 +926,7 @@ function renderEventCards(events) {
         </div>
       </div>
       <div class="item-card-footer">
-        <button class="icon-btn danger" title="Delete event" onclick="deleteEvent(${i})">🗑 Delete</button>
+        <button class="icon-btn danger" title="Delete event" onclick="deleteEvent(${i})">ð Delete</button>
       </div>
     </div>`).join('');
 }
@@ -952,8 +952,8 @@ function renderPhotoCards(photos) {
       <div class="item-card-body">
         <div class="form-group"><label>Image</label>
           <div class="img-upload-wrap">
-            <div class="img-preview ${p.url?'':'empty'}" id="prev-photo-${i}">${p.url?`<img src="${p.url}"/>`:'📷'}</div>
-            <button class="upload-btn" onclick="openCloudinary('photo-url-${i}','prev-photo-${i}')">☁ Upload</button>
+            <div class="img-preview ${p.url?'':'empty'}" id="prev-photo-${i}">${p.url?`<img src="${p.url}"/>`:'ð·'}</div>
+            <button class="upload-btn" onclick="openCloudinary('photo-url-${i}','prev-photo-${i}')">â Upload</button>
             <div class="url-input-wrap"><input type="url" id="photo-url-${i}" value="${escHtml(p.url||'')}" placeholder="Image URL" oninput="updatePreview('photo-url-${i}','prev-photo-${i}')"/></div>
           </div>
         </div>
@@ -964,7 +964,7 @@ function renderPhotoCards(photos) {
           </div>
         </div>
       </div>
-      <div class="item-card-footer"><button class="icon-btn danger" onclick="deletePhoto(${i})">🗑 Delete</button></div>
+      <div class="item-card-footer"><button class="icon-btn danger" onclick="deletePhoto(${i})">ð Delete</button></div>
     </div>`).join('');
 }
 function addPhoto() {
@@ -983,8 +983,8 @@ function renderVideoCards(videos) {
         <div class="form-group"><label>Title</label><input type="text" id="vid-title-${i}" value="${escHtml(v.title||'')}"/></div>
         <div class="form-group"><label>Thumbnail URL (optional)</label>
           <div class="img-upload-wrap">
-            <div class="img-preview ${v.thumbnail?'':'empty'}" id="prev-vid-${i}">${v.thumbnail?`<img src="${v.thumbnail}"/>`:'▶'}</div>
-            <button class="upload-btn" onclick="openCloudinary('vid-thumb-${i}','prev-vid-${i}')">☁ Upload</button>
+            <div class="img-preview ${v.thumbnail?'':'empty'}" id="prev-vid-${i}">${v.thumbnail?`<img src="${v.thumbnail}"/>`:'â¶'}</div>
+            <button class="upload-btn" onclick="openCloudinary('vid-thumb-${i}','prev-vid-${i}')">â Upload</button>
             <div class="url-input-wrap"><input type="url" id="vid-thumb-${i}" value="${escHtml(v.thumbnail||'')}" placeholder="Thumbnail URL" oninput="updatePreview('vid-thumb-${i}','prev-vid-${i}')"/></div>
           </div>
         </div>
@@ -992,7 +992,7 @@ function renderVideoCards(videos) {
           <select id="vid-cat-${i}">${['yagna','gaushala','festival','sadhana'].map(c=>`<option ${v.category===c?'selected':''}>${c}</option>`).join('')}</select>
         </div>
       </div>
-      <div class="item-card-footer"><button class="icon-btn danger" onclick="deleteVideo(${i})">🗑 Delete</button></div>
+      <div class="item-card-footer"><button class="icon-btn danger" onclick="deleteVideo(${i})">ð Delete</button></div>
     </div>`).join('');
 }
 function addVideo() {
@@ -1013,7 +1013,7 @@ function populateDonate() {
   const labels  = d.amountLabels||{};
   amounts.forEach((amt,i) => {
     const div = document.createElement('div'); div.className='list-item';
-    div.innerHTML = `<span style="color:var(--muted);font-size:.8rem;width:20px;">$</span><input type="number" value="${amt}" placeholder="Amount" style="width:80px;flex-shrink:0;" data-amt-idx="${i}"/><input type="text" value="${escHtml(labels[amt]||'')}" placeholder="Label (e.g. 1 Day Cow Feed)" style="flex:1;" data-lbl-idx="${i}"/><button class="del-btn" onclick="this.closest('.list-item').remove()">✕</button>`;
+    div.innerHTML = `<span style="color:var(--muted);font-size:.8rem;width:20px;">$</span><input type="number" value="${amt}" placeholder="Amount" style="width:80px;flex-shrink:0;" data-amt-idx="${i}"/><input type="text" value="${escHtml(labels[amt]||'')}" placeholder="Label (e.g. 1 Day Cow Feed)" style="flex:1;" data-lbl-idx="${i}"/><button class="del-btn" onclick="this.closest('.list-item').remove()">â</button>`;
     al.appendChild(div);
   });
   // Tiers
@@ -1035,9 +1035,9 @@ function populateDonate() {
     </div>`).join('');
 }
 
-// ══════════════════════════════════════════════════════════
-//  HARVEST (UI → content)
-// ══════════════════════════════════════════════════════════
+// ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+//  HARVEST (UI â content)
+// ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 function gv(id) { const el=document.getElementById(id); return el?el.value:''; }
 function toggleEl(el) { el.classList.toggle('on'); }
 function isOn(id) { const el=document.getElementById(id); return el&&el.classList.contains('on'); }
@@ -1139,7 +1139,7 @@ function harvestDonate() {
   const amtItems = [...document.querySelectorAll('#amounts-list .list-item')];
   const amounts = [], amountLabels = {};
   amtItems.forEach(item=>{
-    const [, amtIn, lblIn] = item.querySelectorAll('input');
+    const [amtIn, lblIn] = item.querySelectorAll('input');
     const a = parseInt(amtIn?.value); const l = lblIn?.value||'';
     if (a) { amounts.push(a); amountLabels[a]=l; }
   });
@@ -1157,7 +1157,7 @@ function harvestDonate() {
   };
 }
 
-// ── Utility ──────────────────────────────────────────────
+// ââ Utility ââââââââââââââââââââââââââââââââââââââââââââââ
 function escHtml(str='') {
   return String(str).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
