@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Donate — S3 Foundation | Memphis, TN</title>
+  <title>Donate â S3 Foundation | Memphis, TN</title>
   <link rel="stylesheet" href="css/style.css"/>
   <style>
     .donate-hero {
@@ -86,39 +86,55 @@
     .pay-method { display: flex; align-items: center; gap: 8px; padding: 10px 16px; border: 1.5px solid var(--border); border-radius: 8px; background: var(--cream); font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all var(--transition); }
     .pay-method:hover { border-color: var(--saffron); }
     .pay-method input[type="radio"] { accent-color: var(--saffron); }
+  
+    /* ── RESPONSIVE GRIDS (replacing inline styles) ── */
+    .donate-main-grid    { display: grid; grid-template-columns: 1.2fr 1fr; gap: 50px; align-items: start; }
+    .donate-amounts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+    .donate-contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    @media (max-width: 768px) {
+      .donate-main-grid { grid-template-columns: 1fr; gap: 32px; }
+      .donate-amounts-grid { grid-template-columns: repeat(3, 1fr); } /* keep 3-col for amounts – they're small */
+      .donate-contact-grid { grid-template-columns: 1fr; gap: 12px; }
+      .donation-form-card { padding: 24px 18px; }
+      .donate-hero { padding: 110px 0 60px; }
+    }
+    @media (max-width: 400px) {
+      .donate-amounts-grid { grid-template-columns: repeat(2, 1fr); }
+    }
   </style>
 </head>
 <body>
 <nav class="navbar solid"><div class="container nav-inner">
-  <a href="index.html" class="nav-logo"><div class="nav-logo-icon">S3</div><div class="nav-logo-text"><span class="org-name">S3 Foundation</span><span class="org-tagline">Shraddha · Saburi · Samidha</span></div></a>
+  <a href="index.html" class="nav-logo"><div class="nav-logo-icon">S3</div><div class="nav-logo-text"><span class="org-name">S3 Foundation</span><span class="org-tagline">Shraddha Â· Saburi Â· Samidha</span></div></a>
   <div class="nav-links">
     <a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html">Programs</a>
     <a href="gaushala.html">Gaushala</a><a href="events.html">Events</a><a href="gallery.html">Gallery</a>
-    <a href="contact.html">Contact</a><a href="donate.html" class="nav-donate active">Donate 🙏</a>
+    <a href="contact.html">Contact</a><a href="donate.html" class="nav-donate active">Donate ð</a>
   </div>
   <div class="hamburger"><span></span><span></span><span></span></div>
 </div></nav>
-<div class="mobile-nav"><span class="mobile-nav-close">✕</span>
+<div class="mobile-nav"><span class="mobile-nav-close">â</span>
   <a href="index.html">Home</a><a href="about.html">About</a><a href="programs.html">Programs</a>
   <a href="gaushala.html">Gaushala</a><a href="events.html">Events</a><a href="gallery.html">Gallery</a>
-  <a href="contact.html">Contact</a><a href="donate.html" style="color:var(--saffron-light);">🙏 Donate</a>
+  <a href="contact.html">Contact</a><a href="donate.html" style="color:var(--saffron-light);">ð Donate</a>
 </div>
 
 <section class="donate-hero">
   <div class="container">
     <span style="display:block;font-size:0.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold-light);margin-bottom:14px;">Support the Mission</span>
     <h1 style="color:white;margin-bottom:14px;">Your Donation Powers Dharma</h1>
-    <div class="divider" style="margin:16px auto;"><span>✦</span></div>
+    <div class="divider" style="margin:16px auto;"><span>â¦</span></div>
     <p style="color:rgba(255,255,255,0.75);max-width:600px;margin:0 auto 14px;font-size:1.05rem;">S3 Foundation is a 501(c)(3) nonprofit. All programs are free for participants. Your generous donation makes Vedic yagnas, Gaushala seva, and spiritual programs possible.</p>
     <p style="color:var(--gold-light);font-size:0.9rem;font-weight:700;">All donations are tax-deductible to the extent permitted by law.</p>
-    <nav class="breadcrumb" style="margin-top:20px;"><a href="index.html" style="color:rgba(255,255,255,0.6);">Home</a><span style="color:rgba(255,255,255,0.3);">›</span><span style="color:rgba(255,255,255,0.7);">Donate</span></nav>
+    <nav class="breadcrumb" style="margin-top:20px;"><a href="index.html" style="color:rgba(255,255,255,0.6);">Home</a><span style="color:rgba(255,255,255,0.3);">âº</span><span style="color:rgba(255,255,255,0.7);">Donate</span></nav>
   </div>
 </section>
 
 <!-- DONATION FORM + IMPACT -->
 <section class="section" style="background:var(--cream);">
   <div class="container">
-    <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:50px;align-items:start;">
+    <div class="donate-main-grid">
 
       <!-- DONATION FORM -->
       <div class="donation-form-card reveal">
@@ -132,7 +148,7 @@
         </div>
 
         <!-- Amount Buttons -->
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;">
+        <div class="donate-amounts-grid">
           <button class="amount-btn" data-amount="11" onclick="selectAmount(this)">$11<span class="amount-sub">Feed 1 Day</span></button>
           <button class="amount-btn" data-amount="51" onclick="selectAmount(this)">$51<span class="amount-sub">Week of Care</span></button>
           <button class="amount-btn active" data-amount="101" onclick="selectAmount(this)">$101<span class="amount-sub">Agnihotra Seva</span></button>
@@ -150,7 +166,7 @@
         <div class="form-group">
           <label>Donate Toward</label>
           <select class="form-control">
-            <option>General Fund — Where Needed Most</option>
+            <option>General Fund â Where Needed Most</option>
             <option>Gaushala Seva (Cow Care &amp; Feed)</option>
             <option>Laksha Chandi Maha Yagnam</option>
             <option>Agnihotra Daily Program</option>
@@ -161,7 +177,7 @@
         </div>
 
         <!-- Donor Info -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div class="donate-contact-grid">
           <div class="form-group"><label>First Name</label><input type="text" class="form-control" placeholder="Rama"/></div>
           <div class="form-group"><label>Last Name</label><input type="text" class="form-control" placeholder="Krishna"/></div>
         </div>
@@ -173,16 +189,16 @@
         <div style="margin-bottom:24px;">
           <label style="font-weight:700;font-size:0.88rem;color:var(--dark-brown);display:block;margin-bottom:10px;">Payment Method</label>
           <div class="pay-methods">
-            <label class="pay-method"><input type="radio" name="payment" value="card" checked/> 💳 Credit / Debit Card</label>
-            <label class="pay-method"><input type="radio" name="payment" value="paypal"/> 🅿 PayPal</label>
-            <label class="pay-method"><input type="radio" name="payment" value="bank"/> 🏦 Bank Transfer (ACH)</label>
-            <label class="pay-method"><input type="radio" name="payment" value="check"/> 📬 Check by Mail</label>
+            <label class="pay-method"><input type="radio" name="payment" value="card" checked/> ð³ Credit / Debit Card</label>
+            <label class="pay-method"><input type="radio" name="payment" value="paypal"/> ð¿ PayPal</label>
+            <label class="pay-method"><input type="radio" name="payment" value="bank"/> ð¦ Bank Transfer (ACH)</label>
+            <label class="pay-method"><input type="radio" name="payment" value="check"/> ð¬ Check by Mail</label>
           </div>
         </div>
 
-        <div class="alert alert-success" style="margin-bottom:20px;">🔒 <strong>Secure &amp; Tax-Deductible.</strong> S3 Foundation is a 501(c)(3) nonprofit. You will receive a donation receipt via email for tax purposes.</div>
+        <div class="alert alert-success" style="margin-bottom:20px;">ð <strong>Secure &amp; Tax-Deductible.</strong> S3 Foundation is a 501(c)(3) nonprofit. You will receive a donation receipt via email for tax purposes.</div>
 
-        <button type="button" onclick="submitDonation()" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;font-size:1rem;">🙏 Complete Donation</button>
+        <button type="button" onclick="submitDonation()" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;font-size:1rem;">ð Complete Donation</button>
 
         <p style="font-size:0.8rem;color:var(--text-light);text-align:center;margin-top:16px;">By donating, you agree to our <a href="#" style="color:var(--saffron);">Privacy Policy</a>. Your information is never sold.</p>
       </div>
@@ -193,19 +209,19 @@
         <h2 style="font-size:1.5rem;margin-bottom:24px;">Every Dollar Matters</h2>
         <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:30px;">
           <div class="impact-card"><span class="amount">$11</span><h4>One Day of Cow Feed</h4><p>Feeds and nourishes one Gir cow for an entire day with fresh organic fodder and supplements.</p></div>
-          <div class="impact-card"><span class="amount">$51</span><h4>One Week of Gaushala Care</h4><p>Covers a week of comprehensive cow care — feeding, grooming, veterinary check-ups, and shelter.</p></div>
-          <div class="impact-card"><span class="amount">$101</span><h4>Daily Agnihotra Program</h4><p>Sponsors one day of Agnihotra — covering materials (ghee, cow dung, copper pyramid) and priest seva.</p></div>
-          <div class="impact-card"><span class="amount">$501</span><h4>Homa Sponsorship</h4><p>Fully sponsors a special Homa ceremony — including priest dakshinam, materials, and prasad for 50+ people.</p></div>
-          <div class="impact-card" style="border:2px solid var(--gold);"><span class="amount">$1,008</span><h4>Monthly Cow Sponsor</h4><p>Become the proud monthly sponsor of one Gir cow — covering all care for a full month. Receive a photo and update!</p></div>
+          <div class="impact-card"><span class="amount">$51</span><h4>One Week of Gaushala Care</h4><p>Covers a week of comprehensive cow care â feeding, grooming, veterinary check-ups, and shelter.</p></div>
+          <div class="impact-card"><span class="amount">$101</span><h4>Daily Agnihotra Program</h4><p>Sponsors one day of Agnihotra â covering materials (ghee, cow dung, copper pyramid) and priest seva.</p></div>
+          <div class="impact-card"><span class="amount">$501</span><h4>Homa Sponsorship</h4><p>Fully sponsors a special Homa ceremony â including priest dakshinam, materials, and prasad for 50+ people.</p></div>
+          <div class="impact-card" style="border:2px solid var(--gold);"><span class="amount">$1,008</span><h4>Monthly Cow Sponsor</h4><p>Become the proud monthly sponsor of one Gir cow â covering all care for a full month. Receive a photo and update!</p></div>
         </div>
         <div style="background:var(--cream-dark);border-radius:var(--radius-lg);padding:24px;border:1px solid var(--border);">
           <h4 style="margin-bottom:12px;font-size:1rem;">Other Ways to Give</h4>
           <ul style="color:var(--text-light);font-size:0.88rem;display:flex;flex-direction:column;gap:10px;">
-            <li>📬 <strong>Check:</strong> Mail to S3 Foundation, 7945 Deadfall Road, Arlington, TN 38002</li>
-            <li>🏦 <strong>Wire Transfer:</strong> Contact us for bank details</li>
-            <li>📦 <strong>In-Kind:</strong> Donate organic fodder, hay, or supplies</li>
-            <li>🐄 <strong>Adopt a Cow:</strong> Sponsor a specific Gir cow with your name</li>
-            <li>📅 <strong>Planned Giving:</strong> Include S3 Foundation in your will or estate plan</li>
+            <li>ð¬ <strong>Check:</strong> Mail to S3 Foundation, 7945 Deadfall Road, Arlington, TN 38002</li>
+            <li>ð¦ <strong>Wire Transfer:</strong> Contact us for bank details</li>
+            <li>ð¦ <strong>In-Kind:</strong> Donate organic fodder, hay, or supplies</li>
+            <li>ð <strong>Adopt a Cow:</strong> Sponsor a specific Gir cow with your name</li>
+            <li>ð <strong>Planned Giving:</strong> Include S3 Foundation in your will or estate plan</li>
           </ul>
         </div>
       </div>
@@ -219,8 +235,8 @@
     <div class="section-header">
       <span class="eyebrow">For Events &amp; Organizations</span>
       <h2>Yagna Sponsorship Tiers</h2>
-      <div class="divider"><span>✦</span></div>
-      <p>Sponsor our sacred Yagnas and Homas at any level — your name and family are offered in prayer throughout the ritual.</p>
+      <div class="divider"><span>â¦</span></div>
+      <p>Sponsor our sacred Yagnas and Homas at any level â your name and family are offered in prayer throughout the ritual.</p>
     </div>
     <div class="grid-3">
       <div class="sponsor-tier reveal">
@@ -230,28 +246,28 @@
         </div>
         <div class="sponsor-tier-body">
           <ul>
-            <li><span class="check">✦</span>Name mentioned during opening prayers</li>
-            <li><span class="check">✦</span>Certificate of participation</li>
-            <li><span class="check">✦</span>Prasad sent to your home</li>
-            <li><span class="check">✦</span>Tax receipt via email</li>
+            <li><span class="check">â¦</span>Name mentioned during opening prayers</li>
+            <li><span class="check">â¦</span>Certificate of participation</li>
+            <li><span class="check">â¦</span>Prasad sent to your home</li>
+            <li><span class="check">â¦</span>Tax receipt via email</li>
           </ul>
           <a href="#" onclick="document.querySelector('[data-amount=\"251\"]').click();window.scrollTo({top:0,behavior:'smooth'});" class="btn btn-primary" style="width:100%;justify-content:center;">Sponsor Now</a>
         </div>
       </div>
       <div class="sponsor-tier featured reveal">
         <div class="sponsor-tier-header gold">
-          <span class="featured-badge">⭐ Most Popular</span>
+          <span class="featured-badge">â­ Most Popular</span>
           <span class="tier-name">Yajamana</span>
           <div><span class="tier-amount">$1,008</span><span class="tier-per"> / event</span></div>
         </div>
         <div class="sponsor-tier-body">
           <ul>
-            <li><span class="check">✦</span>Name recited throughout the yagna</li>
-            <li><span class="check">✦</span>Sankalpam (personal prayer) performed for your family</li>
-            <li><span class="check">✦</span>Gold-level certificate</li>
-            <li><span class="check">✦</span>Special prasad package</li>
-            <li><span class="check">✦</span>Personalized blessing video</li>
-            <li><span class="check">✦</span>Tax receipt + detailed receipt</li>
+            <li><span class="check">â¦</span>Name recited throughout the yagna</li>
+            <li><span class="check">â¦</span>Sankalpam (personal prayer) performed for your family</li>
+            <li><span class="check">â¦</span>Gold-level certificate</li>
+            <li><span class="check">â¦</span>Special prasad package</li>
+            <li><span class="check">â¦</span>Personalized blessing video</li>
+            <li><span class="check">â¦</span>Tax receipt + detailed receipt</li>
           </ul>
           <a href="#" onclick="document.querySelector('[data-amount=\"custom\"]').click();window.scrollTo({top:0,behavior:'smooth'});" class="btn btn-gold" style="width:100%;justify-content:center;">Sponsor Now</a>
         </div>
@@ -263,12 +279,12 @@
         </div>
         <div class="sponsor-tier-body">
           <ul>
-            <li><span class="check">✦</span>Principal sponsor recognition</li>
-            <li><span class="check">✦</span>Full Sankalpam for entire family lineage</li>
-            <li><span class="check">✦</span>Named on all event materials</li>
-            <li><span class="check">✦</span>Personal audience with Acharya</li>
-            <li><span class="check">✦</span>VIP seating at the Yagna</li>
-            <li><span class="check">✦</span>Lifetime recognition plaque</li>
+            <li><span class="check">â¦</span>Principal sponsor recognition</li>
+            <li><span class="check">â¦</span>Full Sankalpam for entire family lineage</li>
+            <li><span class="check">â¦</span>Named on all event materials</li>
+            <li><span class="check">â¦</span>Personal audience with Acharya</li>
+            <li><span class="check">â¦</span>VIP seating at the Yagna</li>
+            <li><span class="check">â¦</span>Lifetime recognition plaque</li>
           </ul>
           <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;">Contact Us</a>
         </div>
@@ -283,24 +299,24 @@
     <h2 style="margin-bottom:40px;">Why Give to S3 Foundation?</h2>
     <div class="grid-4">
       <div class="reveal" style="padding:24px;">
-        <div style="font-size:2.4rem;margin-bottom:12px;">🏛</div>
+        <div style="font-size:2.4rem;margin-bottom:12px;">ð</div>
         <h4 style="font-size:1rem;margin-bottom:8px;">501(c)(3) Nonprofit</h4>
         <p style="font-size:0.87rem;color:var(--text-light);">Legally registered 501(c)(3) organization. All donations fully tax-deductible per IRS guidelines.</p>
       </div>
       <div class="reveal" style="padding:24px;">
-        <div style="font-size:2.4rem;margin-bottom:12px;">💯</div>
+        <div style="font-size:2.4rem;margin-bottom:12px;">ð¯</div>
         <h4 style="font-size:1rem;margin-bottom:8px;">100% Transparency</h4>
         <p style="font-size:0.87rem;color:var(--text-light);">Annual financial reports available. Every dollar tracked and reported with full accountability.</p>
       </div>
       <div class="reveal" style="padding:24px;">
-        <div style="font-size:2.4rem;margin-bottom:12px;">🙏</div>
+        <div style="font-size:2.4rem;margin-bottom:12px;">ð</div>
         <h4 style="font-size:1rem;margin-bottom:8px;">Direct Impact</h4>
-        <p style="font-size:0.87rem;color:var(--text-light);">Minimal overhead — the vast majority of your donation directly funds programs, cows, and sacred rituals.</p>
+        <p style="font-size:0.87rem;color:var(--text-light);">Minimal overhead â the vast majority of your donation directly funds programs, cows, and sacred rituals.</p>
       </div>
       <div class="reveal" style="padding:24px;">
-        <div style="font-size:2.4rem;margin-bottom:12px;">📿</div>
+        <div style="font-size:2.4rem;margin-bottom:12px;">ð¿</div>
         <h4 style="font-size:1rem;margin-bottom:8px;">Spiritual Merit</h4>
-        <p style="font-size:0.87rem;color:var(--text-light);">Your Sankalpam is offered during every Yagna — your family receives the blessings of all rituals performed.</p>
+        <p style="font-size:0.87rem;color:var(--text-light);">Your Sankalpam is offered during every Yagna â your family receives the blessings of all rituals performed.</p>
       </div>
     </div>
   </div>
@@ -310,8 +326,8 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand"><div class="foot-logo"><div class="foot-logo-icon">S3</div>S3 Foundation</div>
-        <p>Shraddha · Saburi · Samidha — A 501(c)(3) nonprofit. Tax ID: [EIN Number]</p>
-        <div class="footer-social"><a href="#">📘</a><a href="#">▶️</a><a href="#">📷</a><a href="#">🐦</a></div>
+        <p>Shraddha Â· Saburi Â· Samidha â A 501(c)(3) nonprofit. Tax ID: [EIN Number]</p>
+        <div class="footer-social"><a href="#">ð</a><a href="#">â¶ï¸</a><a href="#">ð·</a><a href="#">ð¦</a></div>
       </div>
       <div class="footer-col"><h4>Quick Links</h4><ul>
         <li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li>
@@ -324,15 +340,15 @@
         <li><a href="#">Campus Development</a></li><li><a href="#">General Fund</a></li>
       </ul></div>
       <div class="footer-col"><h4>Contact Us</h4>
-        <div class="footer-contact-item"><span class="icon">📍</span><span>7945 Deadfall Road, Arlington, TN 38002</span></div>
-        <div class="footer-contact-item"><span class="icon">✉️</span><a href="mailto:info@s3foundationusa.org" style="color:rgba(255,255,255,0.6);">info@s3foundationusa.org</a></div>
+        <div class="footer-contact-item"><span class="icon">ð</span><span>7945 Deadfall Road, Arlington, TN 38002</span></div>
+        <div class="footer-contact-item"><span class="icon">âï¸</span><a href="mailto:info@s3foundationusa.org" style="color:rgba(255,255,255,0.6);">info@s3foundationusa.org</a></div>
       </div>
     </div>
-    <div class="footer-bottom"><span>© 2025 S3 Foundation. All Rights Reserved. 501(c)(3) Nonprofit.</span></div>
+    <div class="footer-bottom"><span>Â© 2025 S3 Foundation. All Rights Reserved. 501(c)(3) Nonprofit.</span></div>
   </div>
 </footer>
 
-<button class="scroll-top-btn" id="scrollTopBtn">↑</button>
+<button class="scroll-top-btn" id="scrollTopBtn">â</button>
 <script src="js/main.js"></script>
 <script>
   function selectAmount(btn) {
@@ -360,12 +376,12 @@
     const amount = active ? (active.dataset.amount === 'custom' ? document.getElementById('custom-amount').value : active.dataset.amount) : '';
     if (!amount) { alert('Please select or enter a donation amount.'); return; }
     const btn = document.querySelector('[onclick="submitDonation()"]');
-    btn.textContent = 'Processing…';
+    btn.textContent = 'Processingâ¦';
     btn.disabled = true;
     setTimeout(() => {
       document.querySelector('.donation-form-card').innerHTML = `
         <div style="text-align:center;padding:40px 0;">
-          <div style="font-size:4rem;margin-bottom:20px;">🙏</div>
+          <div style="font-size:4rem;margin-bottom:20px;">ð</div>
           <h2 style="color:var(--saffron);margin-bottom:12px;">Thank You!</h2>
           <p style="color:var(--text-light);font-size:1.05rem;max-width:400px;margin:0 auto 20px;">Your donation of <strong>$${amount}</strong> has been received. You will receive a tax receipt via email shortly.</p>
           <p style="font-family:'Playfair Display',serif;font-style:italic;color:var(--dark-brown);font-size:1.1rem;">"May your seva bring boundless blessings to you and your family."</p>
