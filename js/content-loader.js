@@ -100,6 +100,7 @@
     // Hero text
     if (home.heroTitle)    setText('.hero h1, [data-home="heroTitle"]', home.heroTitle);
     if (home.heroSubtitle) setHtml('.hero .hero-sub, [data-home="heroSubtitle"]', home.heroSubtitle);
+    if (home.heroDesc)     setText('[data-home="heroDesc"]', home.heroDesc);
     if (home.heroCta1Text) setText('[data-home="cta1"]', home.heroCta1Text);
     if (home.heroCta1Link) setAttr('[data-home="cta1"]', 'href', home.heroCta1Link);
     if (home.heroCta2Text) setText('[data-home="cta2"]', home.heroCta2Text);
@@ -275,8 +276,71 @@
     if (about.founderImage) setImg('[data-about="founderImage"], .founder-photo', about.founderImage);
     if (about.chiefAcharyaName) setText('[data-about="chiefAcharyaName"]', about.chiefAcharyaName);
     if (about.chiefAcharyaImage) setImg('[data-about="chiefAcharyaImage"]', about.chiefAcharyaImage);
+    if (about.foundingStory)    setText('[data-about="foundingStory"]', about.foundingStory);
+    if (about.chiefAcharyaTitle) setText('[data-about="chiefAcharyaTitle"]', about.chiefAcharyaTitle);
+    // Timeline rebuild — split into two columns
+    if (about.timeline?.length) {
+      const tlCol1 = document.getElementById('about-timeline-1');
+      const tlCol2 = document.getElementById('about-timeline-2');
+      if (tlCol1 && tlCol2) {
+        const mid = Math.ceil(about.timeline.length / 2);
+        const makeItem = t => `<div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">${t.year}</div><div class="timeline-text">${t.event}</div></div>`;
+        tlCol1.innerHTML = about.timeline.slice(0, mid).map(makeItem).join('');
+        tlCol2.innerHTML = about.timeline.slice(mid).map(makeItem).join('');
+      }
+    }
   }
 
+  // ══════════════════════════════════════════════════════════
+  //  PROGRAMS PAGE
+  // ══════════════════════════════════════════════════════════
+  if (page === 'programs' && content.programs) {
+    content.programs.forEach(prog => {
+      if (!prog.id) return;
+      // Description text
+      const descEl = document.getElementById(`prog-desc-${prog.id}`);
+      if (descEl && prog.description) descEl.textContent = prog.description;
+      // Image — replace placeholder with actual image
+      if (prog.image) {
+        const imgEl = document.getElementById(`prog-img-${prog.id}`);
+        if (imgEl) {
+          imgEl.style.background = 'none';
+          imgEl.style.border = 'none';
+          imgEl.innerHTML = `<img src="${prog.image}" alt="${prog.title}" style="width:100%;height:100%;object-fit:cover;display:block;"/>`;
+        }
+      }
+    });
+  }
+
+  // ══════════════════════════════════════════════════════════
+  //  GAUSHALA PAGE
+  // ══════════════════════════════════════════════════════════
+  if (page === 'gaushala' && content.gaushala) {
+    const g = content.gaushala;
+    // Hero text and intro
+    if (g.heroText || g.intro) setText('[data-gaushala="heroText"]', g.heroText || g.intro);
+    if (g.intro) setText('[data-gaushala="intro"]', g.intro);
+    // Stats
+    if (g.totalCows) setText('[data-gaushala="totalCows"]', g.totalCows);
+    if (g.acres) setText('[data-gaushala="acres"]', g.acres);
+    // Hero image
+    if (g.heroImage) {
+      const mainImg = qs('.gp-main img');
+      if (mainImg) mainImg.src = g.heroImage;
+    }
+    // Rebuild Panchagavya products grid
+    if (g.products?.length) {
+      const grid = document.getElementById('gaushala-products-grid');
+      if (grid) {
+        grid.innerHTML = g.products.map(p => `
+          <div class="product-card reveal">
+            <span class="picon">${p.icon || '🌿'}</span>
+            <h4>${p.name}</h4>
+            <p>${p.description}</p>
+          </div>`).join('');
+      }
+    }
+  }
   // ── Utility: Extract YouTube ID ──────────────────────────
   function extractYouTubeId(url) {
     if (!url) return null;
