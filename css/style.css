@@ -1,11 +1,11 @@
 /* ============================================================
-   S3 FOUNDATION WEBSITE — GLOBAL STYLESHEET
-   Shraddha · Saburi · Samidha
+   S3 FOUNDATION WEBSITE â GLOBAL STYLESHEET
+   Shraddha Â· Saburi Â· Samidha
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
-/* ── CSS VARIABLES ── */
+/* ââ CSS VARIABLES ââ */
 :root {
   --saffron: #E8630A;
   --saffron-dark: #C0510A;
@@ -33,7 +33,7 @@
   --radius-lg: 20px;
 }
 
-/* ── RESET & BASE ── */
+/* ââ RESET & BASE ââ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { scroll-behavior: smooth; font-size: 16px; }
@@ -51,7 +51,7 @@ a { color: inherit; text-decoration: none; transition: color var(--transition); 
 ul { list-style: none; }
 button { cursor: pointer; font-family: inherit; border: none; background: none; }
 
-/* ── TYPOGRAPHY ── */
+/* ââ TYPOGRAPHY ââ */
 h1, h2, h3, h4, h5 {
   font-family: 'Cinzel', serif;
   line-height: 1.3;
@@ -67,18 +67,18 @@ p:last-child { margin-bottom: 0; }
 
 .italic { font-style: italic; font-family: 'Playfair Display', serif; }
 
-/* ── UTILITY ── */
+/* ââ UTILITY ââ */
 .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
 .text-center { text-align: center; }
 .text-saffron { color: var(--saffron); }
 .text-gold { color: var(--gold); }
 
-/* ── SECTION SPACING ── */
+/* ââ SECTION SPACING ââ */
 .section { padding: 80px 0; }
 .section-sm { padding: 50px 0; }
 .section-lg { padding: 110px 0; }
 
-/* ── SECTION HEADER ── */
+/* ââ SECTION HEADER ââ */
 .section-header { text-align: center; margin-bottom: 56px; }
 .section-header .eyebrow {
   display: inline-block;
@@ -97,7 +97,7 @@ p:last-child { margin-bottom: 0; }
   font-size: 1.05rem;
 }
 
-/* ── DECORATIVE DIVIDER ── */
+/* ââ DECORATIVE DIVIDER ââ */
 .divider {
   display: flex;
   align-items: center;
@@ -114,7 +114,7 @@ p:last-child { margin-bottom: 0; }
 .divider::after { background: linear-gradient(270deg, transparent, var(--gold)); }
 .divider span { color: var(--gold); font-size: 1.1rem; }
 
-/* ── BUTTONS ── */
+/* ââ BUTTONS ââ */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -177,7 +177,7 @@ p:last-child { margin-bottom: 0; }
 .btn-lg { padding: 16px 40px; font-size: 1rem; }
 .btn-sm { padding: 9px 20px; font-size: 0.82rem; }
 
-/* ── IMAGE PLACEHOLDER ── */
+/* ââ IMAGE PLACEHOLDER ââ */
 .img-placeholder {
   background: linear-gradient(135deg, var(--cream-dark) 0%, #E8D5A3 100%);
   border: 2px dashed var(--border);
@@ -215,7 +215,7 @@ p:last-child { margin-bottom: 0; }
   opacity: 0.7;
 }
 
-/* ── NAVBAR ── */
+/* ââ NAVBAR ââ */
 .navbar {
   position: fixed;
   top: 0;
@@ -375,7 +375,7 @@ p:last-child { margin-bottom: 0; }
   line-height: 1;
 }
 
-/* ── PAGE HERO (inner pages) ── */
+/* ââ PAGE HERO (inner pages) ââ */
 .page-hero {
   padding: 140px 0 70px;
   background: linear-gradient(135deg, #1C1008 0%, #3D2314 45%, #5C3015 70%, #1C1008 100%);
@@ -409,7 +409,7 @@ p:last-child { margin-bottom: 0; }
   font-size: 1.05rem;
 }
 
-/* ── CARDS ── */
+/* ââ CARDS ââ */
 .card {
   background: var(--white);
   border: 1px solid var(--border);
@@ -426,7 +426,7 @@ p:last-child { margin-bottom: 0; }
 .card-body h3 { margin-bottom: 10px; font-size: 1.2rem; }
 .card-body p { color: var(--text-light); font-size: 0.93rem; }
 
-/* ── STAT BOX ── */
+/* ââ STAT BOX ââ */
 .stat-box {
   text-align: center;
   padding: 32px 24px;
@@ -452,12 +452,12 @@ p:last-child { margin-bottom: 0; }
   text-transform: uppercase;
 }
 
-/* ── GRID HELPERS ── */
+/* ââ GRID HELPERS ââ */
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 
-/* ── BADGE / TAG ── */
+/* ââ BADGE / TAG ââ */
 .badge {
   display: inline-block;
   padding: 4px 14px;
@@ -472,11 +472,11 @@ p:last-child { margin-bottom: 0; }
 .badge-red { background: #FDECEA; color: var(--red); border: 1px solid #F5C0C0; }
 .badge-green { background: #E8F5E9; color: #2E7D32; border: 1px solid #A5D6A7; }
 
-/* ── SCROLL REVEAL CLASSES ── */
+/* ââ SCROLL REVEAL CLASSES ââ */
 .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* ── FOOTER ── */
+/* ââ FOOTER ââ */
 footer {
   background: var(--dark);
   color: rgba(255,255,255,0.7);
@@ -573,7 +573,7 @@ footer {
 }
 .footer-bottom a { color: var(--gold-light); }
 
-/* ── SCROLL TOP BUTTON ── */
+/* ââ SCROLL TOP BUTTON ââ */
 .scroll-top-btn {
   position: fixed;
   bottom: 30px;
@@ -600,7 +600,7 @@ footer {
 }
 .scroll-top-btn:hover { background: var(--saffron-dark); transform: translateY(-3px); }
 
-/* ── FORM STYLES ── */
+/* ââ FORM STYLES ââ */
 .form-group { margin-bottom: 20px; }
 .form-group label {
   display: block;
@@ -629,7 +629,7 @@ footer {
 textarea.form-control { resize: vertical; min-height: 130px; }
 select.form-control { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%237A4520' d='M1 1l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
 
-/* ── BREADCRUMB ── */
+/* ââ BREADCRUMB ââ */
 .breadcrumb {
   display: flex;
   gap: 8px;
@@ -643,7 +643,7 @@ select.form-control { appearance: none; background-image: url("data:image/svg+xm
 .breadcrumb a:hover { color: var(--gold-light); }
 .breadcrumb .sep { font-size: 0.65rem; }
 
-/* ── ALERT ── */
+/* ââ ALERT ââ */
 .alert {
   padding: 14px 20px;
   border-radius: var(--radius);
@@ -657,7 +657,7 @@ select.form-control { appearance: none; background-image: url("data:image/svg+xm
 .alert-info { background: #E3F2FD; border: 1px solid #90CAF9; color: #0D47A1; }
 .alert-warning { background: #FFF8E1; border: 1px solid #FFE082; color: #6D4C00; }
 
-/* ── RESPONSIVE ── */
+/* ââ RESPONSIVE ââ */
 @media (max-width: 1024px) {
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -676,4 +676,10 @@ select.form-control { appearance: none; background-image: url("data:image/svg+xm
 @media (max-width: 480px) {
   .btn-lg { padding: 14px 28px; font-size: 0.9rem; }
   .page-hero { padding: 120px 0 50px; }
+  .hamburger { padding: 8px; }
+  .container { padding-left: 16px; padding-right: 16px; }
+  .section { padding: 48px 0; }
+  footer { padding-top: 48px; }
+  .footer-grid { gap: 24px; }
+  .footer-bottom { gap: 12px; font-size: 0.8rem; }
 }
