@@ -399,7 +399,7 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
           <div class="form-row full">
             <div class="form-group">
               <label>Main Heading</label>
-              <input type="text" id="home-heroTitle" placeholder="Where Ancient Vedic Wisdom Meets Sacred Service"/>
+              <input type="text" id="home-heroTitle" placeholder="Where Ancient Vedic Wisdom Meets Sacred Service"/></div><div class="form-group"><label>Hero Description</label><textarea id="home-heroDesc" rows="3" placeholder="Short paragraph below the hero heading"></textarea>
             </div>
           </div>
           <div class="form-row full">
@@ -796,7 +796,7 @@ function populateSite() {
 
 function populateHome() {
   const h = CONTENT.home||{};
-  v('home-heroTitle', h.heroTitle); v('home-heroSubtitle', h.heroSubtitle);
+  v('home-heroTitle', h.heroTitle); v('home-heroDesc', h.heroDesc); v('home-heroSubtitle', h.heroSubtitle);
   v('home-heroCta1Text', h.heroCta1Text); v('home-heroCta1Link', h.heroCta1Link);
   v('home-heroCta2Text', h.heroCta2Text); v('home-heroCta2Link', h.heroCta2Link);
   v('home-heroImage', h.heroImage); updatePreview('home-heroImage','prev-home-heroImage');
@@ -1071,7 +1071,7 @@ function harvestHome() {
     label: document.getElementById(`stat-lbl-${i}`)?.value||''
   }));
   Object.assign(CONTENT.home, {
-    heroTitle: gv('home-heroTitle'), heroSubtitle: gv('home-heroSubtitle'),
+    heroTitle: gv('home-heroTitle'), heroSubtitle: gv('home-heroSubtitle'), heroDesc: gv('home-heroDesc'),
     heroCta1Text: gv('home-heroCta1Text'), heroCta1Link: gv('home-heroCta1Link'),
     heroCta2Text: gv('home-heroCta2Text'), heroCta2Link: gv('home-heroCta2Link'),
     heroImage: gv('home-heroImage'), aboutImage: gv('home-aboutImage'),
