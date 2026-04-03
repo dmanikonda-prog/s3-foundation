@@ -11,7 +11,7 @@
     .timeline::before {
       content: '';
       position: absolute;
-      left: 16px; top: 0; bottom: 0;
+      left: 16px; top: 0; bottom: 0;h
       width: 2px;
       background: linear-gradient(to bottom, var(--saffron), var(--gold));
     }
@@ -190,7 +190,7 @@
   <div class="container">
     <div class="mission-box reveal">
       <h2>Our Mission</h2>
-      <p class="quote">"To uplift society through individual development rooted in Sanatana Dharma."</p>
+      <p class="quote" data-about="missionStatement">"To uplift society through individual development rooted in Sanatana Dharma."</p>
       <p data-about="foundingStory">S3 Foundation exists to create a living bridge between ancient Vedic wisdom and the modern world — providing every sincere seeker, regardless of background, with access to authentic spiritual practices, Vedic knowledge, and a sacred community of dharmic companions.</p>
     </div>
   </div>
@@ -337,29 +337,29 @@
     </div>
     <div class="grid-3">
       <div class="team-card reveal">
-        <div class="img-placeholder team-photo">
+        <div class="img-placeholder team-photo" id="founder-image">
           <span class="ph-icon">🙏</span>
           <span class="ph-label">Sri Purushottamji<br/>Photo Placeholder</span>
         </div>
         <div class="team-body">
-          <h3>Sri Purushottamji</h3>
-          <span class="role">Founder &amp; Spiritual Director</span>
-          <p>The visionary founder of S3 Foundation whose inspiration led to this flourishing Vedic center in Memphis, dedicated to authentic Sanatana Dharma practice in the West.</p>
+          <h3 data-about="founderName">Sri Purushottamji</h3>
+          <span class="role" data-about="founderTitle">Founder &amp; Spiritual Director</span>
+          <p data-about="founderBio">The visionary founder of S3 Foundation whose inspiration led to this flourishing Vedic center in Memphis, dedicated to authentic Sanatana Dharma practice in the West.</p>
         </div>
       </div>
       <div class="team-card reveal">
-        <div class="img-placeholder team-photo">
+        <div class="img-placeholder team-photo" id="chief-acharya-image">
           <span class="ph-icon">🕉</span>
           <span class="ph-label">Acharya / Priest<br/>Photo Placeholder</span>
         </div>
         <div class="team-body">
-          <h3>[Chief Acharya]</h3>
+          <h3 data-about="chiefAcharyaName">[Chief Acharya]</h3>
           <span class="role" data-about="chiefAcharyaTitle">Resident Acharya &amp; Head Priest</span>
-          <p>A deeply learned Vedic scholar and priest who conducts all major Yagnas, Homas, and daily Agnihotra at the S3 Gaushala with traditional authenticity.</p>
+          <p data-about="chiefAcharyaBio">A deeply learned Vedic scholar and priest who conducts all major Yagnas, Homas, and daily Agnihotra at the S3 Gaushala with traditional authenticity.</p>
         </div>
       </div>
       <div class="team-card reveal">
-        <div class="img-placeholder team-photo">
+        <div class="img-placeholder team-photo" id="chief-acharya-image">
           <span class="ph-icon">🌸</span>
           <span class="ph-label">Organizing Committee<br/>Photo Placeholder</span>
         </div>
