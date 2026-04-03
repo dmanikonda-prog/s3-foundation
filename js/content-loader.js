@@ -348,7 +348,7 @@
     return m ? m[1] : null;
   }
 
-   document.querySelectorAll('.reveal').forEach(el => {
+   if (page === 'donate' && content.donate) { const d = content.donate; if (d.heroTitle) setText('[data-donate="heroTitle"]', d.heroTitle); if (d.heroSubtitle) setText('[data-donate="heroSubtitle"]', d.heroSubtitle); if (d.ein) { const einEl = el('donate-ein'); if (einEl) einEl.textContent = d.ein; } }  document.querySelectorAll('.reveal').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity .5s ease, transform .5s ease';
