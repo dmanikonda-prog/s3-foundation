@@ -348,8 +348,7 @@
     return m ? m[1] : null;
   }
 
-  // ── Re-trigger scroll animations after DOM updates ───────
-  document.querySelectorAll('.reveal').forEach(el => {
+   document.querySelectorAll('.reveal').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity .5s ease, transform .5s ease';
