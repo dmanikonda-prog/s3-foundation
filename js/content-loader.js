@@ -154,36 +154,83 @@
   //  EVENTS PAGE
   // ══════════════════════════════════════════════════════════
   if (page === 'events' && events) {
-    const upcomingContainer = qs('[data-events="upcoming"], #upcoming-events-grid');
-    const pastContainer     = qs('[data-events="past"], #past-events-grid');
+    const upcomingContainer = qs('#upcoming-events-grid, [data-events="upcoming"]');
+    const pastContainer     = qs('#past-events-grid, [data-events="past"]');
     const upcomingEvents    = events.filter(e => e.upcoming);
+    const featuredEvent     = events.find(e => e.featured);
     const pastEvents        = events.filter(e => !e.upcoming);
 
-    if (upcomingContainer && upcomingEvents.length) {
-      upcomingContainer.innerHTML = upcomingEvents.map(e => `
-        <div class="event-card reveal" data-category="${e.category}">
-          <div class="img-placeholder" style="height:200px;">
-            ${imgOrPlaceholder(e.image,'📅',e.title)}
-          </div>
-          <div class="event-card-body">
-            <div class="event-meta"><span class="badge">${e.category}</span><span class="event-date">📅 ${e.date}</span></div>
-            <h3>${e.title}</h3>
-            <p>${e.description}</p>
-            ${e.registrationLink ? `<a href="${e.registrationLink}" class="btn btn-primary" style="margin-top:12px;">Register →</a>` : ''}
-          </div>
-        </div>`).join('');
+    // ── Featured event banner ──────────────────────────────
+    if (featuredEvent) {
+      const featTitle  = el('events-featured-title');
+      const featTitle2 = el('events-featured-title2');
+      const featDesc   = el('events-featured-desc');
+      const featBadge  = el('events-featured-badge');
+      const featReg    = el('events-featured-register');
+      const featImg    = el('events-featured-img');
+      if (featTitle)  featTitle.textContent  = featuredEvent.title;
+      if (featTitle2) featTitle2.textContent = featuredEvent.title;
+      if (featDesc)   featDesc.textContent   = featuredEvent.description;
+      if (featBadge)  featBadge.textContent  = 'UPCOMING \u00B7 ' + featuredEvent.date.toUpperCase();
+      if (featReg && featuredEvent.registrationLink) featReg.href = featuredEvent.registrationLink;
+      if (featImg && featuredEvent.image) {
+        featImg.innerHTML = `<img src="${featuredEvent.image}" alt="${featuredEvent.title}" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"/>`;
+      }
     }
 
+    // ── Upcoming events grid ───────────────────────────────
+    if (upcomingContainer && upcomingEvents.length) {
+      // First non-featured upcoming event gets the big card treatment; rest get small cards
+      const [first, ...rest] = upcomingEvents;
+      const catBadge = c => {
+        const map = { yagna:'badge-saffron', festival:'badge-gold', satsang:'badge-blue', seva:'badge-green', homa:'badge-gold' };
+        return map[c] || 'badge-saffron';
+      };
+      const bigCard = `
+        <div class="event-big-card reveal" data-category="${first.category}">
+          <div class="${first.image ? '' : 'img-placeholder '}ebc-image">
+            ${first.image ? `<img src="${first.image}" alt="${first.title}" style="width:100%;height:100%;object-fit:cover;"/>` : `<span class="ph-icon">&#x1F525;</span><span class="ph-label">${first.title}</span>`}
+          </div>
+          <div class="ebc-body">
+            <div class="badges"><span class="badge badge-gold">${first.date}</span><span class="badge ${catBadge(first.category)}">${first.category}</span><span class="badge badge-green">Free</span></div>
+            <h3>${first.title}</h3>
+            <p>${first.description}</p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;">
+              ${first.registrationLink ? `<a href="${first.registrationLink}" class="btn btn-primary btn-sm">Register</a>` : ''}
+            </div>
+          </div>
+        </div>`;
+      const smallCards = rest.length ? `
+        <div class="upcoming-events-grid" style="margin-top:24px;">
+          ${rest.map(e => {
+            const dateParts = e.date.split(/[\s,]+/);
+            const day   = dateParts.find(p => /^\d+/.test(p)) || '';
+            const month = dateParts.find(p => /^[A-Za-z]/.test(p)) || '';
+            return `
+          <div class="event-small-card reveal" data-category="${e.category}">
+            <div class="esc-header">
+              <div class="esc-date-box"><div class="day">${day.replace(/\D/g,'').slice(0,2)}</div><div class="month">${month.slice(0,3)}</div></div>
+              <div class="esc-info"><h4>${e.title}</h4><div class="emeta">&#x1F4C5; ${e.date}</div></div>
+            </div>
+            <span class="badge ${catBadge(e.category)}">${e.category}</span>
+            <p style="font-size:0.87rem;color:var(--text-light);margin-top:10px;">${e.description}</p>
+            ${e.registrationLink ? `<a href="${e.registrationLink}" class="btn btn-primary btn-sm" style="margin-top:12px;">Register</a>` : ''}
+          </div>`; }).join('')}
+        </div>` : '';
+      upcomingContainer.innerHTML = bigCard + smallCards;
+    }
+
+    // ── Past events grid ───────────────────────────────────
     if (pastContainer && pastEvents.length) {
       pastContainer.innerHTML = pastEvents.map(e => `
-        <div class="event-card past-card reveal" data-category="${e.category}">
-          <div class="img-placeholder" style="height:160px;">
-            ${imgOrPlaceholder(e.image,'📜',e.title)}
+        <div class="past-event-card reveal">
+          <div class="${e.image ? '' : 'img-placeholder '}pec-img">
+            ${e.image ? `<img src="${e.image}" alt="${e.title}" style="width:100%;height:100%;object-fit:cover;"/>` : `<span class="ph-icon">&#x1F549;</span><span class="ph-label">${e.title}</span>`}
           </div>
-          <div class="event-card-body">
-            <div class="event-meta"><span class="badge">${e.category}</span><span class="event-date">📅 ${e.date}</span></div>
-            <h3>${e.title}</h3>
-            <p>${e.description}</p>
+          <div class="pec-body">
+            <span class="year">&#x1F4C5; ${e.date}</span>
+            <h4>${e.title}</h4>
+            <p style="font-size:0.83rem;color:var(--text-light);">${e.description}</p>
           </div>
         </div>`).join('');
     }
@@ -193,43 +240,61 @@
   //  GALLERY PAGE
   // ══════════════════════════════════════════════════════════
   if (page === 'gallery' && gallery) {
-    const photoGrid  = qs('[data-gallery="photos"], #photo-masonry-grid');
-    const videoGrid  = qs('[data-gallery="videos"], #video-gallery-grid');
+    const photoGrid = qs('#photo-masonry-grid, [data-gallery="photos"]');
+    const videoGrid = qs('#video-gallery-grid, [data-gallery="videos"]');
 
+    // ── Photo masonry ──────────────────────────────────────
     if (photoGrid && gallery.photos?.length) {
-      photoGrid.innerHTML = gallery.photos
-        .filter(p => p.url)
-        .map(p => `
-          <div class="gallery-item" data-category="${p.category}">
-            <img src="${p.url}" alt="${p.caption}" loading="lazy"
-                 style="width:100%;border-radius:8px;display:block;cursor:zoom-in;"
-                 onclick="window._openLightbox && window._openLightbox(this)"/>
-            <div class="gallery-overlay">
-              <span class="gallery-caption">${p.caption}</span>
-              <span class="gallery-cat">${p.category}</span>
-            </div>
-          </div>`).join('');
+      const catIcon = { yagna:'&#x1F525;', gaushala:'&#x1F404;', festival:'&#x1F33C;', sadhana:'&#x1F9D8;', campus:'&#x1F3DB;', satsang:'&#x1F4FF;' };
+      const heights = [280,220,200,240,190,260,210,230,200,250,220,190,240,200,215,230,200,195];
+      photoGrid.innerHTML = gallery.photos.map((p, i) => {
+        const h = heights[i % heights.length];
+        if (p.url) {
+          return `
+            <div class="gallery-item" data-cat="${p.category}">
+              <img src="${p.url}" alt="${p.caption}" loading="lazy" style="width:100%;display:block;"/>
+              <div class="gi-overlay"><div class="gi-caption"><span class="gi-cat">${p.category}</span>${p.caption}</div></div>
+            </div>`;
+        } else {
+          const icon = catIcon[p.category] || '&#x1F5BC;&#xFE0F;';
+          return `
+            <div class="gallery-item" data-cat="${p.category}">
+              <div class="gph" style="height:${h}px;"><span class="gph-icon">${icon}</span><span class="gph-label">${p.caption}</span></div>
+              <div class="gi-overlay"><div class="gi-caption"><span class="gi-cat">${p.category}</span>${p.caption}</div></div>
+            </div>`;
+        }
+      }).join('');
     }
 
+    // ── Video grid ─────────────────────────────────────────
     if (videoGrid && gallery.videos?.length) {
-      videoGrid.innerHTML = gallery.videos
-        .filter(v => v.url)
-        .map(v => {
-          const ytId = extractYouTubeId(v.url);
-          const thumb = v.thumbnail || (ytId ? `https://img.youtube.com/vi/${ytId}/hqdefault.jpg` : '');
-          return `
-            <div class="video-card reveal">
-              <a href="${v.url}" target="_blank" class="video-thumb-wrap" style="position:relative;display:block;border-radius:10px;overflow:hidden;">
-                ${thumb
-                  ? `<img src="${thumb}" alt="${v.title}" style="width:100%;aspect-ratio:16/9;object-fit:cover;"/>`
-                  : `<div class="img-placeholder" style="height:180px;"><span class="ph-icon">▶️</span><span class="ph-label">${v.title}</span></div>`}
-                <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);">
-                  <div style="width:50px;height:50px;background:rgba(255,0,0,.85);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;">▶</div>
-                </div>
-              </a>
-              <h4 style="margin-top:10px;font-size:.95rem;">${v.title}</h4>
-            </div>`;
-        }).join('');
+      const catBadge = { yagna:'badge-saffron', gaushala:'badge-gold', festival:'badge-gold', sadhana:'badge-green' };
+      videoGrid.innerHTML = gallery.videos.map(v => {
+        const ytId = extractYouTubeId(v.url);
+        const thumb = v.thumbnail || (ytId ? `https://img.youtube.com/vi/${ytId}/hqdefault.jpg` : '');
+        const href  = (v.url && v.url !== 'https://www.youtube.com/watch?v=') ? v.url : '#';
+        return `
+          <div class="video-card reveal">
+            <div class="video-thumb">
+              ${thumb
+                ? `<img src="${thumb}" alt="${v.title}" style="width:100%;height:180px;object-fit:cover;display:block;"/>`
+                : `<div class="img-placeholder" style="height:180px;border-radius:0;"><span class="ph-icon">&#x1F3AC;</span><span class="ph-label">${v.title}</span></div>`}
+              <div class="video-play-btn"><div class="play-icon">&#x25B6;</div></div>
+            </div>
+            <div class="video-body">
+              <span class="badge ${catBadge[v.category]||'badge-saffron'}" style="margin-bottom:8px;">${v.category}</span>
+              <h4>${v.title}</h4>
+            </div>
+          </div>`;
+      }).join('');
+      // Wire up click handlers
+      videoGrid.querySelectorAll('.video-play-btn').forEach((btn, i) => {
+        const v = gallery.videos[i];
+        if (v && v.url && v.url !== 'https://www.youtube.com/watch?v=') {
+          btn.style.cursor = 'pointer';
+          btn.onclick = () => window.open(v.url, '_blank');
+        }
+      });
     }
   }
 
@@ -270,14 +335,14 @@
   // ══════════════════════════════════════════════════════════
   if (page === 'about' && about) {
     if (about.missionStatement) setText('[data-about="mission"], .mission-text', about.missionStatement);
+    if (about.foundingStory)    setText('[data-about="foundingStory"]', about.foundingStory);
     if (about.founderName) setText('[data-about="founderName"], .founder-name', about.founderName);
     if (about.founderTitle) setText('[data-about="founderTitle"], .founder-title', about.founderTitle);
     if (about.founderBio) setText('[data-about="founderBio"], .founder-bio', about.founderBio);
     if (about.founderImage) setImg('[data-about="founderImage"], .founder-photo', about.founderImage);
     if (about.chiefAcharyaName) setText('[data-about="chiefAcharyaName"]', about.chiefAcharyaName);
-    if (about.chiefAcharyaImage) setImg('[data-about="chiefAcharyaImage"]', about.chiefAcharyaImage);
-    if (about.foundingStory)    setText('[data-about="foundingStory"]', about.foundingStory);
     if (about.chiefAcharyaTitle) setText('[data-about="chiefAcharyaTitle"]', about.chiefAcharyaTitle);
+    if (about.chiefAcharyaImage) setImg('[data-about="chiefAcharyaImage"]', about.chiefAcharyaImage);
     // Timeline rebuild — split into two columns
     if (about.timeline?.length) {
       const tlCol1 = document.getElementById('about-timeline-1');
@@ -341,6 +406,7 @@
       }
     }
   }
+
   // ── Utility: Extract YouTube ID ──────────────────────────
   function extractYouTubeId(url) {
     if (!url) return null;
@@ -348,7 +414,8 @@
     return m ? m[1] : null;
   }
 
-   if (page === 'donate' && content.donate) { const d = content.donate; if (d.heroTitle) setText('[data-donate="heroTitle"]', d.heroTitle); if (d.heroSubtitle) setText('[data-donate="heroSubtitle"]', d.heroSubtitle); if (d.ein) { const einEl = el('donate-ein'); if (einEl) einEl.textContent = d.ein; } }  document.querySelectorAll('.reveal').forEach(el => {
+  // ── Re-trigger scroll animations after DOM updates ───────
+  document.querySelectorAll('.reveal').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity .5s ease, transform .5s ease';
