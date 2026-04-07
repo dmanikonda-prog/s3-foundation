@@ -31,7 +31,7 @@
     "heroCta2Text": "Attend Laksha Chandi 2025",
     "heroCta2Link": "events.html",
     "heroImage": "",
-        "heroDesc": "S3 Foundation is a Sanatana Dharma spiritual nonprofit in Memphis, Tennessee — home to 200+ Gir cows, a sacred 30,000 sq.ft Yagna Shala, daily Agnihotra, and a community grounded in Seva, Sadhana, and Satsang.",
+    "heroDesc": "S3 Foundation is a Sanatana Dharma spiritual nonprofit in Memphis, Tennessee — home to 200+ Gir cows, a sacred 30,000 sq.ft Yagna Shala, daily Agnihotra, and a community grounded in Seva, Sadhana, and Satsang.",
     "aboutImage": "",
     "gaushaalaImage": "",
     "announcements": [
@@ -48,7 +48,52 @@
       { "value": 200, "suffix": "+", "label": "Gir Cows Protected" },
       { "value": 15, "suffix": "+", "label": "Yagnas Conducted" },
       { "value": 400, "suffix": "+", "label": "Acres of Sacred Land" }
-    ]
+    ],
+
+    "pillarsEyebrow": "Our Foundation",
+    "pillarsHeading": "The Three Pillars of S3",
+    "pillarsDesc": "Every activity at S3 Foundation is rooted in these three timeless principles of Sanatana Dharma that guide our path toward individual and societal upliftment.",
+    "pillars": [
+      { "icon": "🙌", "title": "Seva", "sanskrit": "सेवा — Selfless Service", "desc": "We believe that serving others is serving the Divine. Through meaningful volunteer work — from caring for Gir cows to community service — we transform individual hearts and uplift society at large." },
+      { "icon": "🧘", "title": "Sadhana", "sanskrit": "साधना — Spiritual Practice", "desc": "Disciplined spiritual practice is the core of transformation. Whether it is Agnihotra, Japa, Dhyana, or Yagna — we provide the sacred space and guidance for authentic Vedic sadhana." },
+      { "icon": "🕉", "title": "Satsang", "sanskrit": "सत्संग — Spiritual Community", "desc": "The company of truth-seekers elevates the soul. Our satsangs, discourses, and retreats create a sacred community where seekers of all backgrounds deepen their understanding of dharma." }
+    ],
+
+    "aboutPreviewEyebrow": "Est. 2005 · Memphis, Tennessee",
+    "aboutPreviewHeading": "A Vision Born from Ancient Dharma",
+    "aboutPreviewLead": "\"To uplift society through individual development rooted in Sanatana Dharma.\"",
+    "aboutPreviewPara1": "S3 Foundation (Shraddha Saburi Samidha) was founded in 2005 by students at the University of Memphis, inspired by Sri Purushottamji's vision to create an organization practicing ancient spiritual sadhana exactly as prescribed in our scriptures.",
+    "aboutPreviewPara2": "Over nearly two decades, the Foundation has grown into a flourishing spiritual campus in Arlington, Tennessee, hosting hundreds of sadhakas, performing grand Yagnas, and nurturing over 200 sacred Gir cows on 400 acres of blessed land.",
+    "aboutPreviewFeatures": [
+      "Founded 2005 by University of Memphis students",
+      "400+ acres of sacred land in Arlington, TN",
+      "All programs FREE to sadhakas",
+      "15+ years of Vedic Yagna traditions",
+      "Daily Agnihotra since inception",
+      "501(c)(3) registered nonprofit"
+    ],
+    "aboutPreviewCtaText": "Learn Our Full Story",
+    "aboutPreviewCtaLink": "about.html",
+
+    "gaushalaSectionEyebrow": "Gau Mata Seva",
+    "gaushalaSectionHeading": "S3 Gaushala — Sacred Cow Sanctuary",
+    "gaushalaSectionDesc": "Our Gaushala in Arlington, Tennessee is home to 200+ pure-bred Gir cows — a breed revered in Vedic tradition for their spiritual and healing qualities. Spread across 400+ acres, it is one of the most authentic Vedic Gaushalas in the United States.",
+    "gaushalaSectionFeatures": [
+      { "icon": "🐄", "title": "200+ Authentic Gir Cows", "desc": "Pure-bred Gir cows from India, lovingly cared for with traditional Vedic practices on expansive natural pastures." },
+      { "icon": "🌿", "title": "Cow-Based Organic Farming", "desc": "Sustainable farming using Panchagavya (five cow products) — fulfilling the ancient vision of self-sufficient Vedic village life." },
+      { "icon": "🔥", "title": "Daily Agnihotra", "desc": "The sacred Vedic fire ritual performed every day at sunrise and sunset, purifying the land and the hearts of all who attend." }
+    ],
+    "gaushalaSectionCtaText": "Visit the Gaushala",
+    "gaushalaSectionCtaLink": "gaushala.html",
+
+    "testimonials": [
+      { "text": "The Agnihotra experience at S3 Gaushala changed my life. The atmosphere is so pure and the energy so positive — it feels like stepping into another world, a Vedic world right here in Tennessee.", "name": "Srinivas Rao", "location": "Memphis, Tennessee" },
+      { "text": "I attended the Laksha Chandi Maha Yagnam last Navaratri. It was an indescribable experience — the power of 100,000 Chandi recitations, the fragrance of ghee in the homa, the community of sadhakas... truly divine.", "name": "Priya Deshpande", "location": "Nashville, Tennessee" },
+      { "text": "Seeing Gir cows being cared for with such reverence in America moved me deeply. The seva, the land, the rituals — S3 Foundation is doing something truly special for our dharma here in the USA.", "name": "Vikram Krishnamurthy", "location": "Houston, Texas" }
+    ],
+
+    "newsletterHeading": "Join Our Spiritual Community",
+    "newsletterDesc": "Receive updates on upcoming Yagnas, satsangs, Gaushala news, and volunteer opportunities directly in your inbox."
   },
 
   "about": {
