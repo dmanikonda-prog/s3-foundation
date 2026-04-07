@@ -148,6 +148,112 @@
         n.innerHTML = `<img src="${home.aboutImage}" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"/>`;
       });
     }
+
+    // ── Pillars section ───────────────────────────────────
+    if (home.pillarsEyebrow) setText('[data-home="pillarsEyebrow"]', home.pillarsEyebrow);
+    if (home.pillarsHeading) setText('[data-home="pillarsHeading"]', home.pillarsHeading);
+    if (home.pillarsDesc)    setText('[data-home="pillarsDesc"]', home.pillarsDesc);
+    if (home.pillars?.length) {
+      const grid = document.getElementById('pillars-grid');
+      if (grid) {
+        grid.innerHTML = home.pillars.map(p => `
+          <div class="pillar-card reveal">
+            <div class="pillar-icon">${p.icon}</div>
+            <h3>${p.title}</h3>
+            <span class="pillar-sanskrit">${p.sanskrit}</span>
+            <p>${p.desc}</p>
+          </div>`).join('');
+      }
+    }
+
+    // ── About Preview section ─────────────────────────────
+    if (home.aboutPreviewEyebrow) setText('[data-home="aboutPreviewEyebrow"]', home.aboutPreviewEyebrow);
+    if (home.aboutPreviewHeading) setText('[data-home="aboutPreviewHeading"]', home.aboutPreviewHeading);
+    if (home.aboutPreviewLead)    setText('[data-home="aboutPreviewLead"]', home.aboutPreviewLead);
+    if (home.aboutPreviewPara1)   setText('[data-home="aboutPreviewPara1"]', home.aboutPreviewPara1);
+    if (home.aboutPreviewPara2)   setText('[data-home="aboutPreviewPara2"]', home.aboutPreviewPara2);
+    if (home.aboutPreviewFeatures?.length) {
+      const featEl = document.getElementById('about-preview-features');
+      if (featEl) {
+        featEl.innerHTML = home.aboutPreviewFeatures
+          .map(f => `<div class="about-feat-item"><span class="check">✔</span> ${f}</div>`).join('');
+      }
+    }
+    if (home.aboutPreviewCtaText) {
+      const cta = document.getElementById('about-preview-cta');
+      if (cta) { cta.textContent = home.aboutPreviewCtaText; if (home.aboutPreviewCtaLink) cta.href = home.aboutPreviewCtaLink; }
+    }
+
+    // ── Gaushala Preview section ──────────────────────────
+    if (home.gaushalaSectionEyebrow) setText('[data-home="gaushalaSectionEyebrow"]', home.gaushalaSectionEyebrow);
+    if (home.gaushalaSectionHeading) setText('[data-home="gaushalaSectionHeading"]', home.gaushalaSectionHeading);
+    if (home.gaushalaSectionDesc)    setText('[data-home="gaushalaSectionDesc"]', home.gaushalaSectionDesc);
+    if (home.gaushalaSectionFeatures?.length) {
+      const featEl = document.getElementById('gaushala-section-features');
+      if (featEl) {
+        featEl.innerHTML = home.gaushalaSectionFeatures.map(f => `
+          <div class="gaushala-feature">
+            <div class="gf-icon">${f.icon}</div>
+            <div><h4>${f.title}</h4><p>${f.desc}</p></div>
+          </div>`).join('');
+      }
+    }
+    if (home.gaushalaSectionCtaText) {
+      const cta = document.getElementById('gaushala-section-cta');
+      if (cta) { cta.textContent = home.gaushalaSectionCtaText; if (home.gaushalaSectionCtaLink) cta.href = home.gaushalaSectionCtaLink; }
+    }
+
+    // ── Homepage Events preview (from events data) ────────
+    const homeEventsEl = document.getElementById('home-events-list');
+    if (homeEventsEl && content.events?.length) {
+      const upcoming = content.events.filter(e => e.upcoming).slice(0, 4);
+      if (upcoming.length) {
+        homeEventsEl.innerHTML = upcoming.map(e => {
+          const dateParts = e.date.split(/[\q,\-–]+/);
+          const day   = dateParts.find(p => /^\d+$/.test(p)) || '';
+          const month = dateParts.find(p => /^[A-Za-z]/.test(p)) || '';
+          const catBadge = { yagna:'badge-saffron', festival:'badge-gold', satsang:'badge-blue', seva:'badge-green', homa:'badge-gold' };
+          return `
+          <div class="event-card reveal">
+            <div class="event-date-box"><div class="day">${day.slice(0,2)}</div><div class="month">${month.slice(0,3)}</div></div>
+            <div class="event-info">
+              <h4>${e.title}</h4>
+              <p>${e.description}</p>
+              <div class="event-meta">
+                <span>📅 ${e.date}</span>
+                <span>📍 S3 Gaushala, Arlington TN</span>
+                <span class="badge ${catBadge[e.category]||'badge-gold'}">Free</span>
+              </div>
+            </div>
+          </div>`;
+        }).join('');
+      }
+    }
+
+    // ── Testimonials ──────────────────────────────────────
+    if (home.testimonials?.length) {
+      const grid = document.getElementById('testimonials-grid');
+      if (grid) {
+        grid.innerHTML = home.testimonials.map(t => {
+          const initials = t.name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
+          return `
+          <div class="testimonial-card reveal">
+            <p class="testimonial-text">"${t.text}"</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">${initials}</div>
+              <div class="author-info">
+                <div class="name">${t.name}</div>
+                <div class="location">${t.location}</div>
+              </div>
+            </div>
+          </div>`;
+        }).join('');
+      }
+    }
+
+    // ── Newsletter ────────────────────────────────────────
+    if (home.newsletterHeading) setText('[data-home="newsletterHeading"]', home.newsletterHeading);
+    if (home.newsletterDesc)    setText('[data-home="newsletterDesc"]', home.newsletterDesc);
   }
 
   // ══════════════════════════════════════════════════════════
