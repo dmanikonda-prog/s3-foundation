@@ -45,7 +45,7 @@ button{cursor:pointer;font-family:inherit;}
 /* ── Sidebar ── */
 .sidebar{width:240px;background:var(--sidebar-bg);color:var(--sidebar-text);
   display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100;}
-.sidebar-logo{padding:24px 20px 40px;border-bottom:1px solid rgba(255,255,255,.07);}
+.sidebar-logo{padding:24px 20px16px;border-bottom:1px solid rgba(255,255,255,.07);}
 .sidebar-logo .org{font-size:1.1rem;font-weight:700;color:#fff;}
 .sidebar-logo .sub{font-size:.7rem;color:rgba(255,255,255,.4);margin-top:2px;}
 .sidebar-badge{display:inline-block;background:var(--brand);color:#fff;font-size:.6rem;
@@ -59,7 +59,7 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
 .nav-item.active{background:rgba(232,99,10,.15);color:var(--sidebar-active);border-right:3px solid var(--sidebar-active);}
 .nav-icon{font-size:1.1rem;width:22px;text-align:center;}
 .sidebar-footer{padding:16px 20px;border-top:1px solid rgba(255,255,255,.07);font-size:.78rem;color:rgba(255,255,255,.3);}
-.logout-btn{background:none;border:none;color:rgba(255,255,255,.35);font-size:.78rem;cursor:pointer;
+  logout-btn{background:none;border:none;color:rgba(255,255,255,.35);font-size:.78rem;cursor:pointer;
   display:flex;align-items:center;gap:6px;padding:6px 0;margin-top:4px;transition:color .2s;}
 .logout-btn:hover{color:var(--danger);}
 
@@ -129,7 +129,7 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
 .item-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;
   box-shadow:var(--shadow);position:relative;}
 .item-card-header{background:#f8fafc;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}
-.item-card-title{font-size:.85rem;font-weight:600;flex:1;white-space:nowraw;overflow:hidden;text-overflow:ellipsis;}
+.item-card-title{font-size:.85rem;font-weight:600;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .item-card-badge{font-size:.65rem;font-weight:700;text-transform:uppercase;padding:3px 8px;
   border-radius:20px;background:var(--brand-light);color:var(--brand);}
 .item-card-body{padding:16px;display:flex;flex-direction:column;gap:10px;}
@@ -468,6 +468,126 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
           <div class="card-title"><span class="icon">&#x1F4CA;</span> Stats Counters</div>
           <div class="stats-grid" id="stats-grid"></div>
         </div>
+
+        <div class="card">
+          <div class="card-title"><span class="icon">&#x1F331;</span> Three Pillars Section</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Section Eyebrow</label>
+              <input type="text" id="home-pillarsEyebrow" placeholder="Our Foundation"/>
+            </div>
+            <div class="form-group">
+              <label>Section Heading</label>
+              <input type="text" id="home-pillarsHeading" placeholder="The Three Pillars of S3"/>
+            </div>
+          </div>
+          <div class="form-row full">
+            <div class="form-group">
+              <label>Section Description</label>
+              <textarea id="home-pillarsDesc" rows="2"></textarea>
+            </div>
+          </div>
+          <div id="pillars-cards" style="display:flex;flex-direction:column;gap:16px;margin-top:8px;"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-title"><span class="icon">&#x1F3DB;&#xFE0F;</span> About Preview Section</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Eyebrow Text</label>
+              <input type="text" id="home-aboutPreviewEyebrow" placeholder="Est. 2005 · Memphis, Tennessee"/>
+            </div>
+            <div class="form-group">
+              <label>Section Heading</label>
+              <input type="text" id="home-aboutPreviewHeading" placeholder="A Vision Born from Ancient Dharma"/>
+            </div>
+          </div>
+          <div class="form-row full">
+            <div class="form-group">
+              <label>Lead Quote</label>
+              <input type="text" id="home-aboutPreviewLead" placeholder='"To uplift society through individual development rooted in Sanatana Dharma."'/>
+            </div>
+          </div>
+          <div class="form-row full">
+            <div class="form-group">
+              <label>Paragraph 1</label>
+              <textarea id="home-aboutPreviewPara1" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="form-row full">
+            <div class="form-group">
+              <label>Paragraph 2</label>
+              <textarea id="home-aboutPreviewPara2" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Feature / Bullet Points <small style="color:var(--muted);font-weight:400;">(one per line)</small></label>
+            <textarea id="home-aboutPreviewFeatures" rows="7" placeholder="Founded 2005 by University of Memphis students&#10;400+ acres of sacred land in Arlington, TN&#10;All programs FREE to sadhakas"></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Button Text</label>
+              <input type="text" id="home-aboutPreviewCtaText" placeholder="Learn Our Full Story"/>
+            </div>
+            <div class="form-group">
+              <label>Button Link</label>
+              <input type="text" id="home-aboutPreviewCtaLink" placeholder="about.html"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title"><span class="icon">&#x1F404;</span> Gaushala Preview Section</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Eyebrow Text</label>
+              <input type="text" id="home-gaushalaSectionEyebrow" placeholder="Gau Mata Seva"/>
+            </div>
+            <div class="form-group">
+              <label>Section Heading</label>
+              <input type="text" id="home-gaushalaSectionHeading" placeholder="S3 Gaushala — Sacred Cow Sanctuary"/>
+            </div>
+          </div>
+          <div class="form-row full">
+            <div class="form-group">
+              <label>Description</label>
+              <textarea id="home-gaushalaSectionDesc" rows="3"></textarea>
+            </div>
+          </div>
+          <div id="gaushala-feature-cards" style="display:flex;flex-direction:column;gap:16px;margin-top:8px;"></div>
+          <div class="form-row" style="margin-top:16px;">
+            <div class="form-group">
+              <label>Button Text</label>
+              <input type="text" id="home-gaushalaSectionCtaText" placeholder="Visit the Gaushala"/>
+            </div>
+            <div class="form-group">
+              <label>Button Link</label>
+              <input type="text" id="home-gaushalaSectionCtaLink" placeholder="gaushala.html"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title"><span class="icon">&#x1F4AC;</span> Testimonials</div>
+          <div id="testimonial-cards" style="display:flex;flex-direction:column;gap:16px;"></div>
+          <button class="add-item-btn" onclick="addTestimonial()" style="margin-top:12px;">＋ Add Testimonial</button>
+        </div>
+
+        <div class="card">
+          <div class="card-title"><span class="icon">&#x1F4E7;</span> Newsletter Section</div>
+          <div class="form-row full">
+            <div class="form-group">
+              <label>Heading</label>
+              <input type="text" id="home-newsletterHeading" placeholder="Join Our Spiritual Community"/>
+            </div>
+          </div>
+          <div class="form-row full">
+            <div class="form-group">
+              <label>Description</label>
+              <textarea id="home-newsletterDesc" rows="2"></textarea>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- ── ABOUT ── -->
@@ -576,7 +696,7 @@ nav.sidebar-nav{flex:1;padding:12px 0;}
 
       <!-- ── EVENTS ── -->
       <div class="section-panel" id="panel-events">
-        <div class="alert info">&#x2139;&#xFE0F; Add upcoming and past events. Toggle <strong>Upcoming</strong> to show/hide in the upcoming events section. Mark one event as <strong>Featured</strong> to show it as the banner event.</div>
+        <div class="alert info">&#x2139;&#xFE0F; Add upcoming and past events. Toggle <strong>Upcoming</strong> to show/hide in The upcoming events section. Mark one event as <strong>Featured</strong> to show it as the banner event.</div>
         <div class="item-cards" id="events-cards"></div>
         <button class="add-card-btn" onclick="addEvent()">＋ Add New Event</button>
       </div>
@@ -814,6 +934,89 @@ function populateHome() {
   (h.announcements||[]).forEach(a => list.appendChild(makeAnnouncementItem(a)));
   // Stats
   renderStats(h.stats||[]);
+  // Pillars
+  v('home-pillarsEyebrow', h.pillarsEyebrow);
+  v('home-pillarsHeading', h.pillarsHeading);
+  v('home-pillarsDesc', h.pillarsDesc);
+  renderPillars(h.pillars||[]);
+  // About Preview
+  v('home-aboutPreviewEyebrow', h.aboutPreviewEyebrow);
+  v('home-aboutPreviewHeading', h.aboutPreviewHeading);
+  v('home-aboutPreviewLead', h.aboutPreviewLead);
+  v('home-aboutPreviewPara1', h.aboutPreviewPara1);
+  v('home-aboutPreviewPara2', h.aboutPreviewPara2);
+  v('home-aboutPreviewFeatures', (h.aboutPreviewFeatures||[]).join('\n'));
+  v('home-aboutPreviewCtaText', h.aboutPreviewCtaText);
+  v('home-aboutPreviewCtaLink', h.aboutPreviewCtaLink);
+  // Gaushala Preview
+  v('home-gaushalaSectionEyebrow', h.gaushalaSectionEyebrow);
+  v('home-gaushalaSectionHeading', h.gaushalaSectionHeading);
+  v('home-gaushalaSectionDesc', h.gaushalaSectionDesc);
+  v('home-gaushalaSectionCtaText', h.gaushalaSectionCtaText);
+  v('home-gaushalaSectionCtaLink', h.gaushalaSectionCtaLink);
+  renderGaushalaSectionFeatures(h.gaushalaSectionFeatures||[]);
+  // Testimonials
+  renderTestimonials(h.testimonials||[]);
+  // Newsletter
+  v('home-newsletterHeading', h.newsletterHeading);
+  v('home-newsletterDesc', h.newsletterDesc);
+}
+
+function renderPillars(pillars) {
+  document.getElementById('pillars-cards').innerHTML = pillars.map((p,i) => `
+    <div class="item-card" style="padding:16px;">
+      <div class="item-card-header"><div class="item-card-title">Pillar ${i+1}</div></div>
+      <div class="item-card-body">
+        <div class="form-row">
+          <div class="form-group"><label>Icon (emoji)</label><input type="text" id="pillar-icon-${i}" value="${escHtml(p.icon||'')}"/></div>
+          <div class="form-group"><label>Title</label><input type="text" id="pillar-title-${i}" value="${escHtml(p.title||'')}"/></div>
+        </div>
+        <div class="form-group"><label>Sanskrit / Subtitle</label><input type="text" id="pillar-sanskrit-${i}" value="${escHtml(p.sanskrit||'')}"/></div>
+        <div class="form-group"><label>Description</label><textarea id="pillar-desc-${i}" rows="3">${escHtml(p.desc||'')}</textarea></div>
+      </div>
+    </div>`).join('');
+}
+
+function renderGaushalaSectionFeatures(features) {
+  document.getElementById('gaushala-feature-cards').innerHTML = features.map((f,i) => `
+    <div class="item-card" style="padding:16px;">
+      <div class="item-card-header"><div class="item-card-title">Feature ${i+1}</div></div>
+      <div class="item-card-body">
+        <div class="form-row">
+          <div class="form-group"><label>Icon (emoji)</label><input type="text" id="gfeat-icon-${i}" value="${escHtml(f.icon||'')}"/></div>
+          <div class="form-group"><label>Title</label><input type="text" id="gfeat-title-${i}" value="${escHtml(f.title||'')}"/></div>
+        </div>
+        <div class="form-group"><label>Description</label><textarea id="gfeat-desc-${i}" rows="2">${escHtml(f.desc||'')}</textarea></div>
+      </div>
+    </div>`).join('');
+}
+
+function renderTestimonials(testimonials) {
+  document.getElementById('testimonial-cards').innerHTML = testimonials.map((t,i) => `
+    <div class="item-card" style="padding:16px;">
+      <div class="item-card-header">
+        <div class="item-card-title">${escHtml(t.name||'Testimonial '+(i+1))}</div>
+        <button class="icon-btn danger" onclick="deleteTestimonial(${i})">&#x1F5D1; Delete</button>
+      </div>
+      <div class="item-card-body">
+        <div class="form-group"><label>Quote Text</label><textarea id="testi-text-${i}" rows="3">${escHtml(t.text||'')}</textarea></div>
+        <div class="form-row">
+          <div class="form-group"><label>Name</label><input type="text" id="testi-name-${i}" value="${escHtml(t.name||'')}"/></div>
+          <div class="form-group"><label>Location</label><input type="text" id="testi-loc-${i}" value="${escHtml(t.location||'')}"/></div>
+        </div>
+      </div>
+    </div>`).join('');
+}
+function addTestimonial() {
+  CONTENT.home = CONTENT.home||{};
+  CONTENT.home.testimonials = CONTENT.home.testimonials||[];
+  CONTENT.home.testimonials.push({text:'',name:'',location:''});
+  renderTestimonials(CONTENT.home.testimonials);
+}
+function deleteTestimonial(i) {
+  if (!confirm('Delete this testimonial?')) return;
+  CONTENT.home.testimonials.splice(i,1);
+  renderTestimonials(CONTENT.home.testimonials);
 }
 
 function makeAnnouncementItem(text) {
@@ -848,7 +1051,7 @@ function populateAbout() {
 }
 function makeTimelineItem(year='', event='') {
   const d=document.createElement('div'); d.className='list-item';
-  d.innerHTML<`<input type="text" value="${escHtml(year)}" placeholder="Year" style="width:70px;flex-shrink:0;font-weight:700;color:var(--brand);"/><input type="text" value="${escHtml(event)}" placeholder="What happened?" style="flex:1;"/><button class="del-btn" onclick="this.closest('.list-item').remove()">✕</button>`;
+  d.innerHTML=`<input type="text" value="${escHtml(year)}" placeholder="Year" style="width:70px;flex-shrink:0;font-weight:700;color:var(--brand);"/><input type="text" value="${escHtml(event)}" placeholder="What happened?" style="flex:1;"/><button class="del-btn" onclick="this.closest('.list-item').remove()">✕</button>`;
   return d;
 }
 function addTimelineItem() {
@@ -959,7 +1162,7 @@ function renderPhotoCards(photos) {
       <div class="item-card-body">
         <div class="form-group"><label>Image</label>
           <div class="img-upload-wrap">
-            <div class="img-preview ${p.url?'':'empty'}" id="prev-photo-${i}">${p.url?`<img src="${p.url}"/>`:'&#x1F4F7;'}|/div>
+            <div class="img-preview ${p.url?'':'empty'}" id="prev-photo-${i}">${p.url?`<img src="${p.url}"/>`:'&#x1F4F7;'}</div>
             <button class="upload-btn" onclick="openCloudinary('photo-url-${i}','prev-photo-${i}')">&#x2601; Upload</button>
             <div class="url-input-wrap"><input type="url" id="photo-url-${i}" value="${escHtml(p.url||'')}" placeholder="Image URL" oninput="updatePreview('photo-url-${i}','prev-photo-${i}')"/></div>
           </div>
@@ -1077,13 +1280,39 @@ function harvestHome() {
     suffix: document.getElementById(`stat-suf-${i}`)?.value||'',
     label: document.getElementById(`stat-lbl-${i}`)?.value||''
   }));
+  // Pillars
+  const pillars = (CONTENT.home.pillars||[]).map((_,i)=>({
+    icon: gv(`pillar-icon-${i}`), title: gv(`pillar-title-${i}`),
+    sanskrit: gv(`pillar-sanskrit-${i}`), desc: gv(`pillar-desc-${i}`)
+  }));
+  // Gaushala section features
+  const gaushalaSectionFeatures = (CONTENT.home.gaushalaSectionFeatures||[]).map((_,i)=>({
+    icon: gv(`gfeat-icon-${i}`), title: gv(`gfeat-title-${i}`), desc: gv(`gfeat-desc-${i}`)
+  }));
+  // Testimonials
+  const testimonials = (CONTENT.home.testimonials||[]).map((_,i)=>({
+    text: gv(`testi-text-${i}`), name: gv(`testi-name-${i}`), location: gv(`testi-loc-${i}`)
+  }));
+  // About preview features (one per line)
+  const aboutPreviewFeatures = gv('home-aboutPreviewFeatures').split('\n').map(s=>s.trim()).filter(Boolean);
   Object.assign(CONTENT.home, {
     heroTitle: gv('home-heroTitle'), heroSubtitle: gv('home-heroSubtitle'),
     heroDesc: gv('home-heroDesc'),
     heroCta1Text: gv('home-heroCta1Text'), heroCta1Link: gv('home-heroCta1Link'),
     heroCta2Text: gv('home-heroCta2Text'), heroCta2Link: gv('home-heroCta2Link'),
     heroImage: gv('home-heroImage'), aboutImage: gv('home-aboutImage'),
-    announcements: anns, stats
+    announcements: anns, stats,
+    pillarsEyebrow: gv('home-pillarsEyebrow'), pillarsHeading: gv('home-pillarsHeading'),
+    pillarsDesc: gv('home-pillarsDesc'), pillars,
+    aboutPreviewEyebrow: gv('home-aboutPreviewEyebrow'), aboutPreviewHeading: gv('home-aboutPreviewHeading'),
+    aboutPreviewLead: gv('home-aboutPreviewLead'), aboutPreviewPara1: gv('home-aboutPreviewPara1'),
+    aboutPreviewPara2: gv('home-aboutPreviewPara2'), aboutPreviewFeatures,
+    aboutPreviewCtaText: gv('home-aboutPreviewCtaText'), aboutPreviewCtaLink: gv('home-aboutPreviewCtaLink'),
+    gaushalaSectionEyebrow: gv('home-gaushalaSectionEyebrow'), gaushalaSectionHeading: gv('home-gaushalaSectionHeading'),
+    gaushalaSectionDesc: gv('home-gaushalaSectionDesc'), gaushalaSectionFeatures,
+    gaushalaSectionCtaText: gv('home-gaushalaSectionCtaText'), gaushalaSectionCtaLink: gv('home-gaushalaSectionCtaLink'),
+    testimonials,
+    newsletterHeading: gv('home-newsletterHeading'), newsletterDesc: gv('home-newsletterDesc')
   });
 }
 
